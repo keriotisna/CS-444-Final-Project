@@ -1,3 +1,7 @@
 cifar-10/*
 !cifar-10/trainLabels.csv
 !cifar-10/sampleSubmission.csv
+
+runs/*
+
+__pycache__/*
