@@ -9,14 +9,16 @@ import torchvision.transforms.v2 as v2
 
 class CIFAR10Dataset(Dataset):
     
+    # The defaultTransform is the first transform that should be called as it turns the inputs into a form
+    # other transforms can work on.
     defaultTransform = tv.transforms.Compose([
         # Ensure everything is in the right size and format before ending our transforms
-        v2.Resize(size=(32, 32), antialias=True),
+        # v2.Resize(size=(32, 32), antialias=True),
         v2.ToImage(),
         v2.ToDtype(torch.float32, scale=True),
     ])
     
-    def __init__(self, rootDirectory, csvFilename, dataFolder, transform=None):
+    def __init__(self, rootDirectory, csvFilename, dataFolder, transform:tv.transforms.Compose=None):
         
         
         csvPath = os.path.join(rootDirectory, csvFilename)
@@ -50,15 +52,12 @@ class CIFAR10Dataset(Dataset):
         self.dataPath = dataPath
         
         if transform is not None:
-            # Splice in the given transform before setting everything in the right format for the network
-            transform = tv.transforms.Compose([
-                transform,
-                self.defaultTransform
-            ])
+            # Combine compose transforms if another transform is given
+            setTransform = tv.transforms.Compose(self.defaultTransform.transforms + transform.transforms)
         else:
-            transform = self.defaultTransform
+            setTransform = self.defaultTransform
         
-        self.transform = transform
+        self.transform = setTransform
 
     def __len__(self):
         return len(self.annotations)

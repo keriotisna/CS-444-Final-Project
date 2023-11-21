@@ -47,52 +47,51 @@ class CNN(nn.Module):
         return x
 
 
+
 # TODO: Create modified residual block that acts as a highway block with several concurrent residual connections in the forward pass
 #   This should be generalizable, so I can pass a 4 to the input and there will be 4 residual blocks with residual connections that link all the way through
 #   This should also easily connect with existing block classes, so I may need to modify each of those to be able to access the gradients I need
 # TODO: This should maybe downweight contributions as residual activations are passed forward.
 # TODO: Should residuals be double skipped so the very first residual gets propagated cleanly to the output? Probably not since that would start to contaiminate the 
 #   feature representations made through the block.
+# TODO: Allow easy setting of default highway elements
 class HighwayBlock(nn.Module):
     
+    
+    printOutsize = False
     
     """
     A network block with longer residual connections that allows long stretches of residual connections.
     """
     
-    def __init__(self, in_channels:int, highwaySequence:list=None, highwayLength:int=3, *args, **kwargs) -> None:
+    def __init__(self, in_channels:int, highwaySequence:nn.Sequential=None, highwayLength:int=3, *args, **kwargs) -> None:
         
         """
         Initialize a long highway block with continuous residual connections for long parts of the network
         """
         
         super().__init__(*args, **kwargs)
-        
+                
         if highwaySequence:
             self.highwaySequence = highwaySequence
         else:
-            highwayElement = nn.Sequential(
-                BottleneckBlock4(in_channels=in_channels, encode_factor=4),
-            )
-            self.highwaySequence = [highwayElement for _ in range(highwayLength)]
+            highwayElement = BottleneckBlock4(in_channels=in_channels, encode_factor=4)
+            self.highwaySequence = nn.Sequential(*[highwayElement for _ in range(highwayLength)])
         
         
         
     def forward(self, x):
         
         """
-        In the forward pass, we have a list of nn.Sequentials self.highwaySequence and we need to do a standard forward pass while ensuring the
-        residuals are passed all the way through to create longer continuous residual connections
-
-        Returns:
-            _type_: _description_
+        Performs a forward pass on all highwaySequence elements. Also creates a long skip connection which propagates
+            the input all the way to the output.
         """
         
         firstPass = True
         output = None
         
         for layer in self.highwaySequence:
-            
+                        
             y = None
             
             if firstPass:
@@ -101,15 +100,15 @@ class HighwayBlock(nn.Module):
             else:
                 y = layer(output)
             
-            residual = layer.residual
-            output = y + residual
+            # TODO: Add original activations to each layer?
+            output = y
 
-        return output
+        # Add the original residual creating a long skip from the start of the highway to the end
+        return output + x
     
 
 
 
-# TODO: Define bottleneck blocks or other residual connections
 class ResidualBlock(nn.Module):
         
     printOutsize = False
@@ -148,7 +147,6 @@ class ResidualBlock(nn.Module):
             
         y = y + x
         self.outsize = y.size()
-        self.residual = x
         
         return self.activation(y)
 
@@ -176,7 +174,10 @@ class ResidualBlock2(nn.Module):
             self.activation,
         )
         
-        self.residualNormalization = nn.BatchNorm2d(num_features=channelCount)
+        self.residualNormalization = nn.Sequential(
+            nn.BatchNorm2d(num_features=channelCount),
+            self.activation,
+        )
         
 
     def forward(self, x):
@@ -198,7 +199,6 @@ class ResidualBlock2(nn.Module):
             
         y = y + normalizedResidual
         self.outsize = y.size()
-        self.residual = normalizedResidual
         
         return self.activation(y)
 
@@ -223,7 +223,6 @@ class BottleneckBlock(nn.Module):
         super().__init__(*args, **kwargs)
         
         self.activation = activation
-        self.residual = None
 
         
         self.encode1 = nn.Sequential(
@@ -264,7 +263,6 @@ class BottleneckBlock(nn.Module):
         decoded = self.decode1(convolved)
         # TODO: Normalize the decoded values with BatchNorm here?
         y = x + decoded
-        self.residual = x
         
         # TODO: BatchNorm+ReLU here?
         
@@ -285,7 +283,6 @@ class BottleneckBlock2(BottleneckBlock):
         super().__init__(in_channels=in_channels, encode_channels=encode_channels, kernel_size=kernel_size, stride=stride, padding=padding, activation=activation)
 
         self.activation = activation
-        self.residual = None
         
         self.encode1 = nn.Sequential(
             nn.BatchNorm2d(num_features=in_channels),
@@ -321,7 +318,6 @@ class BottleneckBlock3(BottleneckBlock):
         super().__init__(in_channels=in_channels, encode_channels=encode_channels, kernel_size=kernel_size, stride=stride, padding=padding, activation=activation)
 
         self.activation = activation
-        self.residual = None
         
         self.encode1 = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=encode_channels, kernel_size=1, stride=1, padding=0),
@@ -356,7 +352,6 @@ class BottleneckBlock4(BottleneckBlock):
         super().__init__(in_channels=in_channels, encode_channels=encode_channels, kernel_size=kernel_size, stride=stride, padding=padding, activation=activation)
 
         self.activation = activation
-        self.residual = None
         
         self.encode1 = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=encode_channels, kernel_size=1, stride=1, padding=0),
@@ -381,11 +376,10 @@ class BottleneckBlock4(BottleneckBlock):
         return super().forward(x)
 
 
-
 class BottleneckBlock5(BottleneckBlock):
     
     """
-    BottleneckBlock5 changes the forward function to BatchNorm+ReLU the final output to ensure activations stay consistently normalized through the network
+    BottleneckBlock5 has residual normalization while previous versions do not
     """
         
     def __init__(self, in_channels:int, encode_factor:int=4, kernel_size:int=3, stride:int=1, padding:int=1, activation:nn.Module=nn.ReLU()) -> None:
@@ -395,7 +389,6 @@ class BottleneckBlock5(BottleneckBlock):
         super().__init__(in_channels=in_channels, encode_channels=encode_channels, kernel_size=kernel_size, stride=stride, padding=padding, activation=activation)
 
         self.activation = activation
-        self.residual = None
         
         self.encode1 = nn.Sequential(
             nn.Conv2d(in_channels=in_channels, out_channels=encode_channels, kernel_size=1, stride=1, padding=0),
@@ -415,11 +408,109 @@ class BottleneckBlock5(BottleneckBlock):
             self.activation,
         )
         
+        self.residualNormalization = nn.Sequential(
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation,
+        )
+        
+        
     def forward(self, x):
         
-        return super().forward(x)
+        if self.printOutsize:
+            print(f'x.size(): {x.size()}')
+        
+        encoded = self.encode1(x)
+        
+        if self.printOutsize:
+            print(f'encoded.size(): {encoded.size()}')
+            
+        convolved = self.convolution(encoded)
+        
+        if self.printOutsize:
+            print(f'convolved.size(): {convolved.size()}')
+        
+        decoded = self.decode1(convolved)
+        
+        y = decoded + self.residualNormalization(x)
+                
+        if self.printOutsize:
+            print(f'y.size(): {y.size()}')
+
+        return y
 
 
+
+class DoubleEncodeBottleneckBlock(nn.Module):
+    
+    
+    """
+    The DoubleEncodeBottleneckBlock condenses the bottleneck channels a second time before using the convolution to try and save more computation time.
+    This may have significant model performance impacts, but should in theory be even more efficient
+    """
+        
+    def __init__(self, in_channels:int, encode_factor1:int=4, encode_factor2:int=4, kernel_size:int=3, stride:int=1, padding:int=1, activation:nn.Module=nn.ReLU()) -> None:
+        
+        super().__init__()
+        
+        encode_channels1 = in_channels//encode_factor1
+        encode_channels2 = encode_channels1//encode_factor2
+
+        self.activation = activation
+        
+        self.encode1 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=encode_channels1, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels1),
+            self.activation,
+        )
+        
+        self.encode2 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels1, out_channels=encode_channels2, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels2),
+            self.activation,
+        )
+        
+        self.convolution = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels2, kernel_size=kernel_size, stride=1, padding=1),
+            nn.BatchNorm2d(num_features=encode_channels2),
+            self.activation,
+        )
+        
+        self.decode2 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels1, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels1),
+            self.activation,
+        )
+        
+        self.decode1 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels1, out_channels=in_channels, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation,
+        )
+        
+        self.residualNormalization = nn.Sequential(
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation,
+        )
+        
+        
+    def forward(self, x):
+        
+        encoded1 = self.encode1(x)
+        encoded2 = self.encode2(encoded1)
+            
+        convolved = self.convolution(encoded2)
+        
+        decoded2 = self.decode2(convolved)
+        decoded1 = self.decode1(decoded2)
+
+        y = decoded1 + self.residualNormalization(x)
+                
+        return y
+
+
+
+
+# This is the main class used to run a network. It's pretty simple, and the only real difference is in setting values for debugging
 class ResidualCNN(nn.Module):
     def __init__(self, network:nn.Sequential, printOutsize=False):
 
@@ -428,6 +519,7 @@ class ResidualCNN(nn.Module):
         ResidualBlock.printOutsize = printOutsize
         ResidualBlock2.printOutsize = printOutsize
         BottleneckBlock.printOutsize = printOutsize
+        HighwayBlock.printOutsize = printOutsize
 
         self.network = network
         
