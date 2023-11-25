@@ -33,10 +33,10 @@ class TrainingParameters():
         valSize = int(totalSize * trainValTestSplit[1])
         testSize = totalSize - trainSize - valSize
 
-        # Deterministically shuffle dataset so we are consistent across runs
+        # Deterministically shuffle dataset so we are consistent across runs and can train saved models without giving them access to test data
         currentRandomState = torch.random.get_rng_state()
         torch.random.manual_seed(11)
-        shuffledIndices = torch.randperm(dataIndices.shape[0])
+        shuffledIndices = torch.randperm(dataIndices.shape[0]) # 2441, 31547, 48866, ...
         torch.random.set_rng_state(currentRandomState)
 
 
@@ -157,7 +157,7 @@ class TrainableModel():
             if not freezeModel:
                 # Do gradient clipping to ensure nothing crazy is happening # TODO: Analyze gradients with and without for report
                 loss.backward()
-                torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=2.0) # Clip gradients after calculating loss
+                torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=1.0) # Clip gradients after calculating loss
                 # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 optimizer.step()
             
@@ -245,7 +245,7 @@ class TrainableModel():
             else:
                 plateuScheduler.step(validationLoss)
                 
-            if currentLr < 1e-8 and epoch >= warmupEpochs:
+            if currentLr < 1e-7 and epoch >= warmupEpochs:
                 print(f'Learning rate collapsed, ending training at epoch {epoch}')
                 break
             

@@ -1217,6 +1217,149 @@ highwaynetv8L = nn.Sequential(
     )
 
 
+
+highwaynetv9 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=16),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=32),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+            
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=2) for _ in range(3)]
+        )),
+
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=2) for _ in range(3)]
+        )),
+
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=2) for _ in range(3)]
+        )),
+    
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=2) for _ in range(3)]
+        )),
+
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Flatten(),
+
+    nn.Linear(in_features=512, out_features=256),
+    nn.LayerNorm(normalized_shape=256),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10),
+    )
+
+highwaynetv10 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=16),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=32),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+            
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=4) for _ in range(3)]
+        )),
+
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=4) for _ in range(3)]
+        )),
+
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=4) for _ in range(3)]
+        )),
+    
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=4) for _ in range(3)]
+        )),
+
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Flatten(),
+
+    nn.Linear(in_features=512, out_features=256),
+    nn.LayerNorm(normalized_shape=256),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10),
+    )
+
+highwaynetv11 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=16),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=32),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+            
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[DoubleEncodeBottleneckBlock(in_channels=128, encode_factor1=4, encode_factor2=2) for _ in range(12)]
+        )),
+
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    nn.Flatten(),
+
+    nn.Linear(in_features=512, out_features=256),
+    nn.LayerNorm(normalized_shape=256),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10),
+    )
+
+
 doubleBottlev1 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, padding=1),
             nn.BatchNorm2d(num_features=16),

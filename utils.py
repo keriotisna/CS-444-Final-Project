@@ -18,7 +18,7 @@ class TransformableSubset(Dataset):
     Mainly used for applying training and val/testing transforms to different portions of the data.
     """
     
-    def __init__(self, subset:Subset, fullDataset:Dataset, transform:tv.transforms.Compose=None):
+    def __init__(self, subset:Subset, fullDataset:Dataset, transform:v2.Compose=None):
         
         """
         Arguments:
@@ -31,7 +31,7 @@ class TransformableSubset(Dataset):
         self.subset = subset
         
         if transform:
-            self.transform = tv.transforms.Compose(
+            self.transform = v2.Compose(
                 fullDataset.defaultTransform.transforms +
                 transform.transforms
             )
@@ -114,14 +114,14 @@ def displayImageGrid(images: list, H: int, W: int=0, shuffle=False, figsize=None
     plt.show()
 
 
-def showTransform(imageName:str, transform:tv.transforms.Compose=None):
+def showTransform(imageName:str, transform:v2.Compose=None):
     
     """
     Shows an image transformed by the given transform for data augmentation
     """
     
     if transform is None:
-        transform = tv.transforms.Compose([
+        transform = v2.Compose([
         v2.Identity()
     ])
     
@@ -195,7 +195,7 @@ def getDatasetNormalization(trainDataset:Dataset) -> tuple[float, float]:
     
     return mean, std
 
-
+@DeprecationWarning
 def getNormalizedTransform(fullDataset:Dataset, customTransforms:v2.Compose, showSamples=False):
     
     """
@@ -221,7 +221,7 @@ def getNormalizedTransform(fullDataset:Dataset, customTransforms:v2.Compose, sho
         showDatasetSamples(trainLoader, fullDataset)
 
 
-    finalTransform = tv.transforms.Compose(
+    finalTransform = v2.Compose(
         customTransforms.transforms +
         # Normalize before creating the real dataset
         [v2.Normalize(mean=mean, std=std)]
@@ -229,3 +229,43 @@ def getNormalizedTransform(fullDataset:Dataset, customTransforms:v2.Compose, sho
     
     return finalTransform
 
+
+
+def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valTestTransform:v2.Compose, showSamples=False):
+    
+    """
+    Return a modified customTransforms which adds normalization by the augmentation
+    
+    Arguments:
+        trainTransform: The base data augmentation transform used for training data
+        valTestTransform: The base data transform to be used for validation and testing. Can be Identity() if needed
+        showSamples: Whether or not to show the samples resulting from the customTransform (without normalization)
+
+    Returns:
+        (normalizedTrainTransform, normalizedValTestTransform): training and validation transforms with added normalization
+    """
+    
+    trainSubset, validationSubset, testSubset = random_split(fullDataset, [0.8, 0.1, 0.1])
+
+    trainDataset = TransformableSubset(trainSubset, fullDataset, transform=trainTransform)
+
+    mean, std = getDatasetNormalization(trainDataset)
+
+    trainLoader = DataLoader(trainDataset, batch_size=256, shuffle=True)
+    
+    if showSamples:
+        showDatasetSamples(trainLoader, fullDataset)
+
+
+    # We want to normalize both the transforms by the same augmented statistics to ensure the distributions are similar
+    normalizedTrainTransform = v2.Compose(
+        trainTransform.transforms +
+        [v2.Normalize(mean=mean, std=std)]
+    )
+    
+    normalizedValTestTransform = v2.Compose(
+        valTestTransform.transforms +
+        [v2.Normalize(mean=mean, std=std)]
+    )
+    
+    return normalizedTrainTransform, normalizedValTestTransform

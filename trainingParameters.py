@@ -1,6 +1,6 @@
 
 
-def _getBatchParameterList(modelNames:list, 
+def _getBatchParameterList(modelNames:list, nameSuffix='', 
         parametersDict:dict={
             'trainTransformID': 'default',
             'valTestTransformID': 'default',
@@ -17,6 +17,11 @@ def _getBatchParameterList(modelNames:list,
     
     """
     Gets a list of identical parameters for the given model names which can be used for batch training
+    
+    Arguments:
+        modelNames: A list of model names that match variable names in models.py which correspond to a single sequential model
+        nameSuffix: An optional suffix that will be added to saved model data for easy identification. This is handled in trainModel.py
+        parametersDict: The set of parameters that will be used on each model in modelNames
 
     Returns:
         batchParametersList: A list of identical parameters with the modelName attribute set to the given model names.
@@ -28,7 +33,11 @@ def _getBatchParameterList(modelNames:list,
         
         workingDict = parametersDict.copy()
         
-        workingDict['modelName'] = currentName
+        suffix = ''
+        if len(nameSuffix) > 0:
+            suffix = '_' + nameSuffix
+        
+        workingDict['modelName'] = currentName + suffix
         batchParametersList.append(workingDict)
     
     return batchParametersList
@@ -37,7 +46,119 @@ def _getBatchParameterList(modelNames:list,
 
 
 
-BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k_vanilla', 'baseline130kN_vanilla', 'baseline430k_vanilla', 'baseline430kN_vanilla'],
+BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
+    nameSuffix='vanilla',
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+
+
+
+####################################################################################
+# AUTOAUGMENT
+####################################################################################
+
+BASELINE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
+    nameSuffix='autoaugment',
+    parametersDict={
+        'trainTransformID': 'autoaugment',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['highwaynetv3', 'highwaynetv4', 'highwaynetv5'],
+    nameSuffix='autoaugment',
+    parametersDict={
+        'trainTransformID': 'autoaugment',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_2_AUTOAUGMENT = _getBatchParameterList(modelNames=['highwaynetv6', 'highwaynetv7', 'highwaynetv8'],
+    nameSuffix='autoaugment',
+    parametersDict={
+        'trainTransformID': 'autoaugment',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_3_AUTOAUGMENT = _getBatchParameterList(modelNames=['highwaynetv9', 'highwaynetv10', 'highwaynetv11'],
+    nameSuffix='autoaugment',
+    parametersDict={
+        'trainTransformID': 'autoaugment',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+DOUBLE_BOTTLE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['doubleBottlev3', 'doubleBottlev4', 'doubleBottlev5'],
+    nameSuffix='autoaugment',
+    parametersDict={
+        'trainTransformID': 'autoaugment',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+
+####################################################################################
+# DEFAULT
+####################################################################################
+
+
+HIGHWAY_BATCH_1_DEFAULTAUGMENT = _getBatchParameterList(modelNames=['highwaynetv3', 'highwaynetv4', 'highwaynetv5'],
+    nameSuffix='defaultaugment',
     parametersDict={
         'trainTransformID': 'default',
         'valTestTransformID': 'default',
@@ -52,9 +173,10 @@ BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k_vanilla', 'b
         'plateuFactor': 0.5
     })
 
-BASELINE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['baseline130k_autoaugment', 'baseline130kN_autoaugment', 'baseline430k_autoaugment', 'baseline430kN_autoaugment'],
+HIGHWAY_BATCH_2_DEFAULTAUGMENT = _getBatchParameterList(modelNames=['highwaynetv6', 'highwaynetv7', 'highwaynetv8'],
+    nameSuffix='defaultaugment',
     parametersDict={
-        'trainTransformID': 'autoaugment',
+        'trainTransformID': 'default',
         'valTestTransformID': 'default',
         'epochs': 200,
         'warmupEpochs': 5,
@@ -67,39 +189,11 @@ BASELINE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['baseline130k_
         'plateuFactor': 0.5
     })
 
-HIGHWAY_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['highwaynetv3_autoaugment', 'highwaynetv4_autoaugment', 'highwaynetv5_autoaugment'],
-    parametersDict={
-        'trainTransformID': 'autoaugment',
-        'valTestTransformID': 'default',
-        'epochs': 200,
-        'warmupEpochs': 5,
-        'batch_size': 2048,
-        'lr': 5e-2,
-        'momentum': 0.8,
-        'weight_decay': 0.01,
-        'nesterov': True,
-        'plateuPatience': 3,
-        'plateuFactor': 0.5
-    })
 
-HIGHWAY_BATCH_2_AUTOAUGMENT = _getBatchParameterList(modelNames=['highwaynetv6_autoaugment', 'highwaynetv7_autoaugment', 'highwaynetv8_autoaugment'],
+DOUBLE_BOTTLE_BATCH_1_DEFAULTAUGMENT = _getBatchParameterList(modelNames=['doubleBottlev3', 'doubleBottlev4', 'doubleBottlev5'],
+    nameSuffix='defaultaugment',
     parametersDict={
-        'trainTransformID': 'autoaugment',
-        'valTestTransformID': 'default',
-        'epochs': 200,
-        'warmupEpochs': 5,
-        'batch_size': 2048,
-        'lr': 5e-2,
-        'momentum': 0.8,
-        'weight_decay': 0.01,
-        'nesterov': True,
-        'plateuPatience': 3,
-        'plateuFactor': 0.5
-    })
-
-DOUBLE_BOTTLE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['doubleBottlev3_autoaugment', 'doubleBottlev4_autoaugment', 'doubleBottlev5_autoaugment'],
-    parametersDict={
-        'trainTransformID': 'autoaugment',
+        'trainTransformID': 'default',
         'valTestTransformID': 'default',
         'epochs': 200,
         'warmupEpochs': 5,
@@ -116,6 +210,207 @@ DOUBLE_BOTTLE_BATCH_1_AUTOAUGMENT = _getBatchParameterList(modelNames=['doubleBo
 
 
 
+
+####################################################################################
+# EASYAUGMENT
+####################################################################################
+
+
+BASELINE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+HIGHWAY_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['highwaynetv3', 'highwaynetv4', 'highwaynetv5'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['highwaynetv6', 'highwaynetv7', 'highwaynetv8'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['highwaynetv9', 'highwaynetv10', 'highwaynetv11'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+DOUBLE_BOTTLE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['doubleBottlev3', 'doubleBottlev4', 'doubleBottlev5'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+# HARDAUGMENT
+####################################################################################
+
+
+BASELINE_BATCH_1_HARDAUGMENT = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
+    nameSuffix='hardAugmentation',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+HIGHWAY_BATCH_1_HARDAUGMENT = _getBatchParameterList(modelNames=['highwaynetv3', 'highwaynetv4', 'highwaynetv5'],
+    nameSuffix='hardAugmentation',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_2_HARDAUGMENT = _getBatchParameterList(modelNames=['highwaynetv6', 'highwaynetv7', 'highwaynetv8'],
+    nameSuffix='hardAugmentation',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+HIGHWAY_BATCH_3_HARDAUGMENT = _getBatchParameterList(modelNames=['highwaynetv9', 'highwaynetv10', 'highwaynetv11'],
+    nameSuffix='hardAugmentation',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+DOUBLE_BOTTLE_BATCH_1_HARDAUGMENT = _getBatchParameterList(modelNames=['doubleBottlev3', 'doubleBottlev4', 'doubleBottlev5'],
+    nameSuffix='hardAugmentation',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+####################################################################################
+# INDIVIDUAL
+####################################################################################
 
 baseline130k = {
     'modelName': 'baseline130k',

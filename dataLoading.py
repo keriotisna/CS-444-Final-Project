@@ -11,14 +11,14 @@ class CIFAR10Dataset(Dataset):
     
     # The defaultTransform is the first transform that should be called as it turns the inputs into a form
     # other transforms can work on.
-    defaultTransform = tv.transforms.Compose([
+    defaultTransform = v2.Compose([
         # Ensure everything is in the right size and format before ending our transforms
         # v2.Resize(size=(32, 32), antialias=True),
         v2.ToImage(),
         v2.ToDtype(torch.float32, scale=True),
     ])
     
-    def __init__(self, rootDirectory, csvFilename, dataFolder, transform:tv.transforms.Compose=None):
+    def __init__(self, rootDirectory, csvFilename, dataFolder, transform:v2.Compose=None):
         
         
         csvPath = os.path.join(rootDirectory, csvFilename)
@@ -53,7 +53,7 @@ class CIFAR10Dataset(Dataset):
         
         if transform is not None:
             # Combine compose transforms if another transform is given
-            setTransform = tv.transforms.Compose(self.defaultTransform.transforms + transform.transforms)
+            setTransform = v2.Compose(self.defaultTransform.transforms + transform.transforms)
         else:
             setTransform = self.defaultTransform
         
@@ -89,7 +89,7 @@ class CIFAR10Dataset(Dataset):
 def main():
 
 
-    transform = tv.transforms.Compose([
+    transform = v2.Compose([
         tv.transforms.ToTensor(),
         # Add any other transformations you need
     ])

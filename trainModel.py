@@ -3,7 +3,7 @@ from blocks import *
 import torch
 import torchvision as tv
 import torchvision.transforms.v2 as v2
-from utils import validateModelIO, getNormalizedTransform
+from utils import validateModelIO, getNormalizedTransforms
 
 from trainableModel import TrainingParameters, TrainableModel
 
@@ -34,6 +34,7 @@ def getModel(modelName:str) -> nn.Sequential:
     """
 
     globalVars = globals()
+    # Split actual model variable name from suffix
     actualName = modelName.split('_')[0]
     retrievedModel = globalVars[actualName]
     return retrievedModel
@@ -42,7 +43,7 @@ def getModel(modelName:str) -> nn.Sequential:
 
     
     
-def getTrainTransform(trainTransformID:str) -> tv.transforms.Compose:
+def getTrainTransform(trainTransformID:str) -> v2.Compose:
     
     """
     Gets the training transform to be used based on the command line argument trainTransformID
@@ -99,8 +100,6 @@ def main():
     # Initialize a process ID to identify which subprocesses correspond to which output
     # Yes, PIDs may not be unique. No, I don't care
     PID = str(np.random.randint(0, 100000)).zfill(5)
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-
 
     args = parser.parse_args()
 
@@ -122,12 +121,12 @@ def main():
     print(f'SAVE_RESULTS: {SAVE_RESULTS}')
 
     # Default arguments for simple testing
-    # modelName = 'testModel'
+    # modelName = 'highwaynetv5'
     # trainTransformID = 'default'
-    # valTestTransformID = 'default'
-    # epochs = 5
+    # valTestTransformID = 'NONE'
+    # epochs = 50
     # warmupEpochs = 5
-    # batch_size = 256
+    # batch_size = 2048
     # lr = 1e-2
     # momentum = 0.8
     # weight_decay = 0.01
@@ -139,7 +138,9 @@ def main():
 
     model = getModel(modelName)
     trainTransform = getTrainTransform(trainTransformID)
-    valiTestTransform = getValTestTransform(valTestTransformID)
+    valTestTransform = getValTestTransform(valTestTransformID)
+    
+
 
     try:
         validateModelIO(ResidualCNN(network=model, printOutsize=False), printSummary=False)
@@ -151,13 +152,16 @@ def main():
     fullDataset = CIFAR10Dataset(rootDirectory='cifar-10', csvFilename='trainLabels.csv', dataFolder='train', transform=None)
 
     print(f'{PID} Normalizing...', flush=True)
-    finalTransform = getNormalizedTransform(fullDataset=fullDataset, customTransforms=trainTransform, showSamples=False)
+    normalizedTrainTransform, normalizedValTestTransform = getNormalizedTransforms(fullDataset=fullDataset, trainTransform=trainTransform, valTestTransform=valTestTransform, showSamples=False)
     print(f'{PID} Done normalizing!', flush=True)
+
+    print(f'{PID} normalizedTrainTransform: {normalizedTrainTransform}')
+    print(f'{PID} normalizedValTestTransform: {normalizedValTestTransform}')
 
     # Create dataset instances
     fullDataset = CIFAR10Dataset(rootDirectory='cifar-10', csvFilename='trainLabels.csv', dataFolder='train', transform=None)
 
-    modelParams = TrainingParameters(fullDataset=fullDataset, trainTransform=finalTransform, valTestTransform=valiTestTransform, 
+    modelParams = TrainingParameters(fullDataset=fullDataset, trainTransform=normalizedTrainTransform, valTestTransform=normalizedValTestTransform, 
                                     trainValTestSplit=[0.8, 0.1, 0.1], epochs=epochs, warmupEpochs=warmupEpochs, batch_size=batch_size,
                                     lr=lr, momentum=momentum, weight_decay=weight_decay, nesterov=nesterov, plateuPatience=plateuPatience, plateuFactor=plateuFactor)
 
