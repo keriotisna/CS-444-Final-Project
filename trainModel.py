@@ -35,7 +35,8 @@ def getModel(modelName:str) -> nn.Sequential:
 
     globalVars = globals()
     # Split actual model variable name from suffix
-    actualName = modelName.split('_')[0]
+    actualName = modelName.rsplit('_', maxsplit=1)[0]
+    print(f'Got model: {actualName}')
     retrievedModel = globalVars[actualName]
     return retrievedModel
 
@@ -121,7 +122,7 @@ def main():
     print(f'SAVE_RESULTS: {SAVE_RESULTS}')
 
     # Default arguments for simple testing
-    # modelName = 'highwaynetv5'
+    # modelName = 'highwaynetv5_test_NAMEEE'
     # trainTransformID = 'default'
     # valTestTransformID = 'NONE'
     # epochs = 50

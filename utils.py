@@ -1,11 +1,10 @@
-
 import torchvision as tv
 import torchvision.transforms.v2 as v2
 import torch
-from torchsummary import summary
+from torchinfo import summary
 from torch import nn
 from torch.utils.data import DataLoader, Dataset, Subset, random_split
-from icecream import ic
+# from icecream import ic
 import matplotlib.pyplot as plt
 import random
 from dataLoading import CIFAR10Dataset
@@ -49,7 +48,7 @@ class TransformableSubset(Dataset):
 
 
 
-def validateModelIO(model:nn.Module, printSummary=True):
+def validateModelIO(model:nn.Module, printSummary=True, batchSize=1):
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
@@ -57,14 +56,15 @@ def validateModelIO(model:nn.Module, printSummary=True):
 
     model = model.to(device)
 
+    dummy_input = torch.randn(batchSize, 3, 32, 32, device=device, dtype=torch.float)
+    output = model(dummy_input)
+    assert output.size() == (batchSize, 10), f"Expected output size ({batchSize}, 10), got {output.size()}!"
+
     if printSummary:
         print(model)
         print(f"Model has {sum(p.numel() for p in model.parameters())} parameters.")
-        print(summary(model, input_size=(3, 32, 32), device=device))
+        print(summary(model=model, input_size=(batchSize, 3, 32, 32), device=device, mode='train', depth=20))
 
-    dummy_input = torch.randn(1, 3, 32, 32, device=device, dtype=torch.float)
-    output = model(dummy_input)
-    assert output.size() == (1, 10), f"Expected output size (1, 10), got {output.size()}!"
     print("Test passed!")
 
 
@@ -158,8 +158,8 @@ def showDatasetSamples(dataloader:DataLoader, datasetClass:Dataset):
     print()
     [print(val, end='\t') for val in trainLabelsArray[:32]]
 
-    ic(features.size())
-    ic(labels.size())
+    # ic(features.size())
+    # ic(labels.size())
     
     
     

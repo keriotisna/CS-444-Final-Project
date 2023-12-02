@@ -508,6 +508,73 @@ class DoubleEncodeBottleneckBlock(nn.Module):
         return y
 
 
+class DoubleEncodeBottleneckBlock2(nn.Module):
+    
+    
+    """
+    The DoubleEncodeBottleneckBlock condenses the bottleneck channels a second time before using the convolution to try and save more computation time.
+    This may have significant model performance impacts, but should in theory be even more efficient
+    """
+        
+    def __init__(self, in_channels:int, encode_factor1:int=4, encode_factor2:int=4, kernel_size:int=3, stride:int=1, padding:int=1, activation:nn.Module=nn.ReLU()) -> None:
+        
+        super().__init__()
+        
+        encode_channels1 = in_channels//encode_factor1
+        encode_channels2 = encode_channels1//encode_factor2
+
+        self.activation = activation
+        
+        self.inputNorm = nn.Sequential(
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation
+        )
+        
+        self.encode1 = nn.Sequential(
+            nn.Conv2d(in_channels=in_channels, out_channels=encode_channels1, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels1),
+            self.activation,
+        )
+        
+        self.encode2 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels1, out_channels=encode_channels2, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels2),
+            self.activation,
+        )
+        
+        self.convolution = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels2, kernel_size=kernel_size, stride=1, padding=1),
+            nn.BatchNorm2d(num_features=encode_channels2),
+            self.activation,
+        )
+        
+        self.decode2 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels1, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=encode_channels1),
+            self.activation,
+        )
+        
+        self.decode1 = nn.Sequential(
+            nn.Conv2d(in_channels=encode_channels1, out_channels=in_channels, kernel_size=1, stride=1, padding=0),
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation,
+        )
+        
+    def forward(self, x):
+        
+        normInput = self.inputNorm(x)
+        
+        encoded1 = self.encode1(normInput)
+        encoded2 = self.encode2(encoded1)
+            
+        convolved = self.convolution(encoded2)
+        
+        decoded2 = self.decode2(convolved)
+        decoded1 = self.decode1(decoded2)
+
+        y = decoded1 + x
+                
+        return y
 
 
 # This is the main class used to run a network. It's pretty simple, and the only real difference is in setting values for debugging

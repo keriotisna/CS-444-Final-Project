@@ -1,4 +1,4 @@
-
+from models import *
 
 def _getBatchParameterList(modelNames:list, nameSuffix='', 
         parametersDict:dict={
@@ -298,14 +298,102 @@ DOUBLE_BOTTLE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['doubleBo
     })
 
 
+ALLEN_NET_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1_standard', 'allenModelv2_highway', 'allenModelv3_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.99,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+ALLEN_NET_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1_standard', 'allenModelv2_highway', 'allenModelv3_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.99,
+        'weight_decay': 0.1,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+ALLEN_NET_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1_standard', 'allenModelv2_highway', 'allenModelv3_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.99,
+        'weight_decay': 0.2,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
+ALLEN_NET_LITE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
+ALLEN_NET_LITE_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.99,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
-
-
-
-
+ALLEN_NET_LITE_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.99,
+        'weight_decay': 0.1,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 ####################################################################################
 # HARDAUGMENT
@@ -396,12 +484,237 @@ DOUBLE_BOTTLE_BATCH_1_HARDAUGMENT = _getBatchParameterList(modelNames=['doubleBo
 
 
 
+####################################################################################
+# BIG MODELS
+####################################################################################
+
+BIG_MODEL_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['bigModel1', 'bigmodel2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['bigModel1', 'bigmodel2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 512,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel3'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_4_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel3'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 4096,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_5_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel4'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_6_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel4'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 4096,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
 
+BIG_MODEL_BATCH_7_EASYAUGMENT = _getBatchParameterList(modelNames=['bigModel1_DBN2', 'bigmodel2_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.05,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_8_EASYAUGMENT = _getBatchParameterList(modelNames=['bigModel1_DBN2', 'bigmodel2_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.10,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
 
+BIG_MODEL_BATCH_9_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel3_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.10,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_10_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel4_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.10,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_11_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel5_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.10,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+BIG_MODEL_BATCH_12_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel6_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.10,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+# NOTE: MOMENTUM IS VERY VERY IMPORTANT
+BIG_MODEL_BATCH_13_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel3_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.5,
+        'weight_decay': 0.2,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BIG_MODEL_BATCH_14_EASYAUGMENT = _getBatchParameterList(modelNames=['bigmodel4_DBN2'],
+    nameSuffix='easyaugmentation',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.5,
+        'weight_decay': 0.2,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
 
