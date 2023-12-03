@@ -1,13 +1,15 @@
 import torchvision as tv
 import torchvision.transforms.v2 as v2
 import torch
-from torchinfo import summary
+import torchinfo
 from torch import nn
 from torch.utils.data import DataLoader, Dataset, Subset, random_split
 # from icecream import ic
 import matplotlib.pyplot as plt
 import random
+import numpy as np
 from dataLoading import CIFAR10Dataset
+from models import *
 
 
 class TransformableSubset(Dataset):
@@ -48,7 +50,7 @@ class TransformableSubset(Dataset):
 
 
 
-def validateModelIO(model:nn.Module, printSummary=True, batchSize=1):
+def validateModelIO(model:nn.Module, printSummary=True, batchSize=1) -> torchinfo.ModelStatistics:
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
@@ -60,15 +62,110 @@ def validateModelIO(model:nn.Module, printSummary=True, batchSize=1):
     output = model(dummy_input)
     assert output.size() == (batchSize, 10), f"Expected output size ({batchSize}, 10), got {output.size()}!"
 
+    summaryObject = torchinfo.summary(model=model, input_size=(batchSize, 3, 32, 32), device=device, mode='train', depth=20, verbose=0)
+
     if printSummary:
+        
         print(model)
         print(f"Model has {sum(p.numel() for p in model.parameters())} parameters.")
-        print(summary(model=model, input_size=(batchSize, 3, 32, 32), device=device, mode='train', depth=20))
+        print(summaryObject)
 
     print("Test passed!")
+    
+    return summaryObject
 
 
+def getModelSummary(model:nn.Module, batch_size:int, **kwargs) -> torchinfo.ModelStatistics:
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = model.to(device)
+    return torchinfo.summary(model=model, input_size=(batch_size, 3, 32, 32), device=device, mode='train', depth=20, verbose=0, **kwargs)
 
+def getEstimatedModelSize(summary:torchinfo.ModelStatistics) -> float:
+    
+    """
+    Gets an estimated VRAM usage for a model in MB
+    """
+    
+    inputBytes = summary.total_input
+    outputBytes = summary.total_output_bytes
+    paramBytes = summary.total_param_bytes
+    
+    return round((inputBytes + outputBytes + paramBytes)/(1024**2), 3)
+
+def getModel(modelName:str, printResult=True) -> nn.Sequential:
+    
+    """
+    Get a model architecture based on its name. New models MUST have new names which means I
+        can track all changes made to models to associate them with a performance.
+        
+    Arguments:
+        modelName: The string name of the model, can be anything, but should be the same as the 
+            variable name of the model itself
+            
+    Returns:
+        model: Returns an nn.Sequential which is the model architecture to be trained
+    """
+
+    globalVars = globals()
+    # Split actual model variable name from suffix
+    actualName = modelName.rsplit('_', maxsplit=1)[0]
+    if printResult:
+        print(f'Got model: {actualName}')
+    retrievedModel = globalVars[actualName]
+    return retrievedModel
+
+def getBinPackingResults(values:list, MAX_CAP:float) -> tuple[list, list]:
+
+    """
+    Finds a near-optimal solution to the bin packing problem by minimizing the total number of bins a set of values will fit into 
+    assuming each bin has an identical max capacity.
+    
+    This can be used to optimally schedule batches of network training to minimize the number of individual batches while maximizing parallelism.
+    
+    Arguments:
+        values: A list of values which represents the estimated memory in MB each model will use during training
+        MAX_CAP: A float representing the total MB capacity of the GPU
+        
+    Returns:
+        (valueBins, indexBins)
+        valueBins: A list of lists where each sublist represents the values of items that sum to less than MAX_CAP
+        indexBins: A list of lists where each sublist holds the indices of the original values which should be grouped to minimize bin counts.
+    """
+
+    values = np.array(values, dtype=np.float32)
+    
+    sortedIndices = np.argsort(values, kind='stable')[::-1]
+    values = values[sortedIndices]
+    
+    # Initialize empty bins and indices since we know at most, there can be N bins for N values
+    bins = [[] for i in range(len(values))]
+    binIndices = [[] for i in range(len(values))]
+    binCapacities = [int(MAX_CAP - np.sum(bin)) for bin in bins]
+    remainingCapacities = (np.ones((len(bins))) * MAX_CAP)
+    
+    for idx in range(len(values)):
+        
+        currentValue = values[idx]
+        currentValueIdx = sortedIndices[idx]
+
+        for bCapIdx, binCapacity in enumerate(binCapacities):
+            
+            remainingCapacity = binCapacity - currentValue
+            remainingCapacities[bCapIdx] = remainingCapacity
+
+        # If a value is out of the maximum range, add it to its own list
+        if currentValue > MAX_CAP:
+            bins.append([currentValue])
+            binIndices.append([currentValueIdx])
+            continue
+
+        bestBinIdx = np.where(remainingCapacities >= 0)[0][np.argmin(remainingCapacities[remainingCapacities >= 0])]
+        
+        bins[bestBinIdx].append(currentValue)
+        binIndices[bestBinIdx].append(currentValueIdx)
+        binCapacities[bestBinIdx] = np.sum(binCapacities[bestBinIdx]) - currentValue
+
+    return [bin for bin in bins if len(bin)>0], [idx for idx in binIndices if len(idx)>0]
 
 def displayImageGrid(images: list, H: int, W: int=0, shuffle=False, figsize=None):
     """

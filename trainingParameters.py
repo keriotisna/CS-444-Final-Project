@@ -3,7 +3,7 @@ from models import *
 def _getBatchParameterList(modelNames:list, nameSuffix='', 
         parametersDict:dict={
             'trainTransformID': 'default',
-            'valTestTransformID': 'default',
+            'valTestTransformID': 'NONE',
             'epochs': 200,
             'warmupEpochs': 5,
             'batch_size': 2048,
@@ -34,8 +34,8 @@ def _getBatchParameterList(modelNames:list, nameSuffix='',
         workingDict = parametersDict.copy()
         
         suffix = ''
-        if len(nameSuffix) > 0:
-            suffix = '_' + nameSuffix
+        # if len(nameSuffix) >= 0:
+        suffix = '_' + nameSuffix
         
         workingDict['modelName'] = currentName + suffix
         batchParametersList.append(workingDict)
@@ -43,7 +43,54 @@ def _getBatchParameterList(modelNames:list, nameSuffix='',
     return batchParametersList
 
 
+def _getBatchParametersSweep(modelName:str, sweepParamName:str, sweepParamList:list, nameSuffix:str='',
+        parametersDict:dict={
+            'trainTransformID': 'default',
+            'valTestTransformID': 'NONE',
+            'epochs': 200,
+            'warmupEpochs': 5,
+            'batch_size': 2048,
+            'lr': 5e-2,
+            'momentum': 0.8,
+            'weight_decay': 0.01,
+            'nesterov': True,
+            'plateuPatience': 3,
+            'plateuFactor': 0.5
+        }):
+    
+    """
+    Returns a trainable set of model parameters that sweeps a certain parameter over a range of provided values. 
+    This function should be used for hyperparameter tuning by testing multiple values of a single hyperparameter for a single model.
+    
+    Arguments:
+        modelName: The name of the model
+        sweepParamName: The hyperparameter value the sweepParamList should be associated with.
+        sweepParamList: The list of values the respective hyperparameter should be evaluated at.
+        nameSuffix: An optional suffix that goes after the model name for easier identification.
+        
+    Returns:
+        batchParametersList: A list of different hyperparameters with identical models.
+    """
+    
+    batchParametersList = []
+        
+    for paramValue in sweepParamList:
+        
+        workingDict = parametersDict.copy()
+        
+        suffix = '_' + nameSuffix
+        
+        workingDict[sweepParamName] = paramValue
+        workingDict['modelName'] = modelName + suffix
+        
+        
+        batchParametersList.append(workingDict)
+    
+    return batchParametersList
 
+
+PARAMETER_SWEEP_TEST_BATCH_1 = _getBatchParametersSweep(modelName='baseline430kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048])
+PARAMETER_SWEEP_TEST_BATCH_2 = _getBatchParametersSweep(modelName='baseline130kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048])
 
 
 BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
@@ -347,7 +394,7 @@ ALLEN_NET_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1
     })
 
 
-ALLEN_NET_LITE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+ALLEN_NET_LITE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1Lite_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
     nameSuffix='easyaugment',
     parametersDict={
         'trainTransformID': 'easyaugmentation',
@@ -363,7 +410,7 @@ ALLEN_NET_LITE_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['allenMo
         'plateuFactor': 0.5
     })
 
-ALLEN_NET_LITE_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+ALLEN_NET_LITE_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1Lite_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
     nameSuffix='easyaugment',
     parametersDict={
         'trainTransformID': 'easyaugmentation',
@@ -379,7 +426,7 @@ ALLEN_NET_LITE_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['allenMo
         'plateuFactor': 0.5
     })
 
-ALLEN_NET_LITE_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelLitev1_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
+ALLEN_NET_LITE_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv1Lite_standard', 'allenModelv2Lite_highway', 'allenModelv3Lite_convFinal'],
     nameSuffix='easyaugment',
     parametersDict={
         'trainTransformID': 'easyaugmentation',
@@ -390,6 +437,22 @@ ALLEN_NET_LITE_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['allenMo
         'lr': 5e-2,
         'momentum': 0.99,
         'weight_decay': 0.1,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+ALLEN_NET_LITE_BATCH_4_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv2Lite_highway', 'allenModelv2Lite_highway', 'allenModelv2Lite_highway', 'allenModelv2Lite_highway', 'allenModelv2Lite_highway', 'allenModelv2Lite_highway'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 50,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
         'nesterov': True,
         'plateuPatience': 3,
         'plateuFactor': 0.5

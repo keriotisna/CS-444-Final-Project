@@ -2320,7 +2320,7 @@ allenModelv3_convFinal = nn.Sequential(
 )
 
 
-allenModelLitev1_standard = nn.Sequential(
+allenModelv1Lite_standard = nn.Sequential(
     nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
     nn.BatchNorm2d(num_features=32),
     nn.ReLU(),

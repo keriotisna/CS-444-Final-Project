@@ -12,38 +12,13 @@ from dataLoading import CIFAR10Dataset
 # Import model and transform variables
 from models import *
 from transforms import *
+from utils import getModel
 
 import numpy as np
 
 import multiprocessing
 
 
-
-def getModel(modelName:str) -> nn.Sequential:
-    
-    """
-    Get a model architecture based on its name. New models MUST have new names which means I
-        can track all changes made to models to associate them with a performance.
-        
-    Arguments:
-        modelName: The string name of the model, can be anything, but should be the same as the 
-            variable name of the model itself
-            
-    Returns:
-        model: Returns an nn.Sequential which is the model architecture to be trained
-    """
-
-    globalVars = globals()
-    # Split actual model variable name from suffix
-    actualName = modelName.rsplit('_', maxsplit=1)[0]
-    print(f'Got model: {actualName}')
-    retrievedModel = globalVars[actualName]
-    return retrievedModel
-
-    
-
-    
-    
 def getTrainTransform(trainTransformID:str) -> v2.Compose:
     
     """
@@ -122,7 +97,7 @@ def main():
     print(f'SAVE_RESULTS: {SAVE_RESULTS}')
 
     # Default arguments for simple testing
-    # modelName = 'highwaynetv5_test_NAMEEE'
+    # modelName = 'allenModelv2Lite_highway_easyaugment'
     # trainTransformID = 'default'
     # valTestTransformID = 'NONE'
     # epochs = 50
@@ -144,7 +119,7 @@ def main():
 
 
     try:
-        validateModelIO(ResidualCNN(network=model, printOutsize=False), printSummary=False)
+        validateModelIO(model=ResidualCNN(network=model, printOutsize=False), printSummary=False)
     except Exception as e:
         print(f'PID {PID}: {modelName} failed validation!')
         raise e

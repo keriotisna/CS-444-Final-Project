@@ -1,0 +1,96 @@
+92043 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=3, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+92043 Normalizing...
+31717 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=3, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+31717 Normalizing...
+23575 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=3, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+23575 Normalizing...
+93590 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=3, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+93590 Normalizing...
+tensor([0.4265, 0.4196, 0.3915])
+tensor([0.2266, 0.2235, 0.2178])
+92043 Done normalizing!
+92043 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4265), tensor(0.4196), tensor(0.3915)], std=[tensor(0.2266), tensor(0.2235), tensor(0.2178)], inplace=False)
+)
+92043 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4265), tensor(0.4196), tensor(0.3915)], std=[tensor(0.2266), tensor(0.2235), tensor(0.2178)], inplace=False)
+)
+92043 Starting training...
+
+tensor([0.4269, 0.4196, 0.3916])
+tensor([0.2262, 0.2229, 0.2171])
+31717 Done normalizing!
+31717 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4269), tensor(0.4196), tensor(0.3916)], std=[tensor(0.2262), tensor(0.2229), tensor(0.2171)], inplace=False)
+)
+31717 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4269), tensor(0.4196), tensor(0.3916)], std=[tensor(0.2262), tensor(0.2229), tensor(0.2171)], inplace=False)
+)
+31717 Starting training...
+
+tensor([0.4262, 0.4191, 0.3907])
+tensor([0.2269, 0.2238, 0.2180])
+23575 Done normalizing!
+23575 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4262), tensor(0.4191), tensor(0.3907)], std=[tensor(0.2269), tensor(0.2238), tensor(0.2180)], inplace=False)
+)
+23575 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4262), tensor(0.4191), tensor(0.3907)], std=[tensor(0.2269), tensor(0.2238), tensor(0.2180)], inplace=False)
+)
+23575 Starting training...
+
+tensor([0.4271, 0.4198, 0.3910])
+tensor([0.2268, 0.2233, 0.2176])
+93590 Done normalizing!
+93590 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4271), tensor(0.4198), tensor(0.3910)], std=[tensor(0.2268), tensor(0.2233), tensor(0.2176)], inplace=False)
+)
+93590 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4271), tensor(0.4198), tensor(0.3910)], std=[tensor(0.2268), tensor(0.2233), tensor(0.2176)], inplace=False)
+)
+93590 Starting training...
+
+92043 lr: 0.000000, trainLoss: 2.4126, trainAccuracy: 0.1001, validationLoss: 2.4176, validationAccuracy: 0.0992:   0%|          | 0/3 [00:55<?, ?it/s]
+  0%|          | 0/3 [00:00<?, ?it/s]
+31717 lr: 0.000000, trainLoss: 2.4402, trainAccuracy: 0.1014, validationLoss: 2.4508, validationAccuracy: 0.0911:   0%|          | 0/3 [00:55<?, ?it/s]
+  0%|          | 0/3 [00:00<?, ?it/s]

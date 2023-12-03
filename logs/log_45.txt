@@ -1,0 +1,216 @@
+82527 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+82527 Normalizing...
+23428 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+23428 Normalizing...
+tensor([0.4266, 0.4195, 0.3909])
+tensor([0.2269, 0.2237, 0.2180])
+82527 Done normalizing!
+82527 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4266), tensor(0.4195), tensor(0.3909)], std=[tensor(0.2269), tensor(0.2237), tensor(0.2180)], inplace=False)
+)
+82527 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4266), tensor(0.4195), tensor(0.3909)], std=[tensor(0.2269), tensor(0.2237), tensor(0.2180)], inplace=False)
+)
+82527 Starting training...
+
+tensor([0.4269, 0.4198, 0.3915])
+tensor([0.2272, 0.2240, 0.2182])
+23428 Done normalizing!
+23428 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4269), tensor(0.4198), tensor(0.3915)], std=[tensor(0.2272), tensor(0.2240), tensor(0.2182)], inplace=False)
+)
+23428 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4269), tensor(0.4198), tensor(0.3915)], std=[tensor(0.2272), tensor(0.2240), tensor(0.2182)], inplace=False)
+)
+23428 Starting training...
+
+82527 lr: 0.000000, trainLoss: 2.3460, trainAccuracy: 0.0999, validationLoss: 2.3407, validationAccuracy: 0.1040:   0%|          | 0/5 [00:42<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+23428 lr: 0.000000, trainLoss: 2.3455, trainAccuracy: 0.0998, validationLoss: 2.3478, validationAccuracy: 0.1038:   0%|          | 0/5 [00:42<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+82527 lr: 0.010000, trainLoss: 2.2780, trainAccuracy: 0.1346, validationLoss: 2.1966, validationAccuracy: 0.1763:  20%|##        | 1/5 [01:25<02:51, 42.92s/it]
+lr: 0.000000, trainLoss: 2.3460, trainAccuracy: 0.0999, validationLoss: 2.3407, validationAccuracy: 0.1040:  20%|##        | 1/5 [00:42<02:51, 42.92s/it]
+23428 lr: 0.010000, trainLoss: 2.2723, trainAccuracy: 0.1358, validationLoss: 2.1673, validationAccuracy: 0.1779:  20%|##        | 1/5 [01:25<02:50, 42.65s/it]
+lr: 0.000000, trainLoss: 2.3455, trainAccuracy: 0.0998, validationLoss: 2.3478, validationAccuracy: 0.1038:  20%|##        | 1/5 [00:42<02:50, 42.65s/it]
+82527 lr: 0.020000, trainLoss: 2.1001, trainAccuracy: 0.1744, validationLoss: 1.9981, validationAccuracy: 0.1743:  40%|####      | 2/5 [02:08<02:08, 43.00s/it]
+lr: 0.010000, trainLoss: 2.2780, trainAccuracy: 0.1346, validationLoss: 2.1966, validationAccuracy: 0.1763:  40%|####      | 2/5 [01:25<02:08, 43.00s/it]
+23428 lr: 0.020000, trainLoss: 2.0869, trainAccuracy: 0.1727, validationLoss: 2.0076, validationAccuracy: 0.1837:  40%|####      | 2/5 [02:08<02:08, 42.88s/it]
+lr: 0.010000, trainLoss: 2.2723, trainAccuracy: 0.1358, validationLoss: 2.1673, validationAccuracy: 0.1779:  40%|####      | 2/5 [01:25<02:08, 42.88s/it]
+82527 lr: 0.030000, trainLoss: 2.0711, trainAccuracy: 0.1740, validationLoss: 2.0964, validationAccuracy: 0.1721:  60%|######    | 3/5 [02:52<01:25, 42.98s/it]
+lr: 0.020000, trainLoss: 2.1001, trainAccuracy: 0.1744, validationLoss: 1.9981, validationAccuracy: 0.1743:  60%|######    | 3/5 [02:08<01:25, 42.98s/it]
+23428 lr: 0.030000, trainLoss: 2.0772, trainAccuracy: 0.1724, validationLoss: 2.0013, validationAccuracy: 0.1888:  60%|######    | 3/5 [02:52<01:25, 42.87s/it]
+lr: 0.020000, trainLoss: 2.0869, trainAccuracy: 0.1727, validationLoss: 2.0076, validationAccuracy: 0.1837:  60%|######    | 3/5 [02:08<01:25, 42.87s/it]
+82527 lr: 0.040000, trainLoss: 2.1402, trainAccuracy: 0.1658, validationLoss: 2.1979, validationAccuracy: 0.1572:  80%|########  | 4/5 [03:34<00:43, 43.12s/it]
+lr: 0.030000, trainLoss: 2.0711, trainAccuracy: 0.1740, validationLoss: 2.0964, validationAccuracy: 0.1721:  80%|########  | 4/5 [02:52<00:43, 43.12s/it]
+lr: 0.040000, trainLoss: 2.1402, trainAccuracy: 0.1658, validationLoss: 2.1979, validationAccuracy: 0.1572: 100%|##########| 5/5 [03:34<00:00, 42.97s/it]
+lr: 0.040000, trainLoss: 2.1402, trainAccuracy: 0.1658, validationLoss: 2.1979, validationAccuracy: 0.1572: 100%|##########| 5/5 [03:34<00:00, 42.99s/it]
+82527 Training complete!
+23428 lr: 0.040000, trainLoss: 2.1216, trainAccuracy: 0.1662, validationLoss: 2.1087, validationAccuracy: 0.1761:  80%|########  | 4/5 [03:34<00:43, 43.12s/it]
+lr: 0.030000, trainLoss: 2.0772, trainAccuracy: 0.1724, validationLoss: 2.0013, validationAccuracy: 0.1888:  80%|########  | 4/5 [02:52<00:43, 43.12s/it]
+lr: 0.040000, trainLoss: 2.1216, trainAccuracy: 0.1662, validationLoss: 2.1087, validationAccuracy: 0.1761: 100%|##########| 5/5 [03:34<00:00, 42.76s/it]
+lr: 0.040000, trainLoss: 2.1216, trainAccuracy: 0.1662, validationLoss: 2.1087, validationAccuracy: 0.1761: 100%|##########| 5/5 [03:34<00:00, 42.83s/it]
+23428 Training complete!
+76383 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+76383 Normalizing...
+03184 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+03184 Normalizing...
+tensor([0.4266, 0.4193, 0.3911])
+tensor([0.2264, 0.2231, 0.2175])
+76383 Done normalizing!
+76383 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4266), tensor(0.4193), tensor(0.3911)], std=[tensor(0.2264), tensor(0.2231), tensor(0.2175)], inplace=False)
+)
+76383 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4266), tensor(0.4193), tensor(0.3911)], std=[tensor(0.2264), tensor(0.2231), tensor(0.2175)], inplace=False)
+)
+76383 Starting training...
+
+tensor([0.4266, 0.4196, 0.3913])
+tensor([0.2265, 0.2233, 0.2177])
+03184 Done normalizing!
+03184 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4266), tensor(0.4196), tensor(0.3913)], std=[tensor(0.2265), tensor(0.2233), tensor(0.2177)], inplace=False)
+)
+03184 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4266), tensor(0.4196), tensor(0.3913)], std=[tensor(0.2265), tensor(0.2233), tensor(0.2177)], inplace=False)
+)
+03184 Starting training...
+
+76383 lr: 0.000000, trainLoss: 2.4320, trainAccuracy: 0.0983, validationLoss: 2.4260, validationAccuracy: 0.1035:   0%|          | 0/5 [00:41<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+03184 lr: 0.000000, trainLoss: 2.3595, trainAccuracy: 0.0990, validationLoss: 2.3576, validationAccuracy: 0.0961:   0%|          | 0/5 [00:41<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+76383 lr: 0.010000, trainLoss: 2.3071, trainAccuracy: 0.1121, validationLoss: 2.2974, validationAccuracy: 0.1439:  20%|##        | 1/5 [01:24<02:47, 41.76s/it]
+lr: 0.000000, trainLoss: 2.4320, trainAccuracy: 0.0983, validationLoss: 2.4260, validationAccuracy: 0.1035:  20%|##        | 1/5 [00:41<02:47, 41.76s/it]
+03184 lr: 0.010000, trainLoss: 2.2929, trainAccuracy: 0.1266, validationLoss: 2.2089, validationAccuracy: 0.1614:  20%|##        | 1/5 [01:24<02:47, 41.96s/it]
+lr: 0.000000, trainLoss: 2.3595, trainAccuracy: 0.0990, validationLoss: 2.3576, validationAccuracy: 0.0961:  20%|##        | 1/5 [00:41<02:47, 41.96s/it]
+76383 lr: 0.020000, trainLoss: 2.1825, trainAccuracy: 0.1636, validationLoss: 2.0225, validationAccuracy: 0.1816:  40%|####      | 2/5 [02:07<02:06, 42.07s/it]
+lr: 0.010000, trainLoss: 2.3071, trainAccuracy: 0.1121, validationLoss: 2.2974, validationAccuracy: 0.1439:  40%|####      | 2/5 [01:24<02:06, 42.07s/it]
+03184 lr: 0.020000, trainLoss: 2.0951, trainAccuracy: 0.1726, validationLoss: 1.9830, validationAccuracy: 0.1893:  40%|####      | 2/5 [02:06<02:07, 42.41s/it]
+lr: 0.010000, trainLoss: 2.2929, trainAccuracy: 0.1266, validationLoss: 2.2089, validationAccuracy: 0.1614:  40%|####      | 2/5 [01:24<02:07, 42.41s/it]
+76383 lr: 0.030000, trainLoss: 2.0820, trainAccuracy: 0.1745, validationLoss: 2.0640, validationAccuracy: 0.1731:  60%|######    | 3/5 [02:48<01:24, 42.50s/it]
+lr: 0.020000, trainLoss: 2.1825, trainAccuracy: 0.1636, validationLoss: 2.0225, validationAccuracy: 0.1816:  60%|######    | 3/5 [02:07<01:24, 42.50s/it]
+03184 lr: 0.030000, trainLoss: 2.0597, trainAccuracy: 0.1747, validationLoss: 1.9869, validationAccuracy: 0.1853:  60%|######    | 3/5 [02:48<01:24, 42.17s/it]
+lr: 0.020000, trainLoss: 2.0951, trainAccuracy: 0.1726, validationLoss: 1.9830, validationAccuracy: 0.1893:  60%|######    | 3/5 [02:06<01:24, 42.17s/it]
+76383 lr: 0.040000, trainLoss: 2.1336, trainAccuracy: 0.1667, validationLoss: 2.0612, validationAccuracy: 0.2004:  80%|########  | 4/5 [03:30<00:42, 42.27s/it]
+lr: 0.030000, trainLoss: 2.0820, trainAccuracy: 0.1745, validationLoss: 2.0640, validationAccuracy: 0.1731:  80%|########  | 4/5 [02:48<00:42, 42.27s/it]
+lr: 0.040000, trainLoss: 2.1336, trainAccuracy: 0.1667, validationLoss: 2.0612, validationAccuracy: 0.2004: 100%|##########| 5/5 [03:30<00:00, 42.16s/it]
+lr: 0.040000, trainLoss: 2.1336, trainAccuracy: 0.1667, validationLoss: 2.0612, validationAccuracy: 0.2004: 100%|##########| 5/5 [03:30<00:00, 42.19s/it]
+76383 Training complete!
+03184 lr: 0.040000, trainLoss: 2.0983, trainAccuracy: 0.1700, validationLoss: 2.0898, validationAccuracy: 0.1638:  80%|########  | 4/5 [03:30<00:42, 42.12s/it]
+lr: 0.030000, trainLoss: 2.0597, trainAccuracy: 0.1747, validationLoss: 1.9869, validationAccuracy: 0.1853:  80%|########  | 4/5 [02:48<00:42, 42.12s/it]
+lr: 0.040000, trainLoss: 2.0983, trainAccuracy: 0.1700, validationLoss: 2.0898, validationAccuracy: 0.1638: 100%|##########| 5/5 [03:30<00:00, 42.18s/it]
+lr: 0.040000, trainLoss: 2.0983, trainAccuracy: 0.1700, validationLoss: 2.0898, validationAccuracy: 0.1638: 100%|##########| 5/5 [03:30<00:00, 42.18s/it]
+03184 Training complete!
+50299 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+50299 Normalizing...
+49244 Namespace(modelName='allenModelv2Lite_highway_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=5, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.1, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0)
+SAVE_RESULTS: False
+Got model: allenModelv2Lite_highway
+Using device: cuda
+Test passed!
+49244 Normalizing...
+tensor([0.4267, 0.4191, 0.3909])
+tensor([0.2264, 0.2231, 0.2174])
+50299 Done normalizing!
+50299 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4267), tensor(0.4191), tensor(0.3909)], std=[tensor(0.2264), tensor(0.2231), tensor(0.2174)], inplace=False)
+)
+50299 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4267), tensor(0.4191), tensor(0.3909)], std=[tensor(0.2264), tensor(0.2231), tensor(0.2174)], inplace=False)
+)
+50299 Starting training...
+
+tensor([0.4263, 0.4192, 0.3910])
+tensor([0.2262, 0.2229, 0.2173])
+49244 Done normalizing!
+49244 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4263), tensor(0.4192), tensor(0.3910)], std=[tensor(0.2262), tensor(0.2229), tensor(0.2173)], inplace=False)
+)
+49244 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4263), tensor(0.4192), tensor(0.3910)], std=[tensor(0.2262), tensor(0.2229), tensor(0.2173)], inplace=False)
+)
+49244 Starting training...
+
+50299 lr: 0.000000, trainLoss: 2.3666, trainAccuracy: 0.0987, validationLoss: 2.3678, validationAccuracy: 0.1027:   0%|          | 0/5 [00:42<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+49244 lr: 0.000000, trainLoss: 2.3773, trainAccuracy: 0.1009, validationLoss: 2.3878, validationAccuracy: 0.0985:   0%|          | 0/5 [00:41<?, ?it/s]
+  0%|          | 0/5 [00:00<?, ?it/s]
+50299 lr: 0.010000, trainLoss: 2.3052, trainAccuracy: 0.1087, validationLoss: 2.2902, validationAccuracy: 0.1569:  20%|##        | 1/5 [01:24<02:48, 42.05s/it]
+lr: 0.000000, trainLoss: 2.3666, trainAccuracy: 0.0987, validationLoss: 2.3678, validationAccuracy: 0.1027:  20%|##        | 1/5 [00:42<02:48, 42.05s/it]
+49244 lr: 0.010000, trainLoss: 2.3031, trainAccuracy: 0.1203, validationLoss: 2.2768, validationAccuracy: 0.1570:  20%|##        | 1/5 [01:23<02:47, 41.86s/it]
+lr: 0.000000, trainLoss: 2.3773, trainAccuracy: 0.1009, validationLoss: 2.3878, validationAccuracy: 0.0985:  20%|##        | 1/5 [00:41<02:47, 41.86s/it]
+50299 lr: 0.020000, trainLoss: 2.1533, trainAccuracy: 0.1660, validationLoss: 2.0778, validationAccuracy: 0.1852:  40%|####      | 2/5 [02:05<02:05, 42.00s/it]
+lr: 0.010000, trainLoss: 2.3052, trainAccuracy: 0.1087, validationLoss: 2.2902, validationAccuracy: 0.1569:  40%|####      | 2/5 [01:24<02:05, 42.00s/it]
+49244 lr: 0.020000, trainLoss: 2.1427, trainAccuracy: 0.1662, validationLoss: 2.0186, validationAccuracy: 0.1713:  40%|####      | 2/5 [02:05<02:05, 41.81s/it]
+lr: 0.010000, trainLoss: 2.3031, trainAccuracy: 0.1203, validationLoss: 2.2768, validationAccuracy: 0.1570:  40%|####      | 2/5 [01:23<02:05, 41.81s/it]
+50299 lr: 0.030000, trainLoss: 2.0745, trainAccuracy: 0.1697, validationLoss: 2.0489, validationAccuracy: 0.1789:  60%|######    | 3/5 [02:47<01:23, 41.78s/it]
+lr: 0.020000, trainLoss: 2.1533, trainAccuracy: 0.1660, validationLoss: 2.0778, validationAccuracy: 0.1852:  60%|######    | 3/5 [02:05<01:23, 41.78s/it]
+49244 lr: 0.030000, trainLoss: 2.0765, trainAccuracy: 0.1719, validationLoss: 2.0294, validationAccuracy: 0.2011:  60%|######    | 3/5 [02:47<01:23, 41.71s/it]
+lr: 0.020000, trainLoss: 2.1427, trainAccuracy: 0.1662, validationLoss: 2.0186, validationAccuracy: 0.1713:  60%|######    | 3/5 [02:05<01:23, 41.71s/it]
+50299 lr: 0.040000, trainLoss: 2.1152, trainAccuracy: 0.1704, validationLoss: 2.0846, validationAccuracy: 0.1890:  80%|########  | 4/5 [03:29<00:41, 41.87s/it]
+lr: 0.030000, trainLoss: 2.0745, trainAccuracy: 0.1697, validationLoss: 2.0489, validationAccuracy: 0.1789:  80%|########  | 4/5 [02:47<00:41, 41.87s/it]
+lr: 0.040000, trainLoss: 2.1152, trainAccuracy: 0.1704, validationLoss: 2.0846, validationAccuracy: 0.1890: 100%|##########| 5/5 [03:29<00:00, 41.93s/it]
+lr: 0.040000, trainLoss: 2.1152, trainAccuracy: 0.1704, validationLoss: 2.0846, validationAccuracy: 0.1890: 100%|##########| 5/5 [03:29<00:00, 41.92s/it]
+50299 Training complete!
+49244 lr: 0.040000, trainLoss: 2.1220, trainAccuracy: 0.1685, validationLoss: 2.1205, validationAccuracy: 0.1733:  80%|########  | 4/5 [03:28<00:41, 41.89s/it]
+lr: 0.030000, trainLoss: 2.0765, trainAccuracy: 0.1719, validationLoss: 2.0294, validationAccuracy: 0.2011:  80%|########  | 4/5 [02:47<00:41, 41.89s/it]
+lr: 0.040000, trainLoss: 2.1220, trainAccuracy: 0.1685, validationLoss: 2.1205, validationAccuracy: 0.1733: 100%|##########| 5/5 [03:28<00:00, 41.71s/it]
+lr: 0.040000, trainLoss: 2.1220, trainAccuracy: 0.1685, validationLoss: 2.1205, validationAccuracy: 0.1733: 100%|##########| 5/5 [03:28<00:00, 41.76s/it]
+49244 Training complete!
