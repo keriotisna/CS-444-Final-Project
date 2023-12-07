@@ -138,7 +138,7 @@ class TrainableModel():
         device = self.device
         
         for features, labels in dataloader:
-            x, y = features.to(device), labels.to(device)
+            x, y = features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
 
             if not freezeModel:
                 optimizer.zero_grad()

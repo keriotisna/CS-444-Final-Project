@@ -1,2 +1,7 @@
+# Laptop
 conda activate CS444Env
 tensorboard --logdir "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project"
+
+# Desktop
+conda activate CS444Env
+tensorboard --logdir "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project"

@@ -4,6 +4,7 @@ import torch
 import torchvision as tv
 import torchvision.transforms.v2 as v2
 from utils import validateModelIO, getNormalizedTransforms
+from torch.profiler import profile, record_function, ProfilerActivity
 
 from trainableModel import TrainingParameters, TrainableModel
 
@@ -73,53 +74,55 @@ def main():
     parser.add_argument('--saveResults', type=int, help='Whether or not to write Tensorboard events or save models')
     parser.add_argument('--customNormalization', type=str, help='The name of the custom normalization to use instead of normalizing by the current dataset.')
 
-
+    USE_CUSTOM_PARAMETERS = False
 
     # Initialize a process ID to identify which subprocesses correspond to which output
     # Yes, PIDs may not be unique. No, I don't care
     PID = str(np.random.randint(0, 100000)).zfill(5)
 
-    args = parser.parse_args()
+    if not USE_CUSTOM_PARAMETERS:
 
-    modelName = args.modelName
-    trainTransformID = args.trainTransformID
-    valTestTransformID = args.valTestTransformID
-    epochs = args.epochs
-    warmupEpochs = args.warmupEpochs
-    batch_size = args.batch_size
-    lr = args.lr
-    momentum = args.momentum
-    weight_decay = args.weight_decay
-    nesterov = args.nesterov
-    plateuPatience = args.plateuPatience
-    plateuFactor = args.plateuFactor
-    SAVE_RESULTS = (1 == args.saveResults)
-    customNormalization = args.customNormalization
-    
-    print(f'{PID} {args}', flush=True)
-    print(f'SAVE_RESULTS: {SAVE_RESULTS}')
+        args = parser.parse_args()
 
-    # Default arguments for simple testing
-    # modelName = 'resNet18Test_easyaugment'
-    # trainTransformID = 'default'
-    # valTestTransformID = 'NONE'
-    # epochs = 50
-    # warmupEpochs = 5
-    # batch_size = 256
-    # lr = 1e-2
-    # momentum = 0.9
-    # weight_decay = 0.01
-    # nesterov = True
-    # plateuPatience = 3
-    # plateuFactor = 0.5
-    # SAVE_RESULTS = False
-    # customNormalization = 'RESNET_18_NORMALIZATION'
+        modelName = args.modelName
+        trainTransformID = args.trainTransformID
+        valTestTransformID = args.valTestTransformID
+        epochs = args.epochs
+        warmupEpochs = args.warmupEpochs
+        batch_size = args.batch_size
+        lr = args.lr
+        momentum = args.momentum
+        weight_decay = args.weight_decay
+        nesterov = args.nesterov
+        plateuPatience = args.plateuPatience
+        plateuFactor = args.plateuFactor
+        SAVE_RESULTS = (1 == args.saveResults)
+        customNormalization = args.customNormalization
+        print(f'{PID} {args}', flush=True)
+
+    else:
+        # Default arguments for simple testing
+        modelName = 'jesseNetv5_easyaugment'
+        trainTransformID = 'default'
+        valTestTransformID = 'NONE'
+        epochs = 2
+        warmupEpochs = 5
+        batch_size = 256
+        lr = 1e-2
+        momentum = 0.9
+        weight_decay = 0.01
+        nesterov = True
+        plateuPatience = 3
+        plateuFactor = 0.5
+        SAVE_RESULTS = False
+        customNormalization = None
 
     model = getModel(modelName)
     trainTransform = getTrainTransform(trainTransformID)
     valTestTransform = getValTestTransform(valTestTransformID)
     
-
+    if SAVE_RESULTS == False:
+        print(f'@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!')
 
     try:
         validateModelIO(model=ResidualCNN(network=model, printOutsize=False), printSummary=False)

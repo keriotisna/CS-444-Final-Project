@@ -1,0 +1,24 @@
+Found model to train!
+Current allocation for VRAM is 10967.993 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv5_4_doubleWideBranches_easyaugment'}
+ Required memory: 10967.9925 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 20999.38 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv7_2_multiHighway_duplicateBottle_easyaugment'}
+ Required memory: 10031.387499999999 MB
+Currently, there are 2 models in training
+Got model: jesseNetv5
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+58962 Normalizing...
+Possible model memory requirements: [7297.80125 7278.79625 6259.73375 6259.73375 5726.6575  3948.43   ]
+Not enough room in queue with 3564.62 MB available, sleeping...
+Got model: jesseNetv5
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+50066 Normalizing...

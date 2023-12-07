@@ -1,0 +1,158 @@
+Found model to train!
+Current allocation for VRAM is 5429.6 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv4_easyaugment'}
+ Required memory: 5429.6 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 10469.059 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv5_easyaugment'}
+ Required memory: 5039.458600000001 MB
+Currently, there are 2 models in training
+99646 Namespace(modelName='jesseNetv4_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: jesseNetv4
+SAVE_RESULTS: False
+Using device: cuda
+Test passed!
+99646 Normalizing...
+Found model to train!
+Current allocation for VRAM is 14322.53 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 64, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv6_easyaugment'}
+ Required memory: 3853.4716000000003 MB
+Currently, there are 3 models in training
+59093 Namespace(modelName='jesseNetv5_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+SAVE_RESULTS: False
+Got model: jesseNetv5
+Using device: cuda
+Test passed!
+59093 Normalizing...
+Found model to train!
+Current allocation for VRAM is 17498.444 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 320, 'lr': 0.05, 'momentum': 0.7, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'wilsonNetv5_PReLU_'}
+ Required memory: 3175.9134000000004 MB
+Currently, there are 4 models in training
+33329 Namespace(modelName='jesseNetv6_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=64, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+SAVE_RESULTS: False
+Got model: jesseNetv6
+Using device: cuda
+Test passed!
+33329 Normalizing...
+Found model to train!
+Current allocation for VRAM is 20674.357 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 320, 'lr': 0.05, 'momentum': 0.7322222222222222, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'wilsonNetv5_PReLU_'}
+ Required memory: 3175.9134000000004 MB
+Currently, there are 5 models in training
+95088 Namespace(modelName='wilsonNetv5_PReLU_', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.7, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+SAVE_RESULTS: False
+Got model: wilsonNetv5_PReLU
+Using device: cuda
+Test passed!
+95088 Normalizing...
+There are currently 5 training which is equal to or more than the allowed 5, sleeping...
+24699 Namespace(modelName='wilsonNetv5_PReLU_', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.7322222222222222, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+tensor([0.2331, 0.2302, 0.2259])
+99646 Done normalizing!
+99646 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      RandomHorizontalFlip(p=0.5)
+      Normalize(mean=[tensor(0.4352), tensor(0.4308), tensor(0.4065)], std=[tensor(0.2331), tensor(0.2302), tensor(0.2259)], inplace=False)
+)
+99646 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4352), tensor(0.4308), tensor(0.4065)], std=[tensor(0.2331), tensor(0.2302), tensor(0.2259)], inplace=False)
+)
+99646 Starting training...
+
+SAVE_RESULTS: False
+Got model: wilsonNetv5_PReLU
+Using device: cuda
+24699 Normalizing...
+Test passed!
+tensor([0.4255, 0.4194, 0.3911])
+tensor([0.2294, 0.2255, 0.2189])
+59093 Done normalizing!
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+59093 normalizedTrainTransform: Compose(
+      Normalize(mean=[tensor(0.4255), tensor(0.4194), tensor(0.3911)], std=[tensor(0.2294), tensor(0.2255), tensor(0.2189)], inplace=False)
+)
+59093 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4255), tensor(0.4194), tensor(0.3911)], std=[tensor(0.2294), tensor(0.2255), tensor(0.2189)], inplace=False)
+59093 Starting training...
+
+tensor([0.4256, 0.4175, 0.3873])
+tensor([0.2285, 0.2237, 0.2167])
+33329 Done normalizing!
+33329 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4256), tensor(0.4175), tensor(0.3873)], std=[tensor(0.2285), tensor(0.2237), tensor(0.2167)], inplace=False)
+)
+33329 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4256), tensor(0.4175), tensor(0.3873)], std=[tensor(0.2285), tensor(0.2237), tensor(0.2167)], inplace=False)
+)
+33329 Starting training...
+
+tensor([0.2269, 0.2234, 0.2192])
+95088 Done normalizing!
+tensor([0.4233, 0.4152, 0.3893])
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      RandomHorizontalFlip(p=0.5)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+95088 normalizedTrainTransform: Compose(
+      Normalize(mean=[tensor(0.4233), tensor(0.4152), tensor(0.3893)], std=[tensor(0.2269), tensor(0.2234), tensor(0.2192)], inplace=False)
+)
+95088 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4233), tensor(0.4152), tensor(0.3893)], std=[tensor(0.2269), tensor(0.2234), tensor(0.2192)], inplace=False)
+      Identity()
+95088 Starting training...
+)
+
+tensor([0.4261, 0.4204, 0.3910])
+tensor([0.2267, 0.2235, 0.2169])
+24699 Done normalizing!
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+)
+      Normalize(mean=[tensor(0.4261), tensor(0.4204), tensor(0.3910)], std=[tensor(0.2267), tensor(0.2235), tensor(0.2169)], inplace=False)
+24699 normalizedValTestTransform: Compose(
+24699 normalizedTrainTransform: Compose(
+      Normalize(mean=[tensor(0.4261), tensor(0.4204), tensor(0.3910)], std=[tensor(0.2267), tensor(0.2235), tensor(0.2169)], inplace=False)
+24699 Starting training...
+      Identity()
+)
+
+99646 lr: 0.000000, trainLoss: 2.3380, trainAccuracy: 0.0982, validationLoss: 2.3292, validationAccuracy: 0.0916:   0%|          | 0/200 [01:31<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+59093 lr: 0.000000, trainLoss: 2.4019, trainAccuracy: 0.0726, validationLoss: 2.4129, validationAccuracy: 0.0527:   0%|          | 0/200 [01:31<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+95088 lr: 0.000000, trainLoss: 2.3752, trainAccuracy: 0.0986, validationLoss: 2.3781, validationAccuracy: 0.1004:   0%|          | 0/200 [01:29<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+24699 lr: 0.000000, trainLoss: 2.3901, trainAccuracy: 0.1009, validationLoss: 2.3901, validationAccuracy: 0.1011:   0%|          | 0/200 [01:32<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+95088 lr: 0.010000, trainLoss: 2.0164, trainAccuracy: 0.2451, validationLoss: 1.7096, validationAccuracy: 0.3749:   0%|          | 1/200 [03:01<4:57:43, 89.76s/it]
+lr: 0.000000, trainLoss: 2.3752, trainAccuracy: 0.0986, validationLoss: 2.3781, validationAccuracy: 0.1004:   0%|          | 1/200 [01:29<4:57:43, 89.76s/it]
+99646 lr: 0.010000, trainLoss: 2.1725, trainAccuracy: 0.1775, validationLoss: 1.9932, validationAccuracy: 0.2539:   0%|          | 1/200 [03:18<5:04:56, 91.94s/it]
+lr: 0.000000, trainLoss: 2.3380, trainAccuracy: 0.0982, validationLoss: 2.3292, validationAccuracy: 0.0916:   0%|          | 1/200 [01:31<5:04:56, 91.94s/it]
+59093 lr: 0.010000, trainLoss: 1.8756, trainAccuracy: 0.2931, validationLoss: 1.5135, validationAccuracy: 0.4588:   0%|          | 1/200 [03:14<5:03:42, 91.57s/it]
+lr: 0.000000, trainLoss: 2.4019, trainAccuracy: 0.0726, validationLoss: 2.4129, validationAccuracy: 0.0527:   0%|          | 1/200 [01:31<5:03:42, 91.57s/it]
