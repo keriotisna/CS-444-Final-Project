@@ -1,0 +1,33 @@
+Found model to train!
+Current allocation for VRAM is 7458.004 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv6_easyaugment'}
+ Required memory: 7458.004400000001 MB
+Currently, there are 1 models in training
+29597 Namespace(modelName='jesseNetv6_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Possible model memory requirements: [5429.6    5039.4586 3175.9134 3175.9134 3175.9134 3175.9134 3175.9134
+ 3175.9134 3175.9134 3175.9134 3175.9134 3175.9134 1665.1184 1294.5911
+ 1118.2732]
+Not enough room in queue with 729.996 MB available, sleeping...
+SAVE_RESULTS: True
+Got model: jesseNetv6
+Using device: cuda
+Test passed!
+29597 Normalizing...
+tensor([0.4260, 0.4193, 0.3951])
+tensor([0.2285, 0.2250, 0.2204])
+29597 Done normalizing!
+29597 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4260), tensor(0.4193), tensor(0.3951)], std=[tensor(0.2285), tensor(0.2250), tensor(0.2204)], inplace=False)
+)
+29597 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4260), tensor(0.4193), tensor(0.3951)], std=[tensor(0.2285), tensor(0.2250), tensor(0.2204)], inplace=False)
+)
+29597 Starting training...
+

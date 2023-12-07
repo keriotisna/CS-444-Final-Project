@@ -1,4 +1,5 @@
 from models import *
+import numpy as np
 
 def _getBatchParameterList(modelNames:list, nameSuffix='', 
         parametersDict:dict={
@@ -74,6 +75,8 @@ def _getBatchParametersSweep(modelName:str, sweepParamName:str, sweepParamList:l
     
     batchParametersList = []
         
+
+        
     for paramValue in sweepParamList:
         
         workingDict = parametersDict.copy()
@@ -89,8 +92,95 @@ def _getBatchParametersSweep(modelName:str, sweepParamName:str, sweepParamList:l
     return batchParametersList
 
 
-PARAMETER_SWEEP_TEST_BATCH_1 = _getBatchParametersSweep(modelName='baseline430kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048])
-PARAMETER_SWEEP_TEST_BATCH_2 = _getBatchParametersSweep(modelName='baseline130kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048])
+def _getBatchParametersSweep2(modelName:str, nameSuffix:str='',
+        parametersDict:dict={
+            'trainTransformID': 'default',
+            'valTestTransformID': 'NONE',
+            'epochs': 200,
+            'warmupEpochs': 5,
+            'batch_size': 2048,
+            'lr': 5e-2,
+            'momentum': 0.8,
+            'weight_decay': 0.01,
+            'nesterov': True,
+            'plateuPatience': 3,
+            'plateuFactor': 0.5
+        }):
+    
+    """
+    Returns a trainable set of model parameters that sweeps a certain parameter over a range of provided values. 
+    This function should be used for hyperparameter tuning by testing multiple values of a single hyperparameter for a single model.
+    
+    Arguments:
+        modelName: The name of the model
+        sweepParamName: The hyperparameter value the sweepParamList should be associated with.
+        sweepParamList: The list of values the respective hyperparameter should be evaluated at.
+        nameSuffix: An optional suffix that goes after the model name for easier identification.
+        
+    Returns:
+        batchParametersList: A list of different hyperparameters with identical models.
+    """
+    
+    batchParametersList = []
+        
+    listCount = 0
+    for key, value in parametersDict.items():
+        if isinstance(value, list):
+            listCount += 1
+            iterableValueKey = key
+            sweepParamList = value
+            
+    assert listCount == 1
+    
+    
+        
+    for paramValue in sweepParamList:
+        
+        workingDict = parametersDict.copy()
+        
+        suffix = '_' + nameSuffix
+        
+        workingDict[iterableValueKey] = paramValue
+        workingDict['modelName'] = modelName + suffix
+        
+        
+        batchParametersList.append(workingDict)
+    
+    return batchParametersList
+
+
+
+
+
+PARAMETER_SWEEP_TEST_BATCH_1 = _getBatchParametersSweep(modelName='baseline430kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048],
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 5,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+PARAMETER_SWEEP_TEST_BATCH_2 = _getBatchParametersSweep(modelName='baseline130kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048],
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 5,
+        'warmupEpochs': 5,
+        'batch_size': 2048,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
 BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN'],
@@ -453,6 +543,102 @@ ALLEN_NET_LITE_BATCH_4_EASYAUGMENT = _getBatchParameterList(modelNames=['allenMo
         'lr': 5e-2,
         'momentum': 0.90,
         'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+ALLEN_NET_LITE_BATCH_5_EASYAUGMENT = _getBatchParameterList(modelNames=['allenModelv4Lite_highway_avgPool', 'allenModelv5Lite_highway_funnel', 'allenModelv5Lite_highway_Deep', 'allenModelv6Lite_highway_instanceNorm'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+WILSON_NET_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['wilsonNetv1_ELU', 'wilsonNetv2_ELU_frontDeep', 'wilsonNetv3_ELU_rearDeep', 'wilsonNetv4_ELU_rearDoubleDeep', 'wilsonNetv5_PReLU'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+RESNET_18_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['resNet18Test'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5,
+        'customNormalization': 'RESNET_18_NORMALIZATION'
+    })
+
+JESSE_NET_BATCH_1_EASYAUGMENT = _getBatchParameterList(modelNames=['jesseNetv1', 'jesseNetv2', 'jesseNetv3', 'jesseNetv4', 'jesseNetv5'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 128,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+JESSE_NET_BATCH_2_EASYAUGMENT = _getBatchParameterList(modelNames=['jesseNetv6'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 64,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+WILSON_NET_FT_BATCH_1_EASYAUGMENT = _getBatchParametersSweep2(modelName='wilsonNetv5_PReLU',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': list(np.linspace(start=0.7, stop=0.99, num=10)),
+        'weight_decay': 0.0,
         'nesterov': True,
         'plateuPatience': 3,
         'plateuFactor': 0.5

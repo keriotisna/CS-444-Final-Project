@@ -71,6 +71,8 @@ def main():
     parser.add_argument('--plateuPatience', type=int, help='How many epochs without improvement before lr is decayed by plateuFactor')
     parser.add_argument('--plateuFactor', type=float, help='How much lr is decayed after no loss improvements')
     parser.add_argument('--saveResults', type=int, help='Whether or not to write Tensorboard events or save models')
+    parser.add_argument('--customNormalization', type=str, help='The name of the custom normalization to use instead of normalizing by the current dataset.')
+
 
 
     # Initialize a process ID to identify which subprocesses correspond to which output
@@ -92,25 +94,26 @@ def main():
     plateuPatience = args.plateuPatience
     plateuFactor = args.plateuFactor
     SAVE_RESULTS = (1 == args.saveResults)
+    customNormalization = args.customNormalization
     
     print(f'{PID} {args}', flush=True)
     print(f'SAVE_RESULTS: {SAVE_RESULTS}')
 
     # Default arguments for simple testing
-    # modelName = 'allenModelv2Lite_highway_easyaugment'
+    # modelName = 'resNet18Test_easyaugment'
     # trainTransformID = 'default'
     # valTestTransformID = 'NONE'
     # epochs = 50
     # warmupEpochs = 5
-    # batch_size = 2048
+    # batch_size = 256
     # lr = 1e-2
-    # momentum = 0.8
+    # momentum = 0.9
     # weight_decay = 0.01
     # nesterov = True
     # plateuPatience = 3
     # plateuFactor = 0.5
     # SAVE_RESULTS = False
-
+    # customNormalization = 'RESNET_18_NORMALIZATION'
 
     model = getModel(modelName)
     trainTransform = getTrainTransform(trainTransformID)
@@ -128,7 +131,8 @@ def main():
     fullDataset = CIFAR10Dataset(rootDirectory='cifar-10', csvFilename='trainLabels.csv', dataFolder='train', transform=None)
 
     print(f'{PID} Normalizing...', flush=True)
-    normalizedTrainTransform, normalizedValTestTransform = getNormalizedTransforms(fullDataset=fullDataset, trainTransform=trainTransform, valTestTransform=valTestTransform, showSamples=False)
+    normalizedTrainTransform, normalizedValTestTransform = getNormalizedTransforms(fullDataset=fullDataset, trainTransform=trainTransform, valTestTransform=valTestTransform, showSamples=False,
+        customNormalization=customNormalization)
     print(f'{PID} Done normalizing!', flush=True)
 
     print(f'{PID} normalizedTrainTransform: {normalizedTrainTransform}')

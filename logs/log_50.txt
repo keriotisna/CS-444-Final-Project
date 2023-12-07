@@ -1,0 +1,28 @@
+Found model to train!
+Current allocation for VRAM is 6170.0 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv4_easyaugment'}
+ Required memory: 6170.0 MB
+Currently, there are 1 models in training
+92892 Namespace(modelName='jesseNetv4_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+SAVE_RESULTS: True
+Got model: jesseNetv4
+Using device: cuda
+Test passed!
+92892 Normalizing...
+Found model to train!
+Current allocation for VRAM is 8062.18 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv2_easyaugment'}
+ Required memory: 1892.1799999999998 MB
+Currently, there are 2 models in training
+Not enough room in queue with 125.82 MB available, sleeping...
+9925  3608.9925  3608.9925  3608.9925
+ 3608.9925  3608.9925  3608.9925  3608.9925  3608.9925  3608.9925
+ 1471.12625 1270.765  ]
+15115 Namespace(modelName='jesseNetv2_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+SAVE_RESULTS: True
+Got model: jesseNetv2
+Using device: cuda
+Test passed!
+15115 Normalizing...

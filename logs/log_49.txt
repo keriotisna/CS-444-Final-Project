@@ -1,0 +1,44 @@
+Found model to train!
+Current allocation for VRAM is 6170.0 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv4_easyaugment'}
+ Required memory: 6170.0 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 8062.18 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv2_easyaugment'}
+ Required memory: 1892.1799999999998 MB
+Currently, there are 2 models in training
+10318 Namespace(modelName='jesseNetv4_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+SAVE_RESULTS: True
+Got model: jesseNetv4
+Using device: cuda
+Test passed!
+10318 Normalizing...
+Not enough room in queue with 125.82 MB available, sleeping...
+Possible model memory requirements: [8475.005   5726.6575  3608.9925  3608.9925  3608.9925  3608.9925
+ 3608.9925  3608.9925  3608.9925  3608.9925  3608.9925  3608.9925
+ 1471.12625 1270.765  ]
+33404 Namespace(modelName='jesseNetv2_easyaugment', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: jesseNetv2
+Using device: cuda
+Test passed!
+33404 Normalizing...
+tensor([0.2266, 0.2230, 0.2192])
+tensor([0.4243, 0.4188, 0.3953])
+10318 Done normalizing!
+10318 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.2, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomRotation(degrees=[0.0, 15.0], interpolation=InterpolationMode.NEAREST, expand=False, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4243), tensor(0.4188), tensor(0.3953)], std=[tensor(0.2266), tensor(0.2230), tensor(0.2192)], inplace=False)
+)
+      Identity()
+lTestTransform: Compose(
+      Normalize(mean=[tensor(0.4243), tensor(0.4188), tensor(0.3953)], std=[tensor(0.2266), tensor(0.2230), tensor(0.2192)], inplace=False)
+)
+10318 Starting training...
+

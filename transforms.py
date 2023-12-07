@@ -44,3 +44,9 @@ easyaugmentation = v2.Compose([
 NONE = v2.Compose([
     v2.Identity(),
 ])
+
+RESNET_18_NORMALIZATION = v2.Compose([
+    v2.Resize(256, antialias=True),
+    v2.CenterCrop(224),
+    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+]) # tv.models.ResNet18_Weights.DEFAULT.transforms(), but converted to a v2.Compose

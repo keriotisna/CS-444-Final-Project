@@ -10,6 +10,7 @@ import random
 import numpy as np
 from dataLoading import CIFAR10Dataset
 from models import *
+from transforms import *
 
 
 class TransformableSubset(Dataset):
@@ -50,7 +51,7 @@ class TransformableSubset(Dataset):
 
 
 
-def validateModelIO(model:nn.Module, printSummary=True, batchSize=1) -> torchinfo.ModelStatistics:
+def validateModelIO(model:nn.Module, printSummary=True, batchSize=2) -> torchinfo.ModelStatistics:
     
     device = "cuda" if torch.cuda.is_available() else "cpu"
     
@@ -65,7 +66,6 @@ def validateModelIO(model:nn.Module, printSummary=True, batchSize=1) -> torchinf
     summaryObject = torchinfo.summary(model=model, input_size=(batchSize, 3, 32, 32), device=device, mode='train', depth=20, verbose=0)
 
     if printSummary:
-        
         print(model)
         print(f"Model has {sum(p.numel() for p in model.parameters())} parameters.")
         print(summaryObject)
@@ -74,8 +74,19 @@ def validateModelIO(model:nn.Module, printSummary=True, batchSize=1) -> torchinf
     
     return summaryObject
 
-
 def getModelSummary(model:nn.Module, batch_size:int, **kwargs) -> torchinfo.ModelStatistics:
+    
+    """
+    Generates a model summary given a model and a batch size using the torchinfo.summary function
+    
+    Arguments:
+        model: The model that the summary should be obtained for
+        batch_size: The batch size of the model to be trained
+        
+    Returns:
+        modelStatistics: A ModelStatistics object. 
+    """
+    
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model = model.to(device)
     return torchinfo.summary(model=model, input_size=(batch_size, 3, 32, 32), device=device, mode='train', depth=20, verbose=0, **kwargs)
@@ -84,6 +95,12 @@ def getEstimatedModelSize(summary:torchinfo.ModelStatistics) -> float:
     
     """
     Gets an estimated VRAM usage for a model in MB
+    
+    Arguments:
+        summary: A ModelStatistics object which holds all information about a model
+        
+    Returns:
+        estimatedMemorySize: An estimate of model size in MB. This is NOT a guaranteed size, so models may use more or less memory than this function returns.
     """
     
     inputBytes = summary.total_input
@@ -113,6 +130,30 @@ def getModel(modelName:str, printResult=True) -> nn.Sequential:
         print(f'Got model: {actualName}')
     retrievedModel = globalVars[actualName]
     return retrievedModel
+
+
+def getTransform(transformName:str, printResult=True) -> v2.Compose:
+    
+    """
+    Get a transformation based on its name. New transforms MUST have new names which means I
+        can track all changes made to transforms to associate them with a performance.
+        
+    Arguments:
+        transformName: The string name of the transform, can be anything, but should be the same as the 
+            variable name of the model itself
+            
+    Returns:
+        retrievedTransform: Returns a transform which is the model architecture to be trained
+    """
+
+    globalVars = globals()
+
+    retrievedTransform = globalVars.get(transformName, None)
+    if printResult:
+        print(f'Got transform: {transformName}')
+        print(retrievedTransform)
+    return retrievedTransform
+
 
 def getBinPackingResults(values:list, MAX_CAP:float) -> tuple[list, list]:
 
@@ -283,10 +324,13 @@ def getDatasetNormalization(trainDataset:Dataset) -> tuple[float, float]:
         # Calculate total mean and total std over dim=2
         mean += images.mean(2).sum(0)
         std += images.std(2).sum(0)
+        break
 
     # Divide means and stdevs by number of samples
-    mean /= len(trainLoader.dataset)
-    std /= len(trainLoader.dataset)
+    # mean /= len(trainLoader.dataset)
+    # std /= len(trainLoader.dataset)
+    mean /= BATCH_SIZE
+    std /= BATCH_SIZE
     print(mean)
     print(std)
     
@@ -328,7 +372,8 @@ def getNormalizedTransform(fullDataset:Dataset, customTransforms:v2.Compose, sho
 
 
 
-def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valTestTransform:v2.Compose, showSamples=False):
+def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valTestTransform:v2.Compose, showSamples=False,
+        customNormalization=None):
     
     """
     Return a modified customTransforms which adds normalization by the augmentation
@@ -337,6 +382,7 @@ def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valT
         trainTransform: The base data augmentation transform used for training data
         valTestTransform: The base data transform to be used for validation and testing. Can be Identity() if needed
         showSamples: Whether or not to show the samples resulting from the customTransform (without normalization)
+        customNormalization: If not none, a custom normalization is used as defined in transforms.py which is useful for pre-trained models with their own normalization
 
     Returns:
         (normalizedTrainTransform, normalizedValTestTransform): training and validation transforms with added normalization
@@ -354,15 +400,20 @@ def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valT
         showDatasetSamples(trainLoader, fullDataset)
 
 
+    if customNormalization is not None:
+        selectedNormalization = getTransform(customNormalization)
+    else:
+        selectedNormalization = v2.Compose([v2.Normalize(mean=mean, std=std)])
+
     # We want to normalize both the transforms by the same augmented statistics to ensure the distributions are similar
     normalizedTrainTransform = v2.Compose(
         trainTransform.transforms +
-        [v2.Normalize(mean=mean, std=std)]
+        selectedNormalization.transforms
     )
     
     normalizedValTestTransform = v2.Compose(
         valTestTransform.transforms +
-        [v2.Normalize(mean=mean, std=std)]
+        selectedNormalization.transforms
     )
     
     return normalizedTrainTransform, normalizedValTestTransform

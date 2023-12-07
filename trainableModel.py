@@ -13,9 +13,6 @@ from tensorboardX import SummaryWriter
 from tqdm import tqdm # Progress bar for training
 
 
-
-
-# TODO: Set training data to first 40000 or something to keep everything deterministic
 class TrainingParameters():
     
     def __init__(self, fullDataset:Dataset, trainTransform:torchvision.transforms.Compose, valTestTransform:torchvision.transforms.Compose,
@@ -157,7 +154,7 @@ class TrainableModel():
             if not freezeModel:
                 # Do gradient clipping to ensure nothing crazy is happening # TODO: Analyze gradients with and without for report
                 loss.backward()
-                torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=1.0) # Clip gradients after calculating loss
+                torch.nn.utils.clip_grad_value_(model.parameters(), clip_value=5.0) # Clip gradients after calculating loss
                 # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
                 optimizer.step()
             

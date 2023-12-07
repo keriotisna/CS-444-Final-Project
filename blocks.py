@@ -1,4 +1,5 @@
 from torch import nn
+import torch
 
 
 class CNN(nn.Module):
@@ -575,6 +576,47 @@ class DoubleEncodeBottleneckBlock2(nn.Module):
         y = decoded1 + x
                 
         return y
+
+
+
+class BranchBlock(nn.Module):
+    
+    """
+    The BranchBlock splits one feature map into several parallel classifiers before concatenating their outputs together again.
+    This also creates a residual connection between the inputs and the concatenated branches. 
+    """
+        
+    def __init__(self, in_channels:int, branches:list, activation=nn.ReLU(), averageChannels=False) -> None:
+        
+        super().__init__()
+        
+        self.activation = activation
+        
+        self.inputNorm = nn.Sequential(
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation
+        )
+        
+        self.out_channels = in_channels * len(branches)
+        # We need to use a ModuleList to ensure that the .to(device) operation registers these as submodules
+        self.branches = nn.ModuleList(branches)
+        
+        self.averageChannels = averageChannels
+    
+    
+    def forward(self, x:torch.Tensor):
+        
+        normInput = self.inputNorm(x)
+                
+        outputs = [branch(normInput) + x for branch in self.branches]
+        if self.averageChannels:
+            y = torch.mean(torch.stack(outputs), dim=0)
+        else:
+            y = torch.cat(outputs, dim=1)
+                
+        return y
+
+
 
 
 # This is the main class used to run a network. It's pretty simple, and the only real difference is in setting values for debugging
