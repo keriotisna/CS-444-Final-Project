@@ -260,7 +260,9 @@ def main():
         # JESSE_NET_BATCH_1_EASYAUGMENT,
         # JESSE_NET_BATCH_2_EASYAUGMENT,
         # WILSON_NET_FT_BATCH_1_EASYAUGMENT
-        JESSE_NET_BATCH_3_EASYAUGMENT
+        # JESSE_NET_BATCH_3_EASYAUGMENT
+        JESSE_NET_BATCH_4_EASYAUGMENT,
+        BASELINE_BATCH_2
         ]
     
     # Get the log file path once at the start

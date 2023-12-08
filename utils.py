@@ -394,6 +394,7 @@ def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valT
 
     trainDataset = TransformableSubset(trainSubset, fullDataset, transform=trainTransform)
 
+    # Get the normalization values on the augmented training dataset
     mean, std = getDatasetNormalization(trainDataset)
 
     trainLoader = DataLoader(trainDataset, batch_size=256, shuffle=True)
@@ -419,6 +420,50 @@ def getNormalizedTransforms(fullDataset:Dataset, trainTransform:v2.Compose, valT
     )
     
     return normalizedTrainTransform, normalizedValTestTransform
+
+
+def determinsticSplitFullDataset(fullDataset:Dataset, trainValTestSplit:list) -> tuple[Subset, Subset, Subset]:
+    
+    """
+    Deterministically splits a full dataset into a training, validation and test dataset based on the provided split information
+
+    Arguments:
+        fullDataset: A dataset object which represents the raw dataset
+        trainValTestSplit: A list that sums to 1 which represents what fraction of data should be in training, validation, or test splits
+
+    Returns:
+        (trainDataset, validataionDataset, testDataset)
+        A tuple of 3 datasets of varying sizes determined by the trainValTestSplit
+    """
+    
+    assert sum(trainValTestSplit) == 1
+    
+    dataIndices = np.arange(stop=50000)
+    
+    # Calculate the split sizes
+    totalSize = len(fullDataset)
+    trainSize = int(totalSize * trainValTestSplit[0])
+    valSize = int(totalSize * trainValTestSplit[1])
+    testSize = totalSize - trainSize - valSize
+
+    # Deterministically shuffle dataset so we are consistent across runs and can train saved models without giving them access to test data
+    currentRandomState = torch.random.get_rng_state()
+    torch.random.manual_seed(11)
+    shuffledIndices = torch.randperm(dataIndices.shape[0]) # 2441, 31547, 48866, ...
+    torch.random.set_rng_state(currentRandomState)
+
+
+    # Split the indices
+    trainIndices = shuffledIndices[:trainSize].tolist() # These need to be lists instead of tensors for some reason
+    valIndices = shuffledIndices[trainSize:trainSize + valSize].tolist()
+    testIndices = shuffledIndices[trainSize + valSize:].tolist()
+
+    # Create data subsets
+    trainDataset = Subset(fullDataset, trainIndices)
+    validationDataset = Subset(fullDataset, valIndices)
+    testDataset = Subset(fullDataset, testIndices)
+    
+    return trainDataset, validationDataset, testDataset
 
 
 # TODO: Write to allow conditional profiling depth, so we can say if we want to profile each individual branch in a BranchBlock

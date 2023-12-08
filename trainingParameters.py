@@ -199,7 +199,21 @@ BASELINE_BATCH_1 = _getBatchParameterList(modelNames=['baseline130k', 'baseline1
         'plateuFactor': 0.5
     })
 
-
+BASELINE_BATCH_2 = _getBatchParameterList(modelNames=['baseline13MN', 'baseline36MN', 'baseline108MN'],
+    nameSuffix='vanilla',
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 512,
+        'lr': 5e-2,
+        'momentum': 0.8,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 
 
@@ -645,6 +659,22 @@ WILSON_NET_FT_BATCH_1_EASYAUGMENT = _getBatchParametersSweep2(modelName='wilsonN
     })
 
 JESSE_NET_BATCH_3_EASYAUGMENT = _getBatchParameterList(modelNames=['jesseNetv5_2_reverseEncode', 'jesseNetv7_3_multiHighway_mini', 'jesseNetv5_3_wideBranchesLinearEncode', 'jesseNetv5_4_doubleWideBranches', 'jesseNetv5_5_noHighway', 'jesseNetv7_2_multiHighway_duplicateBottle', 'jesseNetv7_3_multiHighway_mini', 'jesseNetv7_4_multiHighway_micro'],
+    nameSuffix='easyaugment',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 128,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+JESSE_NET_BATCH_4_EASYAUGMENT = _getBatchParameterList(modelNames=['jesseNetv7_2_multiHighway_duplicateBottleRevEncode', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact'],
     nameSuffix='easyaugment',
     parametersDict={
         'trainTransformID': 'easyaugmentation',

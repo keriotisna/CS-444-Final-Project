@@ -47,6 +47,7 @@ class TrainingParameters():
         validationDataset = Subset(fullDataset, valIndices)
         testDataset = Subset(fullDataset, testIndices)
         
+        # Apply the training and valTest transforms to each dataset. These are what will be passed to the DataLoaders during training
         self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=trainTransform)
         self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=valTestTransform)
         self.testDataset = TransformableSubset(testDataset, fullDataset, transform=valTestTransform)
