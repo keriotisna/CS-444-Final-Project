@@ -348,6 +348,129 @@ baseline108MN = nn.Sequential(
     nn.Linear(in_features=256, out_features=10)
 )
 
+
+residualNetv1 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[ResidualBlock(channelCount=32, activation=nn.ReLU()) for _ in range(3)],
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    *[ResidualBlock(channelCount=64, activation=nn.ReLU()) for _ in range(3)],
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[ResidualBlock(channelCount=128, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    *[ResidualBlock(channelCount=256, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+bottleneckResidualv1 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[BottleneckBlock4(in_channels=32, activation=nn.ReLU()) for _ in range(3)],
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    *[BottleneckBlock4(in_channels=64, activation=nn.ReLU()) for _ in range(3)],
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[BottleneckBlock4(in_channels=128, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    *[BottleneckBlock4(in_channels=256, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+highwayResidualv1 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    HighwayBlock(in_channels=32, highwaySequence=nn.Sequential(
+        *[BottleneckBlock4(in_channels=32, activation=nn.ReLU()) for _ in range(3)]
+    )),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    HighwayBlock(in_channels=64, highwaySequence=nn.Sequential(
+        *[BottleneckBlock4(in_channels=64, activation=nn.ReLU()) for _ in range(3)]
+    )),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[BottleneckBlock4(in_channels=128, activation=nn.ReLU()) for _ in range(6)]
+    )),
+    
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    
+    HighwayBlock(in_channels=256, highwaySequence=nn.Sequential(
+        *[BottleneckBlock4(in_channels=256, activation=nn.ReLU()) for _ in range(6)]
+    )),
+    
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
 fc0 = nn.Sequential(
             nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3),
             ResidualBlock(channelCount=16),
