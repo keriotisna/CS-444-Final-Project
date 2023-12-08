@@ -1,0 +1,22 @@
+Found model to train!
+Current allocation for VRAM is 7526.591 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 512, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 1, 'plateuFactor': 0.5, 'modelName': 'residualNetv1_vanilla'}
+ Required memory: 7526.59125 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 13440.975 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 512, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 1, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_vanilla'}
+ Required memory: 5914.383749999999 MB
+Currently, there are 2 models in training
+83003 Namespace(modelName='residualNetv1_vanilla', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=512, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=1, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Current allocation for VRAM is 16828.875 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 512, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 1, 'plateuFactor': 0.5, 'modelName': 'highwayResidualv1_vanilla'}
+ Required memory: 3387.9 MB
+Currently, there are 3 models in training
+Got model: residualNetv1
+Using device: cuda
+Test passed!
+83003 Normalizing...

@@ -1,0 +1,109 @@
+Found model to train!
+Current allocation for VRAM is 3786.254 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 2, 'plateuFactor': 0.5, 'modelName': 'residualNetv1_hardAugment2'}
+ Required memory: 3786.2537500000003 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 6745.926 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 2, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_hardAugment2'}
+ Required memory: 2959.6724999999997 MB
+Currently, there are 2 models in training
+Found model to train!
+Current allocation for VRAM is 8442.239 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 2, 'plateuFactor': 0.5, 'modelName': 'highwayResidualv1_hardAugment2'}
+ Required memory: 1696.3125 MB
+Currently, there are 3 models in training
+76814 Namespace(modelName='residualNetv1_hardAugment2', trainTransformID='hardAugmentation2', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=2, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: residualNetv1
+Using device: cuda
+Test passed!
+76814 Normalizing...
+16779 Namespace(modelName='bottleneckResidualv1_hardAugment2', trainTransformID='hardAugmentation2', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=2, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: bottleneckResidualv1
+Using device: cuda
+Test passed!
+16779 Normalizing...
+74931 Namespace(modelName='highwayResidualv1_hardAugment2', trainTransformID='hardAugmentation2', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=2, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: highwayResidualv1
+Using device: cuda
+Test passed!
+74931 Normalizing...
+tensor([0.2282, 0.2239, 0.2172])
+76814 Done normalizing!
+tensor([0.4409, 0.4373, 0.4189])
+76814 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+0.2)
+      ColorJitter(brightness=(0.8, 1.2), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+)
+      Normalize(mean=[tensor(0.4409), tensor(0.4373), tensor(0.4189)], std=[tensor(0.2282), tensor(0.2239), tensor(0.2172)], inplace=False)
+76814 normalizedValTestTransform: Compose(
+      Identity()
+)
+      Normalize(mean=[tensor(0.4409), tensor(0.4373), tensor(0.4189)], std=[tensor(0.2282), tensor(0.2239), tensor(0.2172)], inplace=False)
+76814 Starting training...
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 187, in train
+    warmup = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1e-9, end_factor=1, total_iters=warmupEpochs, threshold=1e-3, cooldown=2)
+TypeError: LinearLR.__init__() got an unexpected keyword argument 'threshold'
+tensor([0.4343, 0.4299, 0.4130])
+tensor([0.2304, 0.2263, 0.2203])
+16779 Done normalizing!
+16779 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      ColorJitter(brightness=(0.8, 1.2), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4343), tensor(0.4299), tensor(0.4130)], std=[tensor(0.2304), tensor(0.2263), tensor(0.2203)], inplace=False)
+)
+16779 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4343), tensor(0.4299), tensor(0.4130)], std=[tensor(0.2304), tensor(0.2263), tensor(0.2203)], inplace=False)
+)
+16779 Starting training...
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 187, in train
+    warmup = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1e-9, end_factor=1, total_iters=warmupEpochs, threshold=1e-3, cooldown=2)
+TypeError: LinearLR.__init__() got an unexpected keyword argument 'threshold'
+tensor([0.4407, 0.4362, 0.4196])
+tensor([0.2254, 0.2223, 0.2175])
+74931 Done normalizing!
+74931 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      ColorJitter(brightness=(0.8, 1.2), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4407), tensor(0.4362), tensor(0.4196)], std=[tensor(0.2254), tensor(0.2223), tensor(0.2175)], inplace=False)
+)
+74931 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4407), tensor(0.4362), tensor(0.4196)], std=[tensor(0.2254), tensor(0.2223), tensor(0.2175)], inplace=False)
+)
+74931 Starting training...
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 187, in train
+    warmup = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1e-9, end_factor=1, total_iters=warmupEpochs, threshold=1e-3, cooldown=2)
+TypeError: LinearLR.__init__() got an unexpected keyword argument 'threshold'
+Total Runtime: 55.45300030708313

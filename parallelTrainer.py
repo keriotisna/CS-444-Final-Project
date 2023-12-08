@@ -226,9 +226,9 @@ SAVE_RESULTS = 1
 
 # How much to multiply model memory estimates by, larger values will guarantee that all model training happens in dedicated VRAM
 # while low values may allow for models to use memory in shared memory.
-MODEL_MEMORY_MULTIPLIER = 1.25
+MODEL_MEMORY_MULTIPLIER = 1.5
 # Sets how many models can be trained at once to prevent CPU bottlenecking, 5 seems to approach 100% CPU utilization, but this needs to change depending on model size
-MAX_CONCURRENT_MODELS = 3
+MAX_CONCURRENT_MODELS = 4
 
 
 def main():
@@ -261,8 +261,12 @@ def main():
         # JESSE_NET_BATCH_2_EASYAUGMENT,
         # WILSON_NET_FT_BATCH_1_EASYAUGMENT
         # JESSE_NET_BATCH_3_EASYAUGMENT
-        JESSE_NET_BATCH_4_EASYAUGMENT,
-        BASELINE_BATCH_2
+        # JESSE_NET_BATCH_4_EASYAUGMENT,
+        # BASELINE_BATCH_2
+        BASELINE_BATCH_4,
+        BASELINE_BATCH_5,
+        WILSON_NET_BATCH_1_HARDAUGMENT3,
+        JESSE_NET_BATCH_4_HARDAUGMENT3
         ]
     
     # Get the log file path once at the start

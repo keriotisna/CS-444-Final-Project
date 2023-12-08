@@ -1,0 +1,161 @@
+Found model to train!
+Current allocation for VRAM is 15921.684 MB
+Found model:
+{'trainTransformID': 'hardAugmentation3', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact_hardAugmentation3'}
+ Required memory: 15921.684000000001 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 21316.506 MB
+Found model:
+{'trainTransformID': 'hardAugmentation3', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv5_2_reverseEncode_EF2_hardAugmentation3'}
+ Required memory: 5394.822 MB
+Currently, there are 2 models in training
+Found model to train!
+Current allocation for VRAM is 24455.898 MB
+Found model:
+{'trainTransformID': 'hardAugmentation3', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 320, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'wilsonNetv3_ELU_rearDeep_hardAugmentation3'}
+ Required memory: 3139.392 MB
+Currently, there are 3 models in training
+98110 Namespace(modelName='jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact_hardAugmentation3', trainTransformID='hardAugmentation3', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact
+Using device: cuda
+Test passed!
+98110 Normalizing...
+There are currently 3 training which is equal to or more than the allowed 3, sleeping...
+75315 Namespace(modelName='jesseNetv5_2_reverseEncode_EF2_hardAugmentation3', trainTransformID='hardAugmentation3', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: jesseNetv5_2_reverseEncode_EF2
+Using device: cuda
+Test passed!
+75315 Normalizing...
+67658 Namespace(modelName='wilsonNetv3_ELU_rearDeep_hardAugmentation3', trainTransformID='hardAugmentation3', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: wilsonNetv3_ELU_rearDeep
+Using device: cuda
+Test passed!
+67658 Normalizing...
+tensor([0.1735, 0.1713, 0.1711])
+75315 Done normalizing!
+tensor([0.4794, 0.4770, 0.4593])
+75315 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.5, 1.5), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4794), tensor(0.4770), tensor(0.4593)], std=[tensor(0.1735), tensor(0.1713), tensor(0.1711)], inplace=False)
+)
+75315 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4794), tensor(0.4770), tensor(0.4593)], std=[tensor(0.1735), tensor(0.1713), tensor(0.1711)], inplace=False)
+)
+75315 Starting training...
+
+tensor([0.4733, 0.4691, 0.4529])
+tensor([0.1726, 0.1699, 0.1690])
+98110 Done normalizing!
+98110 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      Normalize(mean=[tensor(0.4733), tensor(0.4691), tensor(0.4529)], std=[tensor(0.1726), tensor(0.1699), tensor(0.1690)], inplace=False)
+)
+98110 normalizedValTestTransform: Compose(
+      Identity()
+      ColorJitter(brightness=(0.5, 1.5), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4733), tensor(0.4691), tensor(0.4529)], std=[tensor(0.1726), tensor(0.1699), tensor(0.1690)], inplace=False)
+)
+98110 Starting training...
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\record_writer.py", line 58, in open_file
+    factory = REGISTERED_FACTORIES[prefix]
+
+During handling of the above exception, another exception occurred:
+KeyError: 'runs/jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact_hardAugmentation3_Epoch200_Batch128_LR0.05_Momentum0.9\\events.out.tfevents.1702018147.NK-DESKTOP'
+
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 208, in train
+    writer = SummaryWriter(writerPath, flush_secs=10)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\writer.py", line 293, in __init__
+    self._get_file_writer()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\writer.py", line 341, in _get_file_writer
+    self.file_writer = FileWriter(logdir=self.logdir,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\writer.py", line 103, in __init__
+    self.event_writer = EventFileWriter(
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\event_file_writer.py", line 106, in __init__
+    self._ev_writer = EventsWriter(os.path.join(
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\event_file_writer.py", line 43, in __init__
+    self._py_recordio_writer = RecordWriter(self._file_name)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\record_writer.py", line 176, in __init__
+    self._writer = open_file(path)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\tensorboardX\record_writer.py", line 61, in open_file
+    return open(path, 'wb')
+FileNotFoundError: [Errno 2] No such file or directory: 'runs/jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact_hardAugmentation3_Epoch200_Batch128_LR0.05_Momentum0.9\\events.out.tfevents.1702018147.NK-DESKTOP'
+tensor([0.4808, 0.4761, 0.4562])
+tensor([0.1724, 0.1712, 0.1711])
+67658 Done normalizing!
+67658 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.5, 1.5), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4808), tensor(0.4761), tensor(0.4562)], std=[tensor(0.1724), tensor(0.1712), tensor(0.1711)], inplace=False)
+)
+67658 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4808), tensor(0.4761), tensor(0.4562)], std=[tensor(0.1724), tensor(0.1712), tensor(0.1711)], inplace=False)
+)
+67658 Starting training...
+
+67658 lr: 0.000000, trainLoss: 2.5053, trainAccuracy: 0.1022, validationLoss: 2.5025, validationAccuracy: 0.1168:   0%|          | 0/200 [01:14<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+75315 lr: 0.000000, trainLoss: 2.3267, trainAccuracy: 0.1039, validationLoss: 2.3196, validationAccuracy: 0.1184:   0%|          | 0/200 [01:20<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+lr: 0.000000, trainLoss: 2.3267, trainAccuracy: 0.1039, validationLoss: 2.3196, validationAccuracy: 0.1184:   0%|          | 1/200 [01:20<4:27:35, 80.68s/it]
+lr: 0.000000, trainLoss: 2.3267, trainAccuracy: 0.1039, validationLoss: 2.3196, validationAccuracy: 0.1184:   0%|          | 1/200 [02:02<6:47:27, 122.85s/it]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 214, in train
+    trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 157, in trainEpoch
+    loss.backward()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\autograd\__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+^Clr: 0.000000, trainLoss: 2.5053, trainAccuracy: 0.1022, validationLoss: 2.5025, validationAccuracy: 0.1168:   0%|          | 1/200 [01:14<4:07:23, 74.59s/it]
+lr: 0.000000, trainLoss: 2.5053, trainAccuracy: 0.1022, validationLoss: 2.5025, validationAccuracy: 0.1168:   0%|          | 1/200 [02:00<6:40:20, 120.71s/it]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 214, in train
+    trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 141, in trainEpoch
+    for features, labels in dataloader:
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1328, in _next_data
+    idx, data = self._get_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1284, in _get_data
+    success, data = self._try_get_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1132, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\queue.py", line 180, in get
+    self.not_empty.wait(remaining)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+^C

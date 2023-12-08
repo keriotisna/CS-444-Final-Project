@@ -425,6 +425,82 @@ bottleneckResidualv1 = nn.Sequential(
     nn.Linear(in_features=64, out_features=10)
 )
 
+bottleneckResidualv2 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[BottleneckBlock4(in_channels=32, encode_factor=8, activation=nn.ReLU()) for _ in range(3)],
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    *[BottleneckBlock4(in_channels=64, encode_factor=8, activation=nn.ReLU()) for _ in range(3)],
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[BottleneckBlock4(in_channels=128, encode_factor=8, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    *[BottleneckBlock4(in_channels=256, encode_factor=8, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+doubleBottleneckResidualv1 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=4, encode_factor2=2, activation=nn.ReLU()) for _ in range(3)],
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    *[DoubleEncodeBottleneckBlock2(in_channels=64, encode_factor1=4, encode_factor2=2, activation=nn.ReLU()) for _ in range(3)],
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=4, encode_factor2=2, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    *[DoubleEncodeBottleneckBlock2(in_channels=256, encode_factor1=4, encode_factor2=2, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
 highwayResidualv1 = nn.Sequential(
     nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
     nn.BatchNorm2d(num_features=32),
@@ -459,6 +535,62 @@ highwayResidualv1 = nn.Sequential(
     HighwayBlock(in_channels=256, highwaySequence=nn.Sequential(
         *[BottleneckBlock4(in_channels=256, activation=nn.ReLU()) for _ in range(6)]
     )),
+    
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+branchResidualv1 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=32, branches=[
+        HighwayBlock(in_channels=32, highwaySequence=nn.Sequential(
+            *[BottleneckBlock4(in_channels=32, activation=nn.ReLU()) for _ in range(3)]
+        )),
+    ]),
+    
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    BranchBlock(in_channels=64, branches=[
+        HighwayBlock(in_channels=64, highwaySequence=nn.Sequential(
+            *[BottleneckBlock4(in_channels=64, activation=nn.ReLU()) for _ in range(3)]
+        )),
+    ]),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=128, branches=[
+        HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+            *[BottleneckBlock4(in_channels=128, activation=nn.ReLU()) for _ in range(3)]
+        )),
+    ]),
+    
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    
+    BranchBlock(in_channels=256, branches=[
+        HighwayBlock(in_channels=256, highwaySequence=nn.Sequential(
+            *[BottleneckBlock4(in_channels=256, activation=nn.ReLU()) for _ in range(3)]
+        )),
+    ]),
     
     nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
     
@@ -3552,6 +3684,64 @@ jesseNetv5_2_reverseEncode = nn.Sequential(
     nn.Linear(in_features=64, out_features=10)
 )
 
+jesseNetv5_2_reverseEncode_EF2 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.PReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=32, branches=[
+        DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=1, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=2, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=4, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=8, activation=nn.PReLU()),
+    ], averageChannels=True),
+
+    nn.Conv2d(in_channels=32, out_channels=128, kernel_size=3, padding=1, stride=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.PReLU(),
+
+    BranchBlock(in_channels=128, branches=[
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=1, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=2, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=4, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=8, activation=nn.PReLU()),
+    ], averageChannels=True),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=128, branches=[
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=1, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=2, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=4, activation=nn.PReLU()),
+        DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=8, activation=nn.PReLU()),
+    ], averageChannels=True),
+    
+    nn.Conv2d(in_channels=128, out_channels=512, kernel_size=3, padding=1, stride=1),
+    nn.BatchNorm2d(num_features=512),
+    nn.PReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+
+    HighwayBlock(in_channels=512, highwaySequence=nn.Sequential(
+        *[
+            BranchBlock(in_channels=512, branches=[
+                DoubleEncodeBottleneckBlock2(in_channels=512, encode_factor1=4, encode_factor2=1, activation=nn.PReLU()),
+                DoubleEncodeBottleneckBlock2(in_channels=512, encode_factor1=4, encode_factor2=2, activation=nn.PReLU()),
+                DoubleEncodeBottleneckBlock2(in_channels=512, encode_factor1=4, encode_factor2=4, activation=nn.PReLU()),
+                DoubleEncodeBottleneckBlock2(in_channels=512, encode_factor1=4, encode_factor2=8, activation=nn.PReLU()),
+            ], averageChannels=True) for _ in range(6)
+        ]
+    )),
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=512, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.PReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
 
 # Adds more branches with heavy encode values
 jesseNetv5_3_wideBranchesLinearEncode = nn.Sequential(

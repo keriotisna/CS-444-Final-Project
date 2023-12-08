@@ -215,6 +215,22 @@ BASELINE_BATCH_2 = _getBatchParameterList(modelNames=['baseline13MN', 'baseline3
         'plateuFactor': 0.5
     })
 
+BASELINE_BATCH_3 = _getBatchParameterList(modelNames=['residualNetv1', 'bottleneckResidualv1', 'highwayResidualv1'],
+    nameSuffix='vanilla',
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
 
 
 ####################################################################################
@@ -777,7 +793,70 @@ DOUBLE_BOTTLE_BATCH_1_HARDAUGMENT = _getBatchParameterList(modelNames=['doubleBo
     })
 
 
+BASELINE_BATCH_4 = _getBatchParameterList(modelNames=['residualNetv1', 'bottleneckResidualv1', 'highwayResidualv1', 'branchResidualv1'],
+    nameSuffix='hardAugmentation3',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation3',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
+BASELINE_BATCH_5 = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN', 'baseline13MN', 'baseline36MN', 'baseline108MN'],
+    nameSuffix='hardAugmentation3',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation3',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 512,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+JESSE_NET_BATCH_4_HARDAUGMENT3 = _getBatchParameterList(modelNames=['jesseNetv7_2_multiHighway_duplicateBottleRevEncode', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact', 'jesseNetv5_2_reverseEncode_EF2'],
+    nameSuffix='hardAugmentation3',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation3',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 128,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+WILSON_NET_BATCH_1_HARDAUGMENT3 = _getBatchParameterList(modelNames=['wilsonNetv1_ELU', 'wilsonNetv2_ELU_frontDeep', 'wilsonNetv3_ELU_rearDeep', 'wilsonNetv4_ELU_rearDoubleDeep', 'wilsonNetv5_PReLU'],
+    nameSuffix='hardAugmentation3',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation3',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 320,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.0, # No weight decay for ELU if we want good results with PReLU according to documentation
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 ####################################################################################
 # BIG MODELS

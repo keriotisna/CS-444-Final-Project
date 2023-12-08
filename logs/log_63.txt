@@ -1,0 +1,66 @@
+Found model to train!
+Current allocation for VRAM is 22216.31 MB
+Found model:
+{'trainTransformID': 'hardAugmentation3', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2_hardAugmentation3'}
+ Required memory: 22216.309999999998 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 24512.607 MB
+Found model:
+{'trainTransformID': 'hardAugmentation3', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 320, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.0, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'wilsonNetv1_ELU_hardAugmentation3'}
+ Required memory: 2296.2975 MB
+Currently, there are 2 models in training
+87990 Namespace(modelName='jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2_hardAugmentation3', trainTransformID='hardAugmentation3', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Possible model memory requirements: [13268.07    11320.52625  4495.685    3786.25375  3608.9925   3346.4175
+  2959.6725   2785.26625  2616.16     1696.3125   1466.44875  1378.1725
+   884.83125   693.55125   350.21125   308.80125   179.89375   158.48625]
+Not enough room in queue with 51.393 MB available, sleeping...
+Got model: jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2
+Using device: cuda
+Test passed!
+87990 Normalizing...
+13276 Namespace(modelName='wilsonNetv1_ELU_hardAugmentation3', trainTransformID='hardAugmentation3', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=320, lr=0.05, momentum=0.9, weight_decay=0.0, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: wilsonNetv1_ELU
+Using device: cuda
+Test passed!
+13276 Normalizing...
+tensor([0.4786, 0.4732, 0.4546])
+tensor([0.1772, 0.1759, 0.1735])
+87990 Done normalizing!
+87990 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.5, 1.5), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4786), tensor(0.4732), tensor(0.4546)], std=[tensor(0.1772), tensor(0.1759), tensor(0.1735)], inplace=False)
+)
+87990 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4786), tensor(0.4732), tensor(0.4546)], std=[tensor(0.1772), tensor(0.1759), tensor(0.1735)], inplace=False)
+)
+87990 Starting training...
+
+tensor([0.4893, 0.4796, 0.4577])
+tensor([0.1775, 0.1770, 0.1757])
+13276 Done normalizing!
+13276 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.5, 1.5), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4893), tensor(0.4796), tensor(0.4577)], std=[tensor(0.1775), tensor(0.1770), tensor(0.1757)], inplace=False)
+)
+13276 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4893), tensor(0.4796), tensor(0.4577)], std=[tensor(0.1775), tensor(0.1770), tensor(0.1757)], inplace=False)
+)
+13276 Starting training...
+
+13276 lr: 0.000000, trainLoss: 2.4074, trainAccuracy: 0.1094, validationLoss: 2.4091, validationAccuracy: 0.1252:   0%|          | 0/200 [01:10<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+13276 lr: 0.010000, trainLoss: 2.0308, trainAccuracy: 0.2485, validationLoss: 1.6753, validationAccuracy: 0.3917:   0%|          | 1/200 [02:25<3:52:44, 70.17s/it]
+lr: 0.000000, trainLoss: 2.4074, trainAccuracy: 0.1094, validationLoss: 2.4091, validationAccuracy: 0.1252:   0%|          | 1/200 [01:10<3:52:44, 70.17s/it]
