@@ -77,6 +77,38 @@ baseline130kN = nn.Sequential(
     nn.Linear(in_features=64, out_features=10)
 )
 
+baseline130kND = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=16),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=32),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=512, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
 baseline430k = nn.Sequential(
     nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
     nn.MaxPool2d(kernel_size=2, stride=2),
@@ -137,6 +169,48 @@ baseline430kN = nn.Sequential(
     nn.MaxPool2d(kernel_size=2, stride=2),
     nn.ReLU(),
     
+    nn.Flatten(),
+    
+    nn.Linear(in_features=512, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+baseline430kND = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=16),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=32),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+    
+    nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+    
+    nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.ReLU(),
+    nn.Dropout2d(p=0.5),
+
     nn.Flatten(),
     
     nn.Linear(in_features=512, out_features=64),
@@ -489,6 +563,44 @@ doubleBottleneckResidualv1 = nn.Sequential(
     nn.BatchNorm2d(num_features=256),
     nn.ReLU(),
     *[DoubleEncodeBottleneckBlock2(in_channels=256, encode_factor1=4, encode_factor2=2, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
+doubleBottleneckResidualv2 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(3)],
+
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    *[DoubleEncodeBottleneckBlock2(in_channels=64, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(3)],
+
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    *[DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(6)],
+
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    *[DoubleEncodeBottleneckBlock2(in_channels=256, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(6)],
 
     nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
     

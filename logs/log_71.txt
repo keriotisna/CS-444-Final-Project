@@ -1,0 +1,113 @@
+Found model to train!
+Current allocation for VRAM is 3313.12 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 3313.12 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 6207.236 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'branchResidualv2_hardAugmentation2-5'}
+ Required memory: 2894.116 MB
+Currently, there are 2 models in training
+Found model to train!
+Current allocation for VRAM is 8578.942 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 2371.706 MB
+Currently, there are 3 models in training
+63079 Namespace(modelName='doubleBottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+Using device: cuda
+Test passed!
+63079 Normalizing...
+Found model to train!
+Current allocation for VRAM is 10633.786 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv2_hardAugmentation2-5'}
+ Required memory: 2054.844 MB
+Currently, there are 4 models in training
+84572 Namespace(modelName='branchResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Using device: cuda
+Test passed!
+84572 Normalizing...
+Got model: branchResidualv2
+There are currently 4 training which is equal to or more than the allowed 4, sleeping...
+01897 Namespace(modelName='bottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: bottleneckResidualv1
+Using device: cuda
+Test passed!
+01897 Normalizing...
+39861 Namespace(modelName='bottleneckResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: bottleneckResidualv2
+Using device: cuda
+Test passed!
+39861 Normalizing...
+tensor([0.1792, 0.1775, 0.1781])
+tensor([0.4824, 0.4775, 0.4585])
+63079 Done normalizing!
+63079 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomVerticalFlip(p=0.2)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4824), tensor(0.4775), tensor(0.4585)], std=[tensor(0.1792), tensor(0.1775), tensor(0.1781)], inplace=False)
+)
+63079 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4824), tensor(0.4775), tensor(0.4585)], std=[tensor(0.1792), tensor(0.1775), tensor(0.1781)], inplace=False)
+)
+63079 Starting training...
+tensor([0.1798, 0.1780, 0.1772])
+tensor([0.4906, 0.4851, 0.4655])
+84572 Done normalizing!
+84572 normalizedTrainTransform: Compose(
+      RandomVerticalFlip(p=0.2)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+      RandomGrayscale(p=0.1)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+84572 normalizedValTestTransform: Compose(
+)
+      Identity()
+      Normalize(mean=[tensor(0.4906), tensor(0.4851), tensor(0.4655)], std=[tensor(0.1798), tensor(0.1780), tensor(0.1772)], inplace=False)
+      Normalize(mean=[tensor(0.4906), tensor(0.4851), tensor(0.4655)], std=[tensor(0.1798), tensor(0.1780), tensor(0.1772)], inplace=False)
+)
+84572 Starting training...
+tensor([0.4920, 0.4843, 0.4655])
+tensor([0.1814, 0.1794, 0.1788])
+01897 Done normalizing!
+01897 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+      RandomVerticalFlip(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+)
+      Identity()
+      Normalize(mean=[tensor(0.4920), tensor(0.4843), tensor(0.4655)], std=[tensor(0.1814), tensor(0.1794), tensor(0.1788)], inplace=False)
+01897 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4920), tensor(0.4843), tensor(0.4655)], std=[tensor(0.1814), tensor(0.1794), tensor(0.1788)], inplace=False)
+)
+01897 Starting training...
+tensor([0.4948, 0.4836, 0.4613])
+tensor([0.1875, 0.1840, 0.1827])
+39861 Done normalizing!
+      RandomGrayscale(p=0.1)
+: Compose(
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+)
+      Normalize(mean=[tensor(0.4948), tensor(0.4836), tensor(0.4613)], std=[tensor(0.1875), tensor(0.1840), tensor(0.1827)], inplace=False)
+39861 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4948), tensor(0.4836), tensor(0.4613)], std=[tensor(0.1875), tensor(0.1840), tensor(0.1827)], inplace=False)
+)
+39861 Starting training...

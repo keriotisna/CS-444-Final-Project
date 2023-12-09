@@ -1,0 +1,149 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+27770 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+27770 Normalizing...
+tensor([0.4506, 0.4427, 0.4241])
+tensor([0.2053, 0.2030, 0.1979])
+27770 Done normalizing!
+27770 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4506), tensor(0.4427), tensor(0.4241)], std=[tensor(0.2053), tensor(0.2030), tensor(0.1979)], inplace=False)
+)
+27770 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4506), tensor(0.4427), tensor(0.4241)], std=[tensor(0.2053), tensor(0.2030), tensor(0.1979)], inplace=False)
+)
+27770 Starting training...
+
+27770 lr: 0.000000, trainLoss: 2.3639, trainAccuracy: 0.1042, validationLoss: 2.3641, validationAccuracy: 0.0983:   0%|          | 0/200 [01:22<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+Found model to train!
+Current allocation for VRAM is 2433.968 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline36MN_hardAugmentation2-6'}
+ Required memory: 847.69 MB
+Currently, there are 2 models in training
+07854 Namespace(modelName='baseline36MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline36MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+07854 Normalizing...
+27770 lr: 0.010000, trainLoss: 2.1446, trainAccuracy: 0.1873, validationLoss: 1.8729, validationAccuracy: 0.2863:   0%|          | 1/200 [02:40<4:33:21, 82.42s/it]
+lr: 0.000000, trainLoss: 2.3639, trainAccuracy: 0.1042, validationLoss: 2.3641, validationAccuracy: 0.0983:   0%|          | 1/200 [01:22<4:33:21, 82.42s/it]
+tensor([0.4618, 0.4536, 0.4338])
+tensor([0.2018, 0.1981, 0.1908])
+07854 Done normalizing!
+07854 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4618), tensor(0.4536), tensor(0.4338)], std=[tensor(0.2018), tensor(0.1981), tensor(0.1908)], inplace=False)
+)
+07854 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4618), tensor(0.4536), tensor(0.4338)], std=[tensor(0.2018), tensor(0.1981), tensor(0.1908)], inplace=False)
+)
+07854 Starting training...
+
+27770 lr: 0.020000, trainLoss: 1.9691, trainAccuracy: 0.2571, validationLoss: 1.7689, validationAccuracy: 0.3518:   1%|1         | 2/200 [04:01<4:23:45, 79.93s/it]
+lr: 0.010000, trainLoss: 2.1446, trainAccuracy: 0.1873, validationLoss: 1.8729, validationAccuracy: 0.2863:   1%|1         | 2/200 [02:40<4:23:45, 79.93s/it]
+07854 lr: 0.000000, trainLoss: 2.3845, trainAccuracy: 0.1050, validationLoss: 2.3812, validationAccuracy: 0.1122:   0%|          | 0/200 [01:21<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+27770 lr: 0.030000, trainLoss: 1.8871, trainAccuracy: 0.2982, validationLoss: 1.7455, validationAccuracy: 0.3663:   2%|1         | 3/200 [05:22<4:24:06, 80.44s/it]
+lr: 0.020000, trainLoss: 1.9691, trainAccuracy: 0.2571, validationLoss: 1.7689, validationAccuracy: 0.3518:   2%|1         | 3/200 [04:01<4:24:06, 80.44s/it]
+Found model to train!
+Current allocation for VRAM is 3039.612 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline13MN_hardAugmentation2-6'}
+ Required memory: 605.644 MB
+Currently, there are 3 models in training
+75441 Namespace(modelName='baseline13MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Got model: baseline13MN
+Test passed!
+75441 Normalizing...
+07854 lr: 0.010000, trainLoss: 2.0675, trainAccuracy: 0.2240, validationLoss: 1.7716, validationAccuracy: 0.3493:   0%|          | 1/200 [02:49<4:28:55, 81.08s/it]
+lr: 0.000000, trainLoss: 2.3845, trainAccuracy: 0.1050, validationLoss: 2.3812, validationAccuracy: 0.1122:   0%|          | 1/200 [01:21<4:28:55, 81.08s/it]
+tensor([0.4671, 0.4578, 0.4351])
+tensor([0.1957, 0.1919, 0.1876])
+75441 Done normalizing!
+75441 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4671), tensor(0.4578), tensor(0.4351)], std=[tensor(0.1957), tensor(0.1919), tensor(0.1876)], inplace=False)
+)
+75441 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4671), tensor(0.4578), tensor(0.4351)], std=[tensor(0.1957), tensor(0.1919), tensor(0.1876)], inplace=False)
+75441 Starting training...
+)
+
+27770 lr: 0.040000, trainLoss: 1.8684, trainAccuracy: 0.3138, validationLoss: 1.7562, validationAccuracy: 0.3718:   2%|2         | 4/200 [06:57<4:23:20, 80.61s/it]
+lr: 0.030000, trainLoss: 1.8871, trainAccuracy: 0.2982, validationLoss: 1.7455, validationAccuracy: 0.3663:   2%|2         | 4/200 [05:22<4:23:20, 80.61s/it]
+07854 lr: 0.020000, trainLoss: 1.9150, trainAccuracy: 0.2877, validationLoss: 1.6571, validationAccuracy: 0.3816:   1%|1         | 2/200 [04:18<4:41:34, 85.33s/it]
+lr: 0.010000, trainLoss: 2.0675, trainAccuracy: 0.2240, validationLoss: 1.7716, validationAccuracy: 0.3493:   1%|1         | 2/200 [02:49<4:41:34, 85.33s/it]
+75441 lr: 0.000000, trainLoss: 2.3958, trainAccuracy: 0.0926, validationLoss: 2.3827, validationAccuracy: 0.0945:   0%|          | 0/200 [01:26<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+27770 lr: 0.050000, trainLoss: 1.8773, trainAccuracy: 0.3114, validationLoss: 1.7201, validationAccuracy: 0.3530:   2%|2         | 5/200 [08:20<4:39:15, 85.93s/it]
+lr: 0.040000, trainLoss: 1.8684, trainAccuracy: 0.3138, validationLoss: 1.7562, validationAccuracy: 0.3718:   2%|2         | 5/200 [06:57<4:39:15, 85.93s/it]
+Current allocation for VRAM is 3321.41 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline430kN_hardAugmentation2-6'}
+ Required memory: 281.798 MB
+Currently, there are 4 models in training
+59855 Namespace(modelName='baseline430kN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline430kN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+59855 Normalizing...
+07854 lr: 0.030000, trainLoss: 1.8483, trainAccuracy: 0.3167, validationLoss: 1.7198, validationAccuracy: 0.3694:   2%|1         | 3/200 [05:42<4:45:48, 87.05s/it]
+lr: 0.020000, trainLoss: 1.9150, trainAccuracy: 0.2877, validationLoss: 1.6571, validationAccuracy: 0.3816:   2%|1         | 3/200 [04:18<4:45:48, 87.05s/it]
+75441 lr: 0.010000, trainLoss: 2.2446, trainAccuracy: 0.1418, validationLoss: 1.9655, validationAccuracy: 0.2516:   0%|          | 1/200 [02:55<4:47:33, 86.70s/it]
+lr: 0.000000, trainLoss: 2.3958, trainAccuracy: 0.0926, validationLoss: 2.3827, validationAccuracy: 0.0945:   0%|          | 1/200 [01:26<4:47:33, 86.70s/it]
+tensor([0.4597, 0.4530, 0.4302])
+59855 Done normalizing!
+tensor([0.1975, 0.1944, 0.1900])
+59855 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomGrayscale(p=0.1)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4597), tensor(0.4530), tensor(0.4302)], std=[tensor(0.1975), tensor(0.1944), tensor(0.1900)], inplace=False)
+)
+      Identity()
+59855 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4597), tensor(0.4530), tensor(0.4302)], std=[tensor(0.1975), tensor(0.1944), tensor(0.1900)], inplace=False)
+)
+59855 Starting training...
+
+27770 lr: 0.050000, trainLoss: 1.8650, trainAccuracy: 0.3156, validationLoss: 1.6375, validationAccuracy: 0.4038:   3%|3         | 6/200 [09:59<4:33:47, 84.68s/it]
+lr: 0.050000, trainLoss: 1.8773, trainAccuracy: 0.3114, validationLoss: 1.7201, validationAccuracy: 0.3530:   3%|3         | 6/200 [08:20<4:33:47, 84.68s/it]

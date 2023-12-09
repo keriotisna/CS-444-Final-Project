@@ -152,6 +152,100 @@ def _getBatchParametersSweep2(modelName:str, nameSuffix:str='',
 
 
 
+
+###################################################################################################
+# BASELINE TESTS
+###################################################################################################
+
+
+baselineModelsList = ['baseline130kN', 'baseline430kN', 'baseline430kND', 'baseline108MN', 'residualNetv1', 
+    'bottleneckResidualv1', 'bottleneckResidualv2', 'highwayResidualv1', 'highwayResidualv2', 'doubleBottleneckResidualv1', 
+    'branchResidualv1', 'branchResidualv2']
+
+FULL_BASELINE_BATCH_NONE = _getBatchParameterList(modelNames=baselineModelsList,
+    nameSuffix='vanilla-FULL',
+    parametersDict={
+        'trainTransformID': 'NONE',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+FULL_BASELINE_BATCH_EASYAUGMENT = _getBatchParameterList(modelNames=baselineModelsList,
+    nameSuffix='easyaugmentation-FULL',
+    parametersDict={
+        'trainTransformID': 'easyaugmentation',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+FULL_BASELINE_BATCH_HARD2 = _getBatchParameterList(modelNames=baselineModelsList,
+    nameSuffix='hardAugmentation2-FULL',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+FULL_BASELINE_BATCH_HARD2_5 = _getBatchParameterList(modelNames=baselineModelsList,
+    nameSuffix='hardAugmentation2-5-FULL',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2_5',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+FULL_BASELINE_BATCH_HARD3 = _getBatchParameterList(modelNames=baselineModelsList,
+    nameSuffix='hardAugmentation3-FULL',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation3',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+
+
+
 PARAMETER_SWEEP_TEST_BATCH_1 = _getBatchParametersSweep(modelName='baseline430kN', sweepParamName='batch_size', sweepParamList=[8, 16, 32, 64, 128, 256, 512, 1024, 2048],
     parametersDict={
         'trainTransformID': 'NONE',
@@ -841,14 +935,14 @@ BASELINE_BATCH_4 = _getBatchParameterList(modelNames=['residualNetv1', 'bottlene
         'plateuFactor': 0.5
     })
 
-BASELINE_BATCH_5 = _getBatchParameterList(modelNames=['baseline130k', 'baseline130kN', 'baseline430k', 'baseline430kN', 'baseline13MN', 'baseline36MN', 'baseline108MN'],
+BASELINE_BATCH_5 = _getBatchParameterList(modelNames=['baseline130kN', 'baseline430kN', 'baseline13MN', 'baseline36MN', 'baseline108MN'],
     nameSuffix='hardAugmentation3',
     parametersDict={
         'trainTransformID': 'hardAugmentation3',
         'valTestTransformID': 'NONE',
         'epochs': 200,
         'warmupEpochs': 5,
-        'batch_size': 512,
+        'batch_size': 256,
         'lr': 5e-2,
         'momentum': 0.9,
         'weight_decay': 0.01,
@@ -857,6 +951,37 @@ BASELINE_BATCH_5 = _getBatchParameterList(modelNames=['baseline130k', 'baseline1
         'plateuFactor': 0.5
     })
 
+BASELINE_BATCH_5_HARDAUGMENT_2_5 = _getBatchParameterList(modelNames=['baseline130kN', 'baseline430kN', 'baseline13MN', 'baseline36MN', 'baseline108MN'],
+    nameSuffix='hardAugmentation2-5',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2_5',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BASELINE_BATCH_5_HARDAUGMENT_2_6 = _getBatchParameterList(modelNames=['baseline130kN', 'baseline430kN', 'baseline13MN', 'baseline36MN', 'baseline108MN'],
+    nameSuffix='hardAugmentation2-6',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2_6',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 256,
+        'lr': 5e-2,
+        'momentum': 0.9,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
 
 JESSE_NET_BATCH_4_HARDAUGMENT3 = _getBatchParameterList(modelNames=['jesseNetv7_2_multiHighway_duplicateBottleRevEncode', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2', 'jesseNetv7_2_multiHighway_duplicateBottleRevEncodex2Compact', 'jesseNetv5_2_reverseEncode_EF2'],
     nameSuffix='hardAugmentation3',

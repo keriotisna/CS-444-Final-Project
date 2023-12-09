@@ -1,0 +1,55 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+81907 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+81907 Normalizing...
+tensor([0.4692, 0.4633, 0.4437])
+tensor([0.1998, 0.1962, 0.1922])
+81907 Done normalizing!
+81907 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4692), tensor(0.4633), tensor(0.4437)], std=[tensor(0.1998), tensor(0.1962), tensor(0.1922)], inplace=False)
+)
+81907 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4692), tensor(0.4633), tensor(0.4437)], std=[tensor(0.1998), tensor(0.1962), tensor(0.1922)], inplace=False)
+)
+81907 Starting training...
+
+  0%|          | 0/200 [00:00<?, ?it/s]
+  0%|          | 0/200 [00:43<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 181, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 176, in main
+    trainCompleteModel()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 159, in trainCompleteModel
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 279, in train
+    trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 199, in trainEpoch
+    forwardPass = model.forward(x)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor

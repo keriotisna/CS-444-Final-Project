@@ -1,0 +1,12 @@
+Found model to train!
+Current allocation for VRAM is 4964.73 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_vanilla-FULL'}
+ Required memory: 4964.7300000000005 MB
+Currently, there are 1 models in training
+93264 Namespace(modelName='doubleBottleneckResidualv1_vanilla-FULL', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+93264 Normalizing...

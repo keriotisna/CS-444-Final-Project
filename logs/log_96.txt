@@ -1,0 +1,84 @@
+Found model to train!
+Available memory: 24564 MB
+Current allocation for VRAM is 6619.64 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_vanilla-FULL'}
+ Required memory: 6619.64 MB
+Currently, there are 1 models in training
+Found model to train!
+Available memory: 17944.36 MB
+71483 Namespace(modelName='doubleBottleneckResidualv1_vanilla-FULL', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+71483 Normalizing...
+Current allocation for VRAM is 13239.28 MB
+Found model:
+{'trainTransformID': 'easyaugmentation', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_easyaugmentation-FULL'}
+ Required memory: 6619.64 MB
+Currently, there are 2 models in training
+Found model to train!
+Available memory: 11324.72 MB
+Current allocation for VRAM is 19858.92 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_hardAugmentation2-FULL'}
+ Required memory: 6619.64 MB
+Currently, there are 3 models in training
+96554 Namespace(modelName='doubleBottleneckResidualv1_easyaugmentation-FULL', trainTransformID='easyaugmentation', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Got model: doubleBottleneckResidualv1
+Using device: cuda
+Test passed!
+96554 Normalizing...
+Available memory: 4705.079999999998 MB
+Found model to train!
+Current allocation for VRAM is 23963.282 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv2_vanilla-FULL'}
+ Required memory: 4104.362 MB
+Currently, there are 4 models in training
+Possible model memory requirements: [6058.006 6058.006 6058.006 5778.136 5778.136 5778.136 4735.476 4735.476
+ 4735.476 4104.362 4104.362 3463.632 3463.632 3463.632 2714.1   2714.1
+ 2714.1   2205.076 2205.076 2205.076 1586.278 1586.278 1586.278  281.798
+  281.798  281.798  281.798  281.798  281.798  247.542  247.542  247.542]
+There are currently 4 training which is equal to or more than the allowed 4, sleeping...
+tensor([0.4907, 0.4828, 0.4512])
+tensor([0.2043, 0.2005, 0.2039])
+71483 Done normalizing!
+71483 normalizedTrainTransform: Compose(
+      Identity()
+)
+      Normalize(mean=[tensor(0.4907), tensor(0.4828), tensor(0.4512)], std=[tensor(0.2043), tensor(0.2005), tensor(0.2039)], inplace=False)
+71483 normalizedValTestTransform: Compose(
+      Identity()
+)
+      Normalize(mean=[tensor(0.4907), tensor(0.4828), tensor(0.4512)], std=[tensor(0.2043), tensor(0.2005), tensor(0.2039)], inplace=False)
+71483 Starting training...
+Possible model memory requirements: [6058.006 6058.006 6058.006 5778.136 5778.136 5778.136 4735.476 4735.476
+ 4735.476 4104.362 4104.362 3463.632 3463.632 3463.632 2714.1   2714.1
+ 2714.1   2205.076 2205.076 2205.076 1586.278 1586.278 1586.278  281.798
+  281.798  281.798  281.798  281.798  281.798  247.542  247.542  247.542]
+There are currently 4 training which is equal to or more than the allowed 4, sleeping...
+Possible model memory requirements: [6058.006 6058.006 6058.006 5778.136 5778.136 5778.136 4735.476 4735.476
+ 4735.476 4104.362 4104.362 3463.632 3463.632 3463.632 2714.1   2714.1
+ 2714.1   2205.076 2205.076 2205.076 1586.278 1586.278 1586.278  281.798
+  281.798  281.798  281.798  281.798  281.798  247.542  247.542  247.542]
+There are currently 4 training which is equal to or more than the allowed 4, sleeping...
+57456 Namespace(modelName='doubleBottleneckResidualv1_hardAugmentation2-FULL', trainTransformID='hardAugmentation2', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+57456 Normalizing...
+Possible model memory requirements: [6058.006 6058.006 6058.006 5778.136 5778.136 5778.136 4735.476 4735.476
+ 4735.476 4104.362 4104.362 3463.632 3463.632 3463.632 2714.1   2714.1
+ 2714.1   2205.076 2205.076 2205.076 1586.278 1586.278 1586.278  281.798
+  281.798  281.798  281.798  281.798  281.798  247.542  247.542  247.542]
+There are currently 4 training which is equal to or more than the allowed 4, sleeping...
+81316 Namespace(modelName='bottleneckResidualv2_vanilla-FULL', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: bottleneckResidualv2
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+81316 Normalizing...

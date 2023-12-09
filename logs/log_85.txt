@@ -1,0 +1,180 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+07668 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+07668 Normalizing...
+tensor([0.4547, 0.4497, 0.4331])
+tensor([0.1967, 0.1956, 0.1899])
+07668 Done normalizing!
+07668 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4547), tensor(0.4497), tensor(0.4331)], std=[tensor(0.1967), tensor(0.1956), tensor(0.1899)], inplace=False)
+)
+07668 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4547), tensor(0.4497), tensor(0.4331)], std=[tensor(0.1967), tensor(0.1956), tensor(0.1899)], inplace=False)
+)
+07668 Starting training...
+
+07668 lr: 0.000000, trainLoss: 2.3565, trainAccuracy: 0.0996, validationLoss: 2.3586, validationAccuracy: 0.0964:   0%|          | 0/200 [01:25<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+07668 lr: 0.010000, trainLoss: 2.2404, trainAccuracy: 0.1523, validationLoss: 2.0124, validationAccuracy: 0.2590:   0%|          | 1/200 [01:31<4:43:44, 85.55s/it]
+lr: 0.000000, trainLoss: 2.3565, trainAccuracy: 0.0996, validationLoss: 2.3586, validationAccuracy: 0.0964:   0%|          | 1/200 [01:25<4:43:44, 85.55s/it]
+07668 lr: 0.020000, trainLoss: 2.1621, trainAccuracy: 0.1826, validationLoss: 2.0219, validationAccuracy: 0.2512:   1%|1         | 2/200 [01:37<2:08:12, 38.85s/it]
+lr: 0.010000, trainLoss: 2.2404, trainAccuracy: 0.1523, validationLoss: 2.0124, validationAccuracy: 0.2590:   1%|1         | 2/200 [01:31<2:08:12, 38.85s/it]
+07668 lr: 0.030000, trainLoss: 2.1666, trainAccuracy: 0.1846, validationLoss: 2.0518, validationAccuracy: 0.2268:   2%|1         | 3/200 [01:44<1:18:32, 23.92s/it]
+lr: 0.020000, trainLoss: 2.1621, trainAccuracy: 0.1826, validationLoss: 2.0219, validationAccuracy: 0.2512:   2%|1         | 3/200 [01:37<1:18:32, 23.92s/it]
+07668 lr: 0.040000, trainLoss: 2.1753, trainAccuracy: 0.1799, validationLoss: 2.0175, validationAccuracy: 0.2698:   2%|2         | 4/200 [01:50<55:31, 17.00s/it]
+lr: 0.030000, trainLoss: 2.1666, trainAccuracy: 0.1846, validationLoss: 2.0518, validationAccuracy: 0.2268:   2%|2         | 4/200 [01:44<55:31, 17.00s/it]  
+07668 lr: 0.050000, trainLoss: 2.1882, trainAccuracy: 0.1778, validationLoss: 2.1012, validationAccuracy: 0.2104:   2%|2         | 5/200 [01:56<42:36, 13.11s/it]
+lr: 0.040000, trainLoss: 2.1753, trainAccuracy: 0.1799, validationLoss: 2.0175, validationAccuracy: 0.2698:   2%|2         | 5/200 [01:50<42:36, 13.11s/it]
+07668 lr: 0.050000, trainLoss: 2.1907, trainAccuracy: 0.1705, validationLoss: 2.1306, validationAccuracy: 0.2195:   3%|3         | 6/200 [02:02<34:48, 10.77s/it]
+lr: 0.050000, trainLoss: 2.1882, trainAccuracy: 0.1778, validationLoss: 2.1012, validationAccuracy: 0.2104:   3%|3         | 6/200 [01:56<34:48, 10.77s/it]
+07668 lr: 0.050000, trainLoss: 2.1994, trainAccuracy: 0.1638, validationLoss: 2.1322, validationAccuracy: 0.2019:   4%|3         | 7/200 [02:09<29:52,  9.29s/it]
+lr: 0.050000, trainLoss: 2.1907, trainAccuracy: 0.1705, validationLoss: 2.1306, validationAccuracy: 0.2195:   4%|3         | 7/200 [02:02<29:52,  9.29s/it]
+07668 lr: 0.050000, trainLoss: 2.1979, trainAccuracy: 0.1688, validationLoss: 2.0990, validationAccuracy: 0.2173:   4%|4         | 8/200 [02:15<26:45,  8.36s/it]
+lr: 0.050000, trainLoss: 2.1994, trainAccuracy: 0.1638, validationLoss: 2.1322, validationAccuracy: 0.2019:   4%|4         | 8/200 [02:09<26:45,  8.36s/it]
+07668 lr: 0.050000, trainLoss: 2.1932, trainAccuracy: 0.1680, validationLoss: 2.1176, validationAccuracy: 0.1829:   4%|4         | 9/200 [02:22<24:41,  7.76s/it]
+lr: 0.050000, trainLoss: 2.1979, trainAccuracy: 0.1688, validationLoss: 2.0990, validationAccuracy: 0.2173:   4%|4         | 9/200 [02:15<24:41,  7.76s/it]
+Found model to train!
+Current allocation for VRAM is 2433.968 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline36MN_hardAugmentation2-6'}
+ Required memory: 847.69 MB
+Currently, there are 2 models in training
+lr: 0.050000, trainLoss: 2.1932, trainAccuracy: 0.1680, validationLoss: 2.1176, validationAccuracy: 0.1829:   5%|5         | 10/200 [02:22<23:25,  7.40s/it]
+/it]
+78268 Namespace(modelName='baseline36MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+07668 lr: 0.050000, trainLoss: 2.2058, trainAccuracy: 0.1427, validationLoss: 2.2088, validationAccuracy: 0.1532:   6%|5         | 11/200 [02:34<22:09,  7.04s/it]
+lr: 0.050000, trainLoss: 2.2065, trainAccuracy: 0.1540, validationLoss: 2.1222, validationAccuracy: 0.1727:   6%|5         | 11/200 [02:28<22:09,  7.04s/it]
+Got model: baseline36MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+78268 Normalizing...
+07668 lr: 0.050000, trainLoss: 2.2041, trainAccuracy: 0.1414, validationLoss: 2.0869, validationAccuracy: 0.1841:   6%|6         | 12/200 [02:41<21:19,  6.81s/it]
+lr: 0.050000, trainLoss: 2.2058, trainAccuracy: 0.1427, validationLoss: 2.2088, validationAccuracy: 0.1532:   6%|6         | 12/200 [02:34<21:19,  6.81s/it]
+07668 lr: 0.050000, trainLoss: 2.2091, trainAccuracy: 0.1420, validationLoss: 2.1101, validationAccuracy: 0.1601:   6%|6         | 13/200 [02:47<20:42,  6.64s/it]
+lr: 0.050000, trainLoss: 2.2041, trainAccuracy: 0.1414, validationLoss: 2.0869, validationAccuracy: 0.1841:   6%|6         | 13/200 [02:41<20:42,  6.64s/it]
+07668 lr: 0.050000, trainLoss: 2.2109, trainAccuracy: 0.1422, validationLoss: 2.1325, validationAccuracy: 0.1789:   7%|7         | 14/200 [02:53<20:13,  6.53s/it]
+lr: 0.050000, trainLoss: 2.2091, trainAccuracy: 0.1420, validationLoss: 2.1101, validationAccuracy: 0.1601:   7%|7         | 14/200 [02:47<20:13,  6.53s/it]
+07668 lr: 0.050000, trainLoss: 2.2065, trainAccuracy: 0.1434, validationLoss: 2.1301, validationAccuracy: 0.1755:   8%|7         | 15/200 [03:00<20:02,  6.50s/it]
+lr: 0.050000, trainLoss: 2.2109, trainAccuracy: 0.1422, validationLoss: 2.1325, validationAccuracy: 0.1789:   8%|7         | 15/200 [02:53<20:02,  6.50s/it]
+tensor([0.4677, 0.4630, 0.4410])
+tensor([0.1961, 0.1930, 0.1888])
+78268 Done normalizing!
+78268 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4677), tensor(0.4630), tensor(0.4410)], std=[tensor(0.1961), tensor(0.1930), tensor(0.1888)], inplace=False)
+)
+78268 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4677), tensor(0.4630), tensor(0.4410)], std=[tensor(0.1961), tensor(0.1930), tensor(0.1888)], inplace=False)
+)
+78268 Starting training...
+
+07668 lr: 0.050000, trainLoss: 2.2093, trainAccuracy: 0.1415, validationLoss: 2.1448, validationAccuracy: 0.1661:   8%|8         | 16/200 [03:06<19:41,  6.42s/it]
+lr: 0.050000, trainLoss: 2.2065, trainAccuracy: 0.1434, validationLoss: 2.1301, validationAccuracy: 0.1755:   8%|8         | 16/200 [03:00<19:41,  6.42s/it]
+07668 lr: 0.025000, trainLoss: 2.1940, trainAccuracy: 0.1459, validationLoss: 2.0592, validationAccuracy: 0.1783:   8%|8         | 17/200 [03:12<19:24,  6.36s/it]
+lr: 0.050000, trainLoss: 2.2093, trainAccuracy: 0.1415, validationLoss: 2.1448, validationAccuracy: 0.1661:   8%|8         | 17/200 [03:06<19:24,  6.36s/it]
+07668 lr: 0.025000, trainLoss: 2.1913, trainAccuracy: 0.1539, validationLoss: 2.0816, validationAccuracy: 0.1700:   9%|9         | 18/200 [03:18<19:13,  6.34s/it]
+lr: 0.025000, trainLoss: 2.1940, trainAccuracy: 0.1459, validationLoss: 2.0592, validationAccuracy: 0.1783:   9%|9         | 18/200 [03:12<19:13,  6.34s/it]
+07668 lr: 0.025000, trainLoss: 2.1953, trainAccuracy: 0.1487, validationLoss: 2.0804, validationAccuracy: 0.1870:  10%|9         | 19/200 [03:24<19:00,  6.30s/it]
+lr: 0.025000, trainLoss: 2.1913, trainAccuracy: 0.1539, validationLoss: 2.0816, validationAccuracy: 0.1700:  10%|9         | 19/200 [03:18<19:00,  6.30s/it]
+07668 lr: 0.025000, trainLoss: 2.1923, trainAccuracy: 0.1453, validationLoss: 2.0791, validationAccuracy: 0.1901:  10%|#         | 20/200 [03:31<18:51,  6.29s/it]
+lr: 0.025000, trainLoss: 2.1953, trainAccuracy: 0.1487, validationLoss: 2.0804, validationAccuracy: 0.1870:  10%|#         | 20/200 [03:24<18:51,  6.29s/it]
+07668 lr: 0.025000, trainLoss: 2.1882, trainAccuracy: 0.1504, validationLoss: 2.0991, validationAccuracy: 0.1822:  10%|#         | 21/200 [03:37<18:43,  6.27s/it]
+lr: 0.025000, trainLoss: 2.1923, trainAccuracy: 0.1453, validationLoss: 2.0791, validationAccuracy: 0.1901:  10%|#         | 21/200 [03:31<18:43,  6.27s/it]
+07668 lr: 0.025000, trainLoss: 2.1878, trainAccuracy: 0.1516, validationLoss: 2.0857, validationAccuracy: 0.1866:  11%|#1        | 22/200 [03:43<18:36,  6.27s/it]
+lr: 0.025000, trainLoss: 2.1882, trainAccuracy: 0.1504, validationLoss: 2.0991, validationAccuracy: 0.1822:  11%|#1        | 22/200 [03:37<18:36,  6.27s/it]
+07668 lr: 0.012500, trainLoss: 2.1773, trainAccuracy: 0.1556, validationLoss: 2.0812, validationAccuracy: 0.2073:  12%|#1        | 23/200 [03:49<18:27,  6.26s/it]
+lr: 0.025000, trainLoss: 2.1878, trainAccuracy: 0.1516, validationLoss: 2.0857, validationAccuracy: 0.1866:  12%|#1        | 23/200 [03:43<18:27,  6.26s/it]
+07668 lr: 0.012500, trainLoss: 2.1759, trainAccuracy: 0.1560, validationLoss: 2.0533, validationAccuracy: 0.2087:  12%|#2        | 24/200 [03:56<18:21,  6.26s/it]
+lr: 0.012500, trainLoss: 2.1773, trainAccuracy: 0.1556, validationLoss: 2.0812, validationAccuracy: 0.2073:  12%|#2        | 24/200 [03:49<18:21,  6.26s/it]
+07668 lr: 0.012500, trainLoss: 2.1712, trainAccuracy: 0.1619, validationLoss: 2.0638, validationAccuracy: 0.2198:  12%|#2        | 25/200 [04:02<18:15,  6.26s/it]
+lr: 0.012500, trainLoss: 2.1759, trainAccuracy: 0.1560, validationLoss: 2.0533, validationAccuracy: 0.2087:  12%|#2        | 25/200 [03:56<18:15,  6.26s/it]
+07668 lr: 0.012500, trainLoss: 2.1721, trainAccuracy: 0.1599, validationLoss: 2.0803, validationAccuracy: 0.1971:  13%|#3        | 26/200 [04:08<18:11,  6.27s/it]
+lr: 0.012500, trainLoss: 2.1712, trainAccuracy: 0.1619, validationLoss: 2.0638, validationAccuracy: 0.2198:  13%|#3        | 26/200 [04:02<18:11,  6.27s/it]
+07668 lr: 0.012500, trainLoss: 2.1766, trainAccuracy: 0.1594, validationLoss: 2.0998, validationAccuracy: 0.2089:  14%|#3        | 27/200 [04:15<18:10,  6.30s/it]
+lr: 0.012500, trainLoss: 2.1721, trainAccuracy: 0.1599, validationLoss: 2.0803, validationAccuracy: 0.1971:  14%|#3        | 27/200 [04:08<18:10,  6.30s/it]
+07668 lr: 0.012500, trainLoss: 2.1732, trainAccuracy: 0.1585, validationLoss: 2.1256, validationAccuracy: 0.1832:  14%|#4        | 28/200 [04:21<17:59,  6.27s/it]
+lr: 0.012500, trainLoss: 2.1766, trainAccuracy: 0.1594, validationLoss: 2.0998, validationAccuracy: 0.2089:  14%|#4        | 28/200 [04:15<17:59,  6.27s/it]
+78268 lr: 0.000000, trainLoss: 2.3565, trainAccuracy: 0.1022, validationLoss: 2.3381, validationAccuracy: 0.1116:   0%|          | 0/200 [01:26<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+07668 lr: 0.006250, trainLoss: 2.1667, trainAccuracy: 0.1635, validationLoss: 2.0622, validationAccuracy: 0.2102:  14%|#4        | 29/200 [04:30<17:56,  6.29s/it]
+lr: 0.012500, trainLoss: 2.1732, trainAccuracy: 0.1585, validationLoss: 2.1256, validationAccuracy: 0.1832:  14%|#4        | 29/200 [04:21<17:56,  6.29s/it]
+78268 lr: 0.010000, trainLoss: 2.2213, trainAccuracy: 0.1601, validationLoss: 1.9764, validationAccuracy: 0.2593:   0%|          | 1/200 [01:32<4:47:24, 86.65s/it]
+lr: 0.000000, trainLoss: 2.3565, trainAccuracy: 0.1022, validationLoss: 2.3381, validationAccuracy: 0.1116:   0%|          | 1/200 [01:26<4:47:24, 86.65s/it]
+07668 lr: 0.006250, trainLoss: 2.1603, trainAccuracy: 0.1651, validationLoss: 2.0610, validationAccuracy: 0.2056:  15%|#5        | 30/200 [04:39<20:05,  7.09s/it]
+lr: 0.006250, trainLoss: 2.1667, trainAccuracy: 0.1635, validationLoss: 2.0622, validationAccuracy: 0.2102:  15%|#5        | 30/200 [04:30<20:05,  7.09s/it]
+78268 lr: 0.020000, trainLoss: 2.1662, trainAccuracy: 0.1863, validationLoss: 2.0280, validationAccuracy: 0.2361:   1%|1         | 2/200 [01:38<2:09:37, 39.28s/it]
+lr: 0.010000, trainLoss: 2.2213, trainAccuracy: 0.1601, validationLoss: 1.9764, validationAccuracy: 0.2593:   1%|1         | 2/200 [01:32<2:09:37, 39.28s/it]
+78268 lr: 0.030000, trainLoss: 2.1658, trainAccuracy: 0.1838, validationLoss: 1.9830, validationAccuracy: 0.2569:   2%|1         | 3/200 [01:45<1:19:19, 24.16s/it]
+lr: 0.020000, trainLoss: 2.1662, trainAccuracy: 0.1863, validationLoss: 2.0280, validationAccuracy: 0.2361:   2%|1         | 3/200 [01:38<1:19:19, 24.16s/it]
+07668 lr: 0.006250, trainLoss: 2.1611, trainAccuracy: 0.1678, validationLoss: 2.0858, validationAccuracy: 0.2221:  16%|#5        | 31/200 [04:48<21:39,  7.69s/it]
+lr: 0.006250, trainLoss: 2.1603, trainAccuracy: 0.1651, validationLoss: 2.0610, validationAccuracy: 0.2056:  16%|#5        | 31/200 [04:39<21:39,  7.69s/it]
+78268 lr: 0.040000, trainLoss: 2.1804, trainAccuracy: 0.1774, validationLoss: 2.0821, validationAccuracy: 0.2416:   2%|2         | 4/200 [01:52<56:44, 17.37s/it]
+lr: 0.030000, trainLoss: 2.1658, trainAccuracy: 0.1838, validationLoss: 1.9830, validationAccuracy: 0.2569:   2%|2         | 4/200 [01:45<56:44, 17.37s/it]  
+07668 lr: 0.006250, trainLoss: 2.1540, trainAccuracy: 0.1738, validationLoss: 2.0316, validationAccuracy: 0.2215:  16%|#6        | 32/200 [04:57<22:25,  8.01s/it]
+lr: 0.006250, trainLoss: 2.1611, trainAccuracy: 0.1678, validationLoss: 2.0858, validationAccuracy: 0.2221:  16%|#6        | 32/200 [04:48<22:25,  8.01s/it]
+78268 lr: 0.050000, trainLoss: 2.1944, trainAccuracy: 0.1724, validationLoss: 2.1476, validationAccuracy: 0.2024:   2%|2         | 5/200 [01:58<43:21, 13.34s/it]
+lr: 0.040000, trainLoss: 2.1804, trainAccuracy: 0.1774, validationLoss: 2.0821, validationAccuracy: 0.2416:   2%|2         | 5/200 [01:52<43:21, 13.34s/it]
+78268 lr: 0.050000, trainLoss: 2.1967, trainAccuracy: 0.1668, validationLoss: 2.1593, validationAccuracy: 0.1869:   3%|3         | 6/200 [02:05<35:24, 10.95s/it]
+lr: 0.050000, trainLoss: 2.1944, trainAccuracy: 0.1724, validationLoss: 2.1476, validationAccuracy: 0.2024:   3%|3         | 6/200 [01:58<35:24, 10.95s/it]
+07668 lr: 0.006250, trainLoss: 2.1615, trainAccuracy: 0.1710, validationLoss: 2.0526, validationAccuracy: 0.2095:  16%|#6        | 33/200 [05:06<23:13,  8.35s/it]
+lr: 0.006250, trainLoss: 2.1540, trainAccuracy: 0.1738, validationLoss: 2.0316, validationAccuracy: 0.2215:  16%|#6        | 33/200 [04:57<23:13,  8.35s/it]
+78268 lr: 0.050000, trainLoss: 2.2061, trainAccuracy: 0.1565, validationLoss: 2.1042, validationAccuracy: 0.2015:   4%|3         | 7/200 [02:11<31:00,  9.64s/it]
+lr: 0.050000, trainLoss: 2.1967, trainAccuracy: 0.1668, validationLoss: 2.1593, validationAccuracy: 0.1869:   4%|3         | 7/200 [02:05<31:00,  9.64s/it]
+07668 lr: 0.006250, trainLoss: 2.1587, trainAccuracy: 0.1702, validationLoss: 2.1020, validationAccuracy: 0.1924:  17%|#7        | 34/200 [05:14<23:38,  8.54s/it]
+lr: 0.006250, trainLoss: 2.1615, trainAccuracy: 0.1710, validationLoss: 2.0526, validationAccuracy: 0.2095:  17%|#7        | 34/200 [05:06<23:38,  8.54s/it]
+78268 lr: 0.050000, trainLoss: 2.1961, trainAccuracy: 0.1665, validationLoss: 2.0725, validationAccuracy: 0.2464:   4%|4         | 8/200 [02:16<27:09,  8.49s/it]
+lr: 0.050000, trainLoss: 2.2061, trainAccuracy: 0.1565, validationLoss: 2.1042, validationAccuracy: 0.2015:   4%|4         | 8/200 [02:11<27:09,  8.49s/it]
+07668 lr: 0.006250, trainLoss: 2.1580, trainAccuracy: 0.1704, validationLoss: 2.0580, validationAccuracy: 0.2255:  18%|#7        | 35/200 [05:22<23:10,  8.43s/it]
+lr: 0.006250, trainLoss: 2.1587, trainAccuracy: 0.1702, validationLoss: 2.1020, validationAccuracy: 0.1924:  18%|#7        | 35/200 [05:14<23:10,  8.43s/it]
+78268 lr: 0.050000, trainLoss: 2.1992, trainAccuracy: 0.1640, validationLoss: 2.1478, validationAccuracy: 0.1987:   4%|4         | 9/200 [02:22<23:53,  7.51s/it]
+lr: 0.050000, trainLoss: 2.1961, trainAccuracy: 0.1665, validationLoss: 2.0725, validationAccuracy: 0.2464:   4%|4         | 9/200 [02:16<23:53,  7.51s/it]
+Found model to train!
+Current allocation for VRAM is 3039.612 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline13MN_hardAugmentation2-6'}
+ Required memory: 605.644 MB
+Currently, there are 3 models in training
+78268 lr: 0.050000, trainLoss: 2.2085, trainAccuracy: 0.1567, validationLoss: 2.1219, validationAccuracy: 0.2246:   5%|5         | 10/200 [02:28<21:45,  6.87s/it]
+lr: 0.050000, trainLoss: 2.1992, trainAccuracy: 0.1640, validationLoss: 2.1478, validationAccuracy: 0.1987:   5%|5         | 10/200 [02:22<21:45,  6.87s/it]
+07668 lr: 0.006250, trainLoss: 2.1569, trainAccuracy: 0.1714, validationLoss: 2.0911, validationAccuracy: 0.1875:  18%|#8        | 36/200 [05:30<22:41,  8.30s/it]
+lr: 0.006250, trainLoss: 2.1580, trainAccuracy: 0.1704, validationLoss: 2.0580, validationAccuracy: 0.2255:  18%|#8        | 36/200 [05:22<22:41,  8.30s/it]
+14120 Namespace(modelName='baseline13MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+78268 lr: 0.050000, trainLoss: 2.2019, trainAccuracy: 0.1572, validationLoss: 2.1485, validationAccuracy: 0.1936:   6%|5         | 11/200 [02:34<20:40,  6.57s/it]
+lr: 0.050000, trainLoss: 2.2085, trainAccuracy: 0.1567, validationLoss: 2.1219, validationAccuracy: 0.2246:   6%|5         | 11/200 [02:28<20:40,  6.57s/it]
+Got model: baseline13MN
+Using device: cuda
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Test passed!
+14120 Normalizing...
+07668 lr: 0.003125, trainLoss: 2.1507, trainAccuracy: 0.1774, validationLoss: 2.0343, validationAccuracy: 0.2339:  18%|#8        | 37/200 [05:40<22:17,  8.21s/it]
+lr: 0.006250, trainLoss: 2.1569, trainAccuracy: 0.1714, validationLoss: 2.0911, validationAccuracy: 0.1875:  18%|#8        | 37/200 [05:30<22:17,  8.21s/it]
+78268 lr: 0.050000, trainLoss: 2.2091, trainAccuracy: 0.1551, validationLoss: 2.0417, validationAccuracy: 0.2352:   6%|6         | 12/200 [02:40<20:28,  6.54s/it]
+lr: 0.050000, trainLoss: 2.2019, trainAccuracy: 0.1572, validationLoss: 2.1485, validationAccuracy: 0.1936:   6%|6         | 12/200 [02:34<20:28,  6.54s/it]
+78268 lr: 0.050000, trainLoss: 2.2175, trainAccuracy: 0.1533, validationLoss: 2.0841, validationAccuracy: 0.2023:   6%|6         | 13/200 [02:47<20:13,  6.49s/it]
+lr: 0.050000, trainLoss: 2.2091, trainAccuracy: 0.1551, validationLoss: 2.0417, validationAccuracy: 0.2352:   6%|6         | 13/200 [02:40<20:13,  6.49s/it]
+07668 lr: 0.003125, trainLoss: 2.1462, trainAccuracy: 0.1779, validationLoss: 2.0149, validationAccuracy: 0.2400:  19%|#9        | 38/200 [05:49<23:22,  8.66s/it]
+lr: 0.003125, trainLoss: 2.1507, trainAccuracy: 0.1774, validationLoss: 2.0343, validationAccuracy: 0.2339:  19%|#9        | 38/200 [05:40<23:22,  8.66s/it]

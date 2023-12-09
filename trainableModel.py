@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torch.utils.data import DataLoader, Dataset, random_split, Subset, TensorDataset
+from torch.utils.data import DataLoader, Dataset, random_split, Subset, TensorDataset, SubsetRandomSampler
 from blocks import *
 import torchvision
 import numpy as np
@@ -47,10 +47,17 @@ class TrainingParameters():
         validationDataset = Subset(fullDataset, valIndices)
         testDataset = Subset(fullDataset, testIndices)
         
+        self.trainTransform = trainTransform
+        self.valTestTransform = valTestTransform
+        
         # Apply the training and valTest transforms to each dataset. These are what will be passed to the DataLoaders during training
-        self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=trainTransform)
-        self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=valTestTransform)
-        self.testDataset = TransformableSubset(testDataset, fullDataset, transform=valTestTransform)
+        # self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=trainTransform)
+        # self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=valTestTransform)
+        # self.testDataset = TransformableSubset(testDataset, fullDataset, transform=valTestTransform)
+
+        self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=None)
+        self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=None)
+        self.testDataset = TransformableSubset(testDataset, fullDataset, transform=None)
 
         self.epochs = epochs
         self.warmupEpochs = warmupEpochs
@@ -110,7 +117,7 @@ class TrainableModel():
         return filename
     
     
-    def loadDataToMemory(self, dataloader:DataLoader) -> TensorDataset:
+    def loadDataToMemory(self, dataloader:DataLoader, transform) -> TensorDataset:
         
         """
         Loads the entire dataset into GPU memory for faster training
@@ -133,10 +140,11 @@ class TrainableModel():
         allImages = torch.cat(images, dim=0).to(self.device)
         allLabels = torch.cat(labels, dim=0).to(self.device)
 
+        # return DynamicTransformDataset(TensorDataset(allImages, allLabels), transform)
         return TensorDataset(allImages, allLabels)
     
     
-    def trainEpoch(self, dataloader:DataLoader, optimizer:torch.optim.Optimizer, freezeModel=False) -> tuple[float, float]:
+    def trainEpoch(self, dataloader:DataLoader, optimizer:torch.optim.Optimizer, freezeModel=False, transform=None) -> tuple[float, float]:
     
         """
         Trains self.model for a single epoch when given a dataloader and optimizer.
@@ -165,7 +173,12 @@ class TrainableModel():
         device = self.device
         
         for features, labels in dataloader:
-            x, y = features, labels #features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
+            if transform is not None:
+                x, y = transform(features), labels
+
+            else:
+                x, y = features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
+
 
             if not freezeModel:
                 optimizer.zero_grad()
@@ -208,23 +221,19 @@ class TrainableModel():
         patience = self.trainingParameters.plateuPatience
         
         model = ResidualCNN(network=self.model).to(self.device)
+        
+        # TODO: Try compilation again if data loading was bottleneck
+        # model = torch.jit.script(model)
+        
         optimizer = torch.optim.SGD(params=model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay, nesterov=nesterov)
 
         warmup = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1e-9, end_factor=1, total_iters=warmupEpochs)
         plateuScheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=factor, patience=patience, threshold=1e-3, cooldown=2)
 
-        trainLoader = self.trainLoader
-        validationLoader = self.validationLoader
-
-        # Load datasets into memory and use the in-memory loaders during training
-        trainMemoryDataset = self.loadDataToMemory(trainLoader)
-        trainLoader = DataLoader(trainMemoryDataset, batch_size=trainLoader.batch_size, shuffle=True)
-
-        validationMemoryDataset = self.loadDataToMemory(trainLoader)
-        validationLoader = DataLoader(validationMemoryDataset, batch_size=validationLoader.batch_size, shuffle=False)
+        trainLoaderOG = self.trainLoader
+        validationLoaderOG = self.validationLoader
 
         MODEL_PARAM_COUNT = sum(p.numel() for p in model.parameters() if p.requires_grad)
-
 
         writerPath = f'{RUNS_DIR}/{self.getSaveFileName()}'
         modelPath = f'{MODELS_DIR}/{self.getSaveFileName()}'
@@ -242,10 +251,21 @@ class TrainableModel():
 
         best_val_acc = 0
 
+        # Load a new dataset to memory without transforms, then do transforms in GPU memory each epoch
+        trainMemoryDataset = self.loadDataToMemory(trainLoaderOG, self.trainingParameters.trainTransform)
+        trainLoader = DataLoader(trainMemoryDataset, batch_size=trainLoaderOG.batch_size, shuffle=True)
+
+        validationMemoryDataset = self.loadDataToMemory(validationLoaderOG, self.trainingParameters.valTestTransform)
+        validationLoader = DataLoader(validationMemoryDataset, batch_size=validationLoaderOG.batch_size, shuffle=False)
+
         pbar = tqdm(range(startingEpochs, epochs+startingEpochs))
         for epoch in pbar:
-            trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
-            validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True)
+
+            trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer, transform=self.trainingParameters.trainTransform)
+            validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True, transform=self.trainingParameters.valTestTransform)
+
+            # trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
+            # validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True)
 
             if epoch < warmupEpochs:
                 currentLr = warmup.get_last_lr()[0]

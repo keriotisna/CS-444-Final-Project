@@ -77,8 +77,8 @@ def main():
     parser.add_argument('--saveResults', type=int, help='Whether or not to write Tensorboard events or save models')
     parser.add_argument('--customNormalization', type=str, help='The name of the custom normalization to use instead of normalizing by the current dataset.')
 
-    USE_CUSTOM_PARAMETERS = True
-    PROFILE_TRAINING = True
+    USE_CUSTOM_PARAMETERS = False
+    PROFILE_TRAINING = False
 
     # Initialize a process ID to identify which subprocesses correspond to which output
     # Yes, PIDs may not be unique. No, I don't care

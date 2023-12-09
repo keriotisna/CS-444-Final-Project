@@ -1,0 +1,44 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+29479 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+29479 Normalizing...
+tensor([0.4636, 0.4578, 0.4426])
+tensor([0.1999, 0.1981, 0.1942])
+29479 Done normalizing!
+29479 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4636), tensor(0.4578), tensor(0.4426)], std=[tensor(0.1999), tensor(0.1981), tensor(0.1942)], inplace=False)
+)
+29479 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4636), tensor(0.4578), tensor(0.4426)], std=[tensor(0.1999), tensor(0.1981), tensor(0.1942)], inplace=False)
+)
+29479 Starting training...
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 181, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 176, in main
+    trainCompleteModel()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 159, in trainCompleteModel
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 294, in train
+    gpuDatasetTrain = GPUDataset(self.trainingParameters.trainDataset)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 34, in __init__
+    self.data, self.targets = self.load_data_to_gpu(full_dataset)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 38, in load_data_to_gpu
+    data, targets = ...
+TypeError: cannot unpack non-iterable ellipsis object

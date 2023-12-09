@@ -1,0 +1,201 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+29487 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+29487 Normalizing...
+tensor([0.4699, 0.4648, 0.4431])
+tensor([0.2014, 0.1980, 0.1960])
+29487 Done normalizing!
+29487 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4699), tensor(0.4648), tensor(0.4431)], std=[tensor(0.2014), tensor(0.1980), tensor(0.1960)], inplace=False)
+)
+29487 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4699), tensor(0.4648), tensor(0.4431)], std=[tensor(0.2014), tensor(0.1980), tensor(0.1960)], inplace=False)
+)
+29487 Starting training...
+
+29487 lr: 0.000000, trainLoss: 2.3841, trainAccuracy: 0.1011, validationLoss: 2.3764, validationAccuracy: 0.1007:   0%|          | 0/200 [01:24<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+Found model to train!
+Current allocation for VRAM is 2433.968 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline36MN_hardAugmentation2-6'}
+ Required memory: 847.69 MB
+Currently, there are 2 models in training
+66401 Namespace(modelName='baseline36MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline36MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+66401 Normalizing...
+29487 lr: 0.010000, trainLoss: 2.2669, trainAccuracy: 0.1408, validationLoss: 2.0510, validationAccuracy: 0.2142:   0%|          | 1/200 [02:49<4:40:41, 84.63s/it]
+lr: 0.000000, trainLoss: 2.3841, trainAccuracy: 0.1011, validationLoss: 2.3764, validationAccuracy: 0.1007:   0%|          | 1/200 [01:24<4:40:41, 84.63s/it]
+tensor([0.4612, 0.4521, 0.4300])
+tensor([0.1971, 0.1921, 0.1859])
+66401 Done normalizing!
+66401 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4612), tensor(0.4521), tensor(0.4300)], std=[tensor(0.1971), tensor(0.1921), tensor(0.1859)], inplace=False)
+)
+66401 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4612), tensor(0.4521), tensor(0.4300)], std=[tensor(0.1971), tensor(0.1921), tensor(0.1859)], inplace=False)
+)
+66401 Starting training...
+
+29487 lr: 0.020000, trainLoss: 2.1771, trainAccuracy: 0.1768, validationLoss: 2.1011, validationAccuracy: 0.2027:   1%|1         | 2/200 [04:22<4:39:24, 84.67s/it]
+lr: 0.010000, trainLoss: 2.2669, trainAccuracy: 0.1408, validationLoss: 2.0510, validationAccuracy: 0.2142:   1%|1         | 2/200 [02:49<4:39:24, 84.67s/it]
+66401 lr: 0.000000, trainLoss: 2.3664, trainAccuracy: 0.1016, validationLoss: 2.3782, validationAccuracy: 0.1038:   0%|          | 0/200 [01:29<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+Found model to train!
+VRAM is 3039.612 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline13MN_hardAugmentation2-6'}
+ Required memory: 605.644 MB
+Currently, there are 3 models in training
+02883 Namespace(modelName='baseline13MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline13MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+02883 Normalizing...
+29487 lr: 0.030000, trainLoss: 2.1670, trainAccuracy: 0.1836, validationLoss: 2.0867, validationAccuracy: 0.2243:   2%|1         | 3/200 [05:56<4:50:57, 88.62s/it]
+lr: 0.020000, trainLoss: 2.1771, trainAccuracy: 0.1768, validationLoss: 2.1011, validationAccuracy: 0.2027:   2%|1         | 3/200 [04:22<4:50:57, 88.62s/it]
+tensor([0.4504, 0.4420, 0.4191])
+02883 Done normalizing!
+tensor([0.1919, 0.1886, 0.1834])
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+02883 normalizedTrainTransform: Compose(
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+)
+      Normalize(mean=[tensor(0.4504), tensor(0.4420), tensor(0.4191)], std=[tensor(0.1919), tensor(0.1886), tensor(0.1834)], inplace=False)
+02883 normalizedValTestTransform: Compose(
+      Identity()
+)
+02883 Starting training...
+      Normalize(mean=[tensor(0.4504), tensor(0.4420), tensor(0.4191)], std=[tensor(0.1919), tensor(0.1886), tensor(0.1834)], inplace=False)
+
+66401 lr: 0.010000, trainLoss: 2.2549, trainAccuracy: 0.1410, validationLoss: 2.0771, validationAccuracy: 0.2337:   0%|          | 1/200 [03:04<4:58:14, 89.92s/it]
+lr: 0.000000, trainLoss: 2.3664, trainAccuracy: 0.1016, validationLoss: 2.3782, validationAccuracy: 0.1038:   0%|          | 1/200 [01:29<4:58:14, 89.92s/it]
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 116, in spawn_main
+  0%|          | 0/200 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    exitcode = _main(fd, parent_sentinel)
+lr: 0.010000, trainLoss: 2.2549, trainAccuracy: 0.1410, validationLoss: 2.0771, validationAccuracy: 0.2337:   1%|1         | 2/200 [03:04<5:05:04, 92.45s/it]Traceback (most recent call last):
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 125, in _main
+    prepare(preparation_data)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 287, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 289, in run_path
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 96, in _run_module_code
+    return _run_module_code(code, init_globals, run_name,
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 6, in <module>
+    from utils import validateModelIO, getNormalizedTransforms
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\utils.py", line 12, in <module>
+  File "<string>", line 1, in <module>
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 116, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 125, in _main
+    prepare(preparation_data)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\multiprocessing\spawn.py", line 287, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 6, in <module>
+    from utils import validateModelIO, getNormalizedTransforms
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\utils.py", line 12, in <module>
+    from models import *
+Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\models.py", line 4300, in <module>
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\models.py", line 4235, in <module>
+    *[
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\models.py", line 4303, in <listcomp>
+    *[
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\models.py", line 4237, in <listcomp>
+    DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=1, encode_factor2=1, activation=nn.PReLU()),
+    DoubleEncodeBottleneckBlock2(in_channels=512, encode_factor1=1, encode_factor2=1, activation=nn.PReLU()),
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\blocks.py", line 546, in __init__
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\blocks.py", line 546, in __init__
+    nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels2, kernel_size=kernel_size, stride=1, padding=1),
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 447, in __init__
+    nn.Conv2d(in_channels=encode_channels2, out_channels=encode_channels2, kernel_size=kernel_size, stride=1, padding=1),
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 447, in __init__
+    super().__init__(
+    super().__init__(
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 141, in __init__
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 141, in __init__
+    self.reset_parameters()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 147, in reset_parameters
+    self.reset_parameters()
+    init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\conv.py", line 147, in reset_parameters
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\init.py", line 419, in kaiming_uniform_
+    init.kaiming_uniform_(self.weight, a=math.sqrt(5))
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\init.py", line 419, in kaiming_uniform_
+    return tensor.uniform_(-bound, bound)
+KeyboardInterrupt
+    return tensor.uniform_(-bound, bound)
+KeyboardInterrupt
+lr: 0.030000, trainLoss: 2.1670, trainAccuracy: 0.1836, validationLoss: 2.0867, validationAccuracy: 0.2243:   2%|2         | 4/200 [05:56<4:56:21, 90.72s/it]
+lr: 0.030000, trainLoss: 2.1670, trainAccuracy: 0.1836, validationLoss: 2.0867, validationAccuracy: 0.2243:   2%|2         | 4/200 [06:34<5:22:11, 98.63s/it]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 181, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 176, in main
+    trainCompleteModel()
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainModel.py", line 159, in trainCompleteModel
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 307, in train
+    trainMemoryDataset = self.loadDataToMemory(trainLoaderOG, self.trainingParameters.trainTransform)
+  File "C:\Users\Nicholas\Documents\Desktop\SCHOOL\GRADUATE Offline\CS 444\Final Project\CS-444-Final-Project\trainableModel.py", line 169, in loadDataToMemory
+    for imageBatch, labelBatch in dataloader:
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1328, in _next_data
+    idx, data = self._get_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1284, in _get_data
+    success, data = self._try_get_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1132, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\queue.py", line 180, in get
+    self.not_empty.wait(remaining)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+^C

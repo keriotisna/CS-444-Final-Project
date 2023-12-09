@@ -1,0 +1,377 @@
+Found model to train!
+Current allocation for VRAM is 4543.505 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'residualNetv1_vanilla'}
+ Required memory: 4543.5045 MB
+Currently, there are 1 models in training
+92691 Namespace(modelName='residualNetv1_vanilla', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: residualNetv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+92691 Normalizing...
+tensor([0.4950, 0.4874, 0.4536])
+tensor([0.2043, 0.2020, 0.2050])
+92691 Done normalizing!
+92691 normalizedTrainTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4950), tensor(0.4874), tensor(0.4536)], std=[tensor(0.2043), tensor(0.2020), tensor(0.2050)], inplace=False)
+)
+92691 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4950), tensor(0.4874), tensor(0.4536)], std=[tensor(0.2043), tensor(0.2020), tensor(0.2050)], inplace=False)
+)
+92691 Starting training...
+
+92691 lr: 0.000000, trainLoss: 2.3241, trainAccuracy: 0.0991, validationLoss: 2.3270, validationAccuracy: 0.0919:   0%|          | 0/200 [00:09<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+92691 lr: 0.010000, trainLoss: 1.7817, trainAccuracy: 0.3223, validationLoss: 1.4824, validationAccuracy: 0.4592:   0%|          | 1/200 [00:18<31:53,  9.61s/it]
+lr: 0.000000, trainLoss: 2.3241, trainAccuracy: 0.0991, validationLoss: 2.3270, validationAccuracy: 0.0919:   0%|          | 1/200 [00:09<31:53,  9.61s/it]
+92691 lr: 0.020000, trainLoss: 1.2854, trainAccuracy: 0.5343, validationLoss: 1.3353, validationAccuracy: 0.5334:   1%|1         | 2/200 [00:27<30:33,  9.26s/it]
+lr: 0.010000, trainLoss: 1.7817, trainAccuracy: 0.3223, validationLoss: 1.4824, validationAccuracy: 0.4592:   1%|1         | 2/200 [00:18<30:33,  9.26s/it]
+92691 lr: 0.030000, trainLoss: 1.0980, trainAccuracy: 0.6137, validationLoss: 1.3416, validationAccuracy: 0.5307:   2%|1         | 3/200 [00:36<30:02,  9.15s/it]
+lr: 0.020000, trainLoss: 1.2854, trainAccuracy: 0.5343, validationLoss: 1.3353, validationAccuracy: 0.5334:   2%|1         | 3/200 [00:27<30:02,  9.15s/it]
+92691 lr: 0.040000, trainLoss: 1.0116, trainAccuracy: 0.6510, validationLoss: 1.2540, validationAccuracy: 0.5729:   2%|2         | 4/200 [00:45<29:41,  9.09s/it]
+lr: 0.030000, trainLoss: 1.0980, trainAccuracy: 0.6137, validationLoss: 1.3416, validationAccuracy: 0.5307:   2%|2         | 4/200 [00:36<29:41,  9.09s/it]
+92691 lr: 0.050000, trainLoss: 0.9764, trainAccuracy: 0.6651, validationLoss: 1.1891, validationAccuracy: 0.6051:   2%|2         | 5/200 [00:54<29:37,  9.12s/it]
+lr: 0.040000, trainLoss: 1.0116, trainAccuracy: 0.6510, validationLoss: 1.2540, validationAccuracy: 0.5729:   2%|2         | 5/200 [00:45<29:37,  9.12s/it]
+92691 lr: 0.050000, trainLoss: 0.9021, trainAccuracy: 0.6934, validationLoss: 1.1317, validationAccuracy: 0.6239:   3%|3         | 6/200 [01:03<29:20,  9.08s/it]
+lr: 0.050000, trainLoss: 0.9764, trainAccuracy: 0.6651, validationLoss: 1.1891, validationAccuracy: 0.6051:   3%|3         | 6/200 [00:54<29:20,  9.08s/it]
+92691 lr: 0.050000, trainLoss: 0.8584, trainAccuracy: 0.7113, validationLoss: 1.1917, validationAccuracy: 0.6062:   4%|3         | 7/200 [01:12<29:05,  9.05s/it]
+lr: 0.050000, trainLoss: 0.9021, trainAccuracy: 0.6934, validationLoss: 1.1317, validationAccuracy: 0.6239:   4%|3         | 7/200 [01:03<29:05,  9.05s/it]
+92691 lr: 0.050000, trainLoss: 0.8214, trainAccuracy: 0.7208, validationLoss: 1.1021, validationAccuracy: 0.6310:   4%|4         | 8/200 [01:21<28:54,  9.03s/it]
+lr: 0.050000, trainLoss: 0.8584, trainAccuracy: 0.7113, validationLoss: 1.1917, validationAccuracy: 0.6062:   4%|4         | 8/200 [01:12<28:54,  9.03s/it]
+92691 lr: 0.050000, trainLoss: 0.8167, trainAccuracy: 0.7232, validationLoss: 1.2559, validationAccuracy: 0.5731:   4%|4         | 9/200 [01:30<28:43,  9.02s/it]
+lr: 0.050000, trainLoss: 0.8214, trainAccuracy: 0.7208, validationLoss: 1.1021, validationAccuracy: 0.6310:   4%|4         | 9/200 [01:21<28:43,  9.02s/it]
+Found model to train!
+Current allocation for VRAM is 8095.111 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_vanilla'}
+ Required memory: 3551.607 MB
+Currently, there are 2 models in training
+92691 lr: 0.050000, trainLoss: 0.8039, trainAccuracy: 0.7275, validationLoss: 1.0575, validationAccuracy: 0.6430:   5%|5         | 10/200 [01:39<28:31,  9.01s/it]
+lr: 0.050000, trainLoss: 0.8167, trainAccuracy: 0.7232, validationLoss: 1.2559, validationAccuracy: 0.5731:   5%|5         | 10/200 [01:30<28:31,  9.01s/it]
+27306 Namespace(modelName='bottleneckResidualv1_vanilla', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: bottleneckResidualv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+27306 Normalizing...
+92691 lr: 0.050000, trainLoss: 0.7771, trainAccuracy: 0.7363, validationLoss: 0.9506, validationAccuracy: 0.6834:   6%|5         | 11/200 [01:48<28:24,  9.02s/it]
+lr: 0.050000, trainLoss: 0.8039, trainAccuracy: 0.7275, validationLoss: 1.0575, validationAccuracy: 0.6430:   6%|5         | 11/200 [01:39<28:24,  9.02s/it]
+92691 lr: 0.050000, trainLoss: 0.7661, trainAccuracy: 0.7401, validationLoss: 0.9456, validationAccuracy: 0.6826:   6%|6         | 12/200 [01:57<28:20,  9.05s/it]
+lr: 0.050000, trainLoss: 0.7771, trainAccuracy: 0.7363, validationLoss: 0.9506, validationAccuracy: 0.6834:   6%|6         | 12/200 [01:48<28:20,  9.05s/it]
+92691 lr: 0.050000, trainLoss: 0.7644, trainAccuracy: 0.7423, validationLoss: 1.0600, validationAccuracy: 0.6438:   6%|6         | 13/200 [02:07<28:12,  9.05s/it]
+lr: 0.050000, trainLoss: 0.7661, trainAccuracy: 0.7401, validationLoss: 0.9456, validationAccuracy: 0.6826:   6%|6         | 13/200 [01:57<28:12,  9.05s/it]
+tensor([0.4879, 0.4803, 0.4478])
+tensor([0.2045, 0.2013, 0.2035])
+27306 Done normalizing!
+      Identity()
+ainTransform: Compose(
+      Normalize(mean=[tensor(0.4879), tensor(0.4803), tensor(0.4478)], std=[tensor(0.2045), tensor(0.2013), tensor(0.2035)], inplace=False)
+)
+27306 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4879), tensor(0.4803), tensor(0.4478)], std=[tensor(0.2045), tensor(0.2013), tensor(0.2035)], inplace=False)
+)
+27306 Starting training...
+92691 lr: 0.050000, trainLoss: 0.7581, trainAccuracy: 0.7471, validationLoss: 1.1082, validationAccuracy: 0.6363:   7%|7         | 14/200 [02:16<28:05,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7644, trainAccuracy: 0.7423, validationLoss: 1.0600, validationAccuracy: 0.6438:   7%|7         | 14/200 [02:07<28:05,  9.06s/it]
+92691 lr: 0.050000, trainLoss: 0.7423, trainAccuracy: 0.7491, validationLoss: 0.9065, validationAccuracy: 0.7046:   8%|7         | 15/200 [02:25<27:56,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7581, trainAccuracy: 0.7471, validationLoss: 1.1082, validationAccuracy: 0.6363:   8%|7         | 15/200 [02:16<27:56,  9.06s/it]
+92691 lr: 0.050000, trainLoss: 0.7476, trainAccuracy: 0.7493, validationLoss: 1.1895, validationAccuracy: 0.6133:   8%|8         | 16/200 [02:34<27:46,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7423, trainAccuracy: 0.7491, validationLoss: 0.9065, validationAccuracy: 0.7046:   8%|8         | 16/200 [02:25<27:46,  9.06s/it]
+92691 lr: 0.050000, trainLoss: 0.7435, trainAccuracy: 0.7498, validationLoss: 0.9341, validationAccuracy: 0.6917:   8%|8         | 17/200 [02:43<27:37,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7476, trainAccuracy: 0.7493, validationLoss: 1.1895, validationAccuracy: 0.6133:   8%|8         | 17/200 [02:34<27:37,  9.06s/it]
+92691 lr: 0.050000, trainLoss: 0.7395, trainAccuracy: 0.7513, validationLoss: 0.8343, validationAccuracy: 0.7166:   9%|9         | 18/200 [02:52<27:29,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7435, trainAccuracy: 0.7498, validationLoss: 0.9341, validationAccuracy: 0.6917:   9%|9         | 18/200 [02:43<27:29,  9.06s/it]
+92691 lr: 0.050000, trainLoss: 0.7304, trainAccuracy: 0.7563, validationLoss: 0.9959, validationAccuracy: 0.6669:  10%|9         | 19/200 [03:01<27:20,  9.06s/it]
+lr: 0.050000, trainLoss: 0.7395, trainAccuracy: 0.7513, validationLoss: 0.8343, validationAccuracy: 0.7166:  10%|9         | 19/200 [02:52<27:20,  9.06s/it]
+
+27306 lr: 0.000000, trainLoss: 2.3395, trainAccuracy: 0.0998, validationLoss: 2.3376, validationAccuracy: 0.1041:   0%|          | 0/200 [00:09<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+92691 lr: 0.050000, trainLoss: 0.7424, trainAccuracy: 0.7503, validationLoss: 1.0236, validationAccuracy: 0.6532:  10%|#         | 20/200 [03:15<27:11,  9.07s/it]
+lr: 0.050000, trainLoss: 0.7304, trainAccuracy: 0.7563, validationLoss: 0.9959, validationAccuracy: 0.6669:  10%|#         | 20/200 [03:01<27:11,  9.07s/it]
+27306 lr: 0.010000, trainLoss: 2.0853, trainAccuracy: 0.2076, validationLoss: 1.7672, validationAccuracy: 0.3232:   0%|          | 1/200 [00:18<32:12,  9.71s/it]
+lr: 0.000000, trainLoss: 2.3395, trainAccuracy: 0.0998, validationLoss: 2.3376, validationAccuracy: 0.1041:   0%|          | 1/200 [00:09<32:12,  9.71s/it]
+92691 lr: 0.050000, trainLoss: 0.7302, trainAccuracy: 0.7548, validationLoss: 0.9088, validationAccuracy: 0.7005:  10%|#         | 21/200 [03:29<31:04, 10.42s/it]
+lr: 0.050000, trainLoss: 0.7424, trainAccuracy: 0.7503, validationLoss: 1.0236, validationAccuracy: 0.6532:  10%|#         | 21/200 [03:15<31:04, 10.42s/it]
+27306 lr: 0.020000, trainLoss: 1.5664, trainAccuracy: 0.4071, validationLoss: 1.4197, validationAccuracy: 0.4865:   1%|1         | 2/200 [00:27<30:45,  9.32s/it]
+lr: 0.010000, trainLoss: 2.0853, trainAccuracy: 0.2076, validationLoss: 1.7672, validationAccuracy: 0.3232:   1%|1         | 2/200 [00:18<30:45,  9.32s/it]
+27306 lr: 0.030000, trainLoss: 1.3207, trainAccuracy: 0.5211, validationLoss: 1.2743, validationAccuracy: 0.5417:   2%|1         | 3/200 [00:37<30:18,  9.23s/it]
+lr: 0.020000, trainLoss: 1.5664, trainAccuracy: 0.4071, validationLoss: 1.4197, validationAccuracy: 0.4865:   2%|1         | 3/200 [00:27<30:18,  9.23s/it]
+92691 lr: 0.050000, trainLoss: 0.7282, trainAccuracy: 0.7552, validationLoss: 1.0134, validationAccuracy: 0.6570:  11%|#1        | 22/200 [03:43<34:13, 11.54s/it]
+lr: 0.050000, trainLoss: 0.7302, trainAccuracy: 0.7548, validationLoss: 0.9088, validationAccuracy: 0.7005:  11%|#1        | 22/200 [03:29<34:13, 11.54s/it]
+27306 lr: 0.040000, trainLoss: 1.1758, trainAccuracy: 0.5814, validationLoss: 1.3489, validationAccuracy: 0.5134:   2%|2         | 4/200 [00:46<30:04,  9.21s/it]
+lr: 0.030000, trainLoss: 1.3207, trainAccuracy: 0.5211, validationLoss: 1.2743, validationAccuracy: 0.5417:   2%|2         | 4/200 [00:37<30:04,  9.21s/it]
+92691 lr: 0.025000, trainLoss: 0.5685, trainAccuracy: 0.8094, validationLoss: 0.8102, validationAccuracy: 0.7261:  12%|#1        | 23/200 [03:57<36:08, 12.25s/it]
+lr: 0.050000, trainLoss: 0.7282, trainAccuracy: 0.7552, validationLoss: 1.0134, validationAccuracy: 0.6570:  12%|#1        | 23/200 [03:43<36:08, 12.25s/it]
+27306 lr: 0.050000, trainLoss: 1.1045, trainAccuracy: 0.6133, validationLoss: 1.1512, validationAccuracy: 0.5978:   2%|2         | 5/200 [00:55<29:58,  9.22s/it]
+lr: 0.040000, trainLoss: 1.1758, trainAccuracy: 0.5814, validationLoss: 1.3489, validationAccuracy: 0.5134:   2%|2         | 5/200 [00:46<29:58,  9.22s/it]
+27306 lr: 0.050000, trainLoss: 1.0162, trainAccuracy: 0.6441, validationLoss: 1.1686, validationAccuracy: 0.5892:   3%|3         | 6/200 [01:04<29:41,  9.18s/it]
+lr: 0.050000, trainLoss: 1.1045, trainAccuracy: 0.6133, validationLoss: 1.1512, validationAccuracy: 0.5978:   3%|3         | 6/200 [00:55<29:41,  9.18s/it]
+92691 lr: 0.025000, trainLoss: 0.5589, trainAccuracy: 0.8143, validationLoss: 0.7636, validationAccuracy: 0.7446:  12%|#2        | 24/200 [04:11<37:35, 12.81s/it]
+lr: 0.025000, trainLoss: 0.5685, trainAccuracy: 0.8094, validationLoss: 0.8102, validationAccuracy: 0.7261:  12%|#2        | 24/200 [03:57<37:35, 12.81s/it]
+27306 lr: 0.050000, trainLoss: 0.9453, trainAccuracy: 0.6759, validationLoss: 1.0915, validationAccuracy: 0.6163:   4%|3         | 7/200 [01:13<29:27,  9.16s/it]
+lr: 0.050000, trainLoss: 1.0162, trainAccuracy: 0.6441, validationLoss: 1.1686, validationAccuracy: 0.5892:   4%|3         | 7/200 [01:04<29:27,  9.16s/it]
+27306 lr: 0.050000, trainLoss: 0.8985, trainAccuracy: 0.6901, validationLoss: 1.3825, validationAccuracy: 0.5286:   4%|4         | 8/200 [01:22<29:13,  9.13s/it]
+lr: 0.050000, trainLoss: 0.9453, trainAccuracy: 0.6759, validationLoss: 1.0915, validationAccuracy: 0.6163:   4%|4         | 8/200 [01:13<29:13,  9.13s/it]
+92691 lr: 0.025000, trainLoss: 0.5584, trainAccuracy: 0.8123, validationLoss: 0.8542, validationAccuracy: 0.7211:  12%|#2        | 25/200 [04:25<38:32, 13.21s/it]
+lr: 0.025000, trainLoss: 0.5589, trainAccuracy: 0.8143, validationLoss: 0.7636, validationAccuracy: 0.7446:  12%|#2        | 25/200 [04:11<38:32, 13.21s/it]
+Found model to train!
+Current allocation for VRAM is 10130.686 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'highwayResidualv1_vanilla'}
+ Required memory: 2035.5749999999998 MB
+Currently, there are 3 models in training
+27306 lr: 0.050000, trainLoss: 0.8955, trainAccuracy: 0.6928, validationLoss: 1.0925, validationAccuracy: 0.6199:   4%|4         | 9/200 [01:31<29:11,  9.17s/it]
+lr: 0.050000, trainLoss: 0.8985, trainAccuracy: 0.6901, validationLoss: 1.3825, validationAccuracy: 0.5286:   4%|4         | 9/200 [01:22<29:11,  9.17s/it]
+92691 lr: 0.025000, trainLoss: 0.5453, trainAccuracy: 0.8176, validationLoss: 0.8739, validationAccuracy: 0.7143:  13%|#3        | 26/200 [04:39<39:01, 13.46s/it]
+lr: 0.025000, trainLoss: 0.5584, trainAccuracy: 0.8123, validationLoss: 0.8542, validationAccuracy: 0.7211:  13%|#3        | 26/200 [04:25<39:01, 13.46s/it]
+27306 lr: 0.050000, trainLoss: 0.8587, trainAccuracy: 0.7056, validationLoss: 1.2875, validationAccuracy: 0.5646:   5%|5         | 10/200 [01:41<28:54,  9.13s/it]
+lr: 0.050000, trainLoss: 0.8955, trainAccuracy: 0.6928, validationLoss: 1.0925, validationAccuracy: 0.6199:   5%|5         | 10/200 [01:31<28:54,  9.13s/it]
+99394 Namespace(modelName='highwayResidualv1_vanilla', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: highwayResidualv1
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+99394 Normalizing...
+27306 lr: 0.050000, trainLoss: 0.8381, trainAccuracy: 0.7132, validationLoss: 1.0615, validationAccuracy: 0.6364:   6%|5         | 11/200 [01:50<28:46,  9.14s/it]
+lr: 0.050000, trainLoss: 0.8587, trainAccuracy: 0.7056, validationLoss: 1.2875, validationAccuracy: 0.5646:   6%|5         | 11/200 [01:41<28:46,  9.14s/it]
+92691 lr: 0.025000, trainLoss: 0.5493, trainAccuracy: 0.8182, validationLoss: 0.7403, validationAccuracy: 0.7551:  14%|#3        | 27/200 [04:53<39:24, 13.67s/it]
+lr: 0.025000, trainLoss: 0.5453, trainAccuracy: 0.8176, validationLoss: 0.8739, validationAccuracy: 0.7143:  14%|#3        | 27/200 [04:39<39:24, 13.67s/it]
+27306 lr: 0.050000, trainLoss: 0.8265, trainAccuracy: 0.7179, validationLoss: 0.9469, validationAccuracy: 0.6790:   6%|6         | 12/200 [01:59<28:41,  9.16s/it]
+lr: 0.050000, trainLoss: 0.8381, trainAccuracy: 0.7132, validationLoss: 1.0615, validationAccuracy: 0.6364:   6%|6         | 12/200 [01:50<28:41,  9.16s/it]
+92691 lr: 0.025000, trainLoss: 0.5375, trainAccuracy: 0.8205, validationLoss: 0.6642, validationAccuracy: 0.7774:  14%|#4        | 28/200 [05:07<39:42, 13.85s/it]
+lr: 0.025000, trainLoss: 0.5493, trainAccuracy: 0.8182, validationLoss: 0.7403, validationAccuracy: 0.7551:  14%|#4        | 28/200 [04:53<39:42, 13.85s/it]
+tensor([0.4929, 0.4811, 0.4416])
+tensor([0.2010, 0.1998, 0.2018])
+99394 Done normalizing!
+      Identity()
+99394 normalizedTrainTransform: Compose(
+      Normalize(mean=[tensor(0.4929), tensor(0.4811), tensor(0.4416)], std=[tensor(0.2010), tensor(0.1998), tensor(0.2018)], inplace=False)
+)
+99394 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4929), tensor(0.4811), tensor(0.4416)], std=[tensor(0.2010), tensor(0.1998), tensor(0.2018)], inplace=False)
+)
+99394 Starting training...
+27306 lr: 0.050000, trainLoss: 0.8032, trainAccuracy: 0.7279, validationLoss: 1.0184, validationAccuracy: 0.6640:   6%|6         | 13/200 [02:08<28:36,  9.18s/it]
+lr: 0.050000, trainLoss: 0.8265, trainAccuracy: 0.7179, validationLoss: 0.9469, validationAccuracy: 0.6790:   6%|6         | 13/200 [01:59<28:36,  9.18s/it]
+27306 lr: 0.050000, trainLoss: 0.8150, trainAccuracy: 0.7214, validationLoss: 0.9045, validationAccuracy: 0.6815:   7%|7         | 14/200 [02:18<28:31,  9.20s/it]
+lr: 0.050000, trainLoss: 0.8032, trainAccuracy: 0.7279, validationLoss: 1.0184, validationAccuracy: 0.6640:   7%|7         | 14/200 [02:08<28:31,  9.20s/it]
+92691 lr: 0.025000, trainLoss: 0.5316, trainAccuracy: 0.8233, validationLoss: 0.7031, validationAccuracy: 0.7657:  14%|#4        | 29/200 [05:21<39:39, 13.92s/it]
+lr: 0.025000, trainLoss: 0.5375, trainAccuracy: 0.8205, validationLoss: 0.6642, validationAccuracy: 0.7774:  14%|#4        | 29/200 [05:07<39:39, 13.92s/it]
+27306 lr: 0.050000, trainLoss: 0.7876, trainAccuracy: 0.7335, validationLoss: 1.1158, validationAccuracy: 0.6136:   8%|7         | 15/200 [02:27<28:31,  9.25s/it]
+lr: 0.050000, trainLoss: 0.8150, trainAccuracy: 0.7214, validationLoss: 0.9045, validationAccuracy: 0.6815:   8%|7         | 15/200 [02:18<28:31,  9.25s/it]
+92691 lr: 0.025000, trainLoss: 0.5281, trainAccuracy: 0.8234, validationLoss: 0.7145, validationAccuracy: 0.7701:  15%|#5        | 30/200 [05:35<39:29, 13.94s/it]
+lr: 0.025000, trainLoss: 0.5316, trainAccuracy: 0.8233, validationLoss: 0.7031, validationAccuracy: 0.7657:  15%|#5        | 30/200 [05:21<39:29, 13.94s/it]
+27306 lr: 0.050000, trainLoss: 0.7949, trainAccuracy: 0.7277, validationLoss: 0.9591, validationAccuracy: 0.6827:   8%|8         | 16/200 [02:36<28:19,  9.24s/it]
+lr: 0.050000, trainLoss: 0.7876, trainAccuracy: 0.7335, validationLoss: 1.1158, validationAccuracy: 0.6136:   8%|8         | 16/200 [02:27<28:19,  9.24s/it]
+lr: 0.050000, trainLoss: 0.7949, trainAccuracy: 0.7277, validationLoss: 0.9591, validationAccuracy: 0.6827:   8%|8         | 17/200 [02:36<28:05,  9.21s/it]
+/it]
+92691 lr: 0.025000, trainLoss: 0.5337, trainAccuracy: 0.8212, validationLoss: 0.8156, validationAccuracy: 0.7269:  16%|#5        | 31/200 [05:50<39:22, 13.98s/it]
+lr: 0.025000, trainLoss: 0.5281, trainAccuracy: 0.8234, validationLoss: 0.7145, validationAccuracy: 0.7701:  16%|#5        | 31/200 [05:35<39:22, 13.98s/it]
+27306 lr: 0.050000, trainLoss: 0.7867, trainAccuracy: 0.7342, validationLoss: 0.9988, validationAccuracy: 0.6622:   9%|9         | 18/200 [02:54<28:02,  9.25s/it]
+lr: 0.050000, trainLoss: 0.7919, trainAccuracy: 0.7290, validationLoss: 1.0878, validationAccuracy: 0.6262:   9%|9         | 18/200 [02:45<28:02,  9.25s/it]
+
+92691 lr: 0.025000, trainLoss: 0.5359, trainAccuracy: 0.8230, validationLoss: 0.6908, validationAccuracy: 0.7702:  16%|#6        | 32/200 [06:04<39:13, 14.01s/it]
+lr: 0.025000, trainLoss: 0.5337, trainAccuracy: 0.8212, validationLoss: 0.8156, validationAccuracy: 0.7269:  16%|#6        | 32/200 [05:50<39:13, 14.01s/it]
+27306 lr: 0.025000, trainLoss: 0.6266, trainAccuracy: 0.7886, validationLoss: 0.8944, validationAccuracy: 0.7074:  10%|9         | 19/200 [03:04<27:51,  9.23s/it]
+lr: 0.050000, trainLoss: 0.7867, trainAccuracy: 0.7342, validationLoss: 0.9988, validationAccuracy: 0.6622:  10%|9         | 19/200 [02:54<27:51,  9.23s/it]
+99394 lr: 0.000000, trainLoss: 2.3599, trainAccuracy: 0.0996, validationLoss: 2.3550, validationAccuracy: 0.1025:   0%|          | 0/200 [00:09<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+27306 lr: 0.025000, trainLoss: 0.6222, trainAccuracy: 0.7910, validationLoss: 0.8126, validationAccuracy: 0.7356:  10%|#         | 20/200 [03:15<27:58,  9.32s/it]
+lr: 0.025000, trainLoss: 0.6266, trainAccuracy: 0.7886, validationLoss: 0.8944, validationAccuracy: 0.7074:  10%|#         | 20/200 [03:04<27:58,  9.32s/it]
+99394 lr: 0.010000, trainLoss: 1.9454, trainAccuracy: 0.2671, validationLoss: 1.6977, validationAccuracy: 0.3727:   0%|          | 1/200 [00:18<31:06,  9.38s/it]
+lr: 0.000000, trainLoss: 2.3599, trainAccuracy: 0.0996, validationLoss: 2.3550, validationAccuracy: 0.1025:   0%|          | 1/200 [00:09<31:06,  9.38s/it]
+92691 lr: 0.012500, trainLoss: 0.3806, trainAccuracy: 0.8757, validationLoss: 0.6453, validationAccuracy: 0.7916:  16%|#6        | 33/200 [06:24<39:06, 14.05s/it]
+lr: 0.025000, trainLoss: 0.5359, trainAccuracy: 0.8230, validationLoss: 0.6908, validationAccuracy: 0.7702:  16%|#6        | 33/200 [06:04<39:06, 14.05s/it]
+27306 lr: 0.025000, trainLoss: 0.6092, trainAccuracy: 0.7929, validationLoss: 0.9359, validationAccuracy: 0.6904:  10%|#         | 21/200 [03:27<29:36,  9.93s/it]
+lr: 0.025000, trainLoss: 0.6222, trainAccuracy: 0.7910, validationLoss: 0.8126, validationAccuracy: 0.7356:  10%|#         | 21/200 [03:15<29:36,  9.93s/it]
+99394 lr: 0.020000, trainLoss: 1.4042, trainAccuracy: 0.4881, validationLoss: 1.3702, validationAccuracy: 0.5186:   1%|1         | 2/200 [00:26<29:33,  8.96s/it]
+lr: 0.010000, trainLoss: 1.9454, trainAccuracy: 0.2671, validationLoss: 1.6977, validationAccuracy: 0.3727:   1%|1         | 2/200 [00:18<29:33,  8.96s/it]
+99394 lr: 0.030000, trainLoss: 1.1349, trainAccuracy: 0.6023, validationLoss: 1.1445, validationAccuracy: 0.6095:   2%|1         | 3/200 [00:35<28:49,  8.78s/it]
+lr: 0.020000, trainLoss: 1.4042, trainAccuracy: 0.4881, validationLoss: 1.3702, validationAccuracy: 0.5186:   2%|1         | 3/200 [00:26<28:49,  8.78s/it]
+27306 lr: 0.025000, trainLoss: 0.6153, trainAccuracy: 0.7915, validationLoss: 0.7427, validationAccuracy: 0.7498:  11%|#1        | 22/200 [03:38<30:44, 10.36s/it]
+lr: 0.025000, trainLoss: 0.6092, trainAccuracy: 0.7929, validationLoss: 0.9359, validationAccuracy: 0.6904:  11%|#1        | 22/200 [03:27<30:44, 10.36s/it]
+92691 lr: 0.012500, trainLoss: 0.3604, trainAccuracy: 0.8810, validationLoss: 0.5618, validationAccuracy: 0.8120:  17%|#7        | 34/200 [06:45<44:22, 16.04s/it]
+lr: 0.012500, trainLoss: 0.3806, trainAccuracy: 0.8757, validationLoss: 0.6453, validationAccuracy: 0.7916:  17%|#7        | 34/200 [06:24<44:22, 16.04s/it]
+99394 lr: 0.040000, trainLoss: 1.0176, trainAccuracy: 0.6515, validationLoss: 1.0823, validationAccuracy: 0.6384:   2%|2         | 4/200 [00:44<28:47,  8.81s/it]
+lr: 0.030000, trainLoss: 1.1349, trainAccuracy: 0.6023, validationLoss: 1.1445, validationAccuracy: 0.6095:   2%|2         | 4/200 [00:35<28:47,  8.81s/it]
+27306 lr: 0.025000, trainLoss: 0.5982, trainAccuracy: 0.7992, validationLoss: 0.8632, validationAccuracy: 0.7104:  12%|#1        | 23/200 [03:49<31:28, 10.67s/it]
+lr: 0.025000, trainLoss: 0.6153, trainAccuracy: 0.7915, validationLoss: 0.7427, validationAccuracy: 0.7498:  12%|#1        | 23/200 [03:38<31:28, 10.67s/it]
+99394 lr: 0.050000, trainLoss: 0.9670, trainAccuracy: 0.6711, validationLoss: 1.2147, validationAccuracy: 0.5923:   2%|2         | 5/200 [00:53<28:59,  8.92s/it]
+lr: 0.040000, trainLoss: 1.0176, trainAccuracy: 0.6515, validationLoss: 1.0823, validationAccuracy: 0.6384:   2%|2         | 5/200 [00:44<28:59,  8.92s/it]
+27306 lr: 0.025000, trainLoss: 0.5997, trainAccuracy: 0.7985, validationLoss: 0.8056, validationAccuracy: 0.7325:  12%|#2        | 24/200 [04:01<31:53, 10.87s/it]
+lr: 0.025000, trainLoss: 0.5982, trainAccuracy: 0.7992, validationLoss: 0.8632, validationAccuracy: 0.7104:  12%|#2        | 24/200 [03:49<31:53, 10.87s/it]
+92691 lr: 0.012500, trainLoss: 0.3582, trainAccuracy: 0.8827, validationLoss: 0.5977, validationAccuracy: 0.8035:  18%|#7        | 35/200 [07:05<47:43, 17.35s/it]
+lr: 0.012500, trainLoss: 0.3604, trainAccuracy: 0.8810, validationLoss: 0.5618, validationAccuracy: 0.8120:  18%|#7        | 35/200 [06:45<47:43, 17.35s/it]
+99394 lr: 0.050000, trainLoss: 0.9265, trainAccuracy: 0.6857, validationLoss: 1.1701, validationAccuracy: 0.6202:   3%|3         | 6/200 [01:02<28:50,  8.92s/it]
+lr: 0.050000, trainLoss: 0.9670, trainAccuracy: 0.6711, validationLoss: 1.2147, validationAccuracy: 0.5923:   3%|3         | 6/200 [00:53<28:50,  8.92s/it]
+27306 lr: 0.025000, trainLoss: 0.5930, trainAccuracy: 0.8004, validationLoss: 0.8688, validationAccuracy: 0.7061:  12%|#2        | 25/200 [04:12<32:11, 11.04s/it]
+lr: 0.025000, trainLoss: 0.5997, trainAccuracy: 0.7985, validationLoss: 0.8056, validationAccuracy: 0.7325:  12%|#2        | 25/200 [04:01<32:11, 11.04s/it]
+99394 lr: 0.050000, trainLoss: 0.8962, trainAccuracy: 0.6990, validationLoss: 1.1568, validationAccuracy: 0.6098:   4%|3         | 7/200 [01:11<28:31,  8.87s/it]
+lr: 0.050000, trainLoss: 0.9265, trainAccuracy: 0.6857, validationLoss: 1.1701, validationAccuracy: 0.6202:   4%|3         | 7/200 [01:02<28:31,  8.87s/it]
+99394 lr: 0.050000, trainLoss: 0.8711, trainAccuracy: 0.7063, validationLoss: 1.0200, validationAccuracy: 0.6512:   4%|4         | 8/200 [01:19<28:22,  8.87s/it]
+lr: 0.050000, trainLoss: 0.8962, trainAccuracy: 0.6990, validationLoss: 1.1568, validationAccuracy: 0.6098:   4%|4         | 8/200 [01:11<28:22,  8.87s/it]
+27306 lr: 0.025000, trainLoss: 0.5900, trainAccuracy: 0.8016, validationLoss: 0.8268, validationAccuracy: 0.7321:  13%|#3        | 26/200 [04:24<32:10, 11.10s/it]
+lr: 0.025000, trainLoss: 0.5930, trainAccuracy: 0.8004, validationLoss: 0.8688, validationAccuracy: 0.7061:  13%|#3        | 26/200 [04:12<32:10, 11.10s/it]
+92691 lr: 0.012500, trainLoss: 0.3635, trainAccuracy: 0.8805, validationLoss: 0.5332, validationAccuracy: 0.8277:  18%|#8        | 36/200 [07:26<50:00, 18.30s/it]
+lr: 0.012500, trainLoss: 0.3582, trainAccuracy: 0.8827, validationLoss: 0.5977, validationAccuracy: 0.8035:  18%|#8        | 36/200 [07:05<50:00, 18.30s/it]
+99394 lr: 0.050000, trainLoss: 0.8519, trainAccuracy: 0.7134, validationLoss: 1.1093, validationAccuracy: 0.6234:   4%|4         | 9/200 [01:28<28:06,  8.83s/it]
+lr: 0.050000, trainLoss: 0.8711, trainAccuracy: 0.7063, validationLoss: 1.0200, validationAccuracy: 0.6512:   4%|4         | 9/200 [01:19<28:06,  8.83s/it]
+27306 lr: 0.012500, trainLoss: 0.4446, trainAccuracy: 0.8512, validationLoss: 0.6793, validationAccuracy: 0.7690:  14%|#3        | 27/200 [04:35<32:14, 11.18s/it]
+lr: 0.025000, trainLoss: 0.5900, trainAccuracy: 0.8016, validationLoss: 0.8268, validationAccuracy: 0.7321:  14%|#3        | 27/200 [04:24<32:14, 11.18s/it]
+99394 lr: 0.050000, trainLoss: 0.8561, trainAccuracy: 0.7110, validationLoss: 1.0164, validationAccuracy: 0.6583:   5%|5         | 10/200 [01:37<27:44,  8.76s/it]
+lr: 0.050000, trainLoss: 0.8519, trainAccuracy: 0.7134, validationLoss: 1.1093, validationAccuracy: 0.6234:   5%|5         | 10/200 [01:28<27:44,  8.76s/it]
+92691 lr: 0.012500, trainLoss: 0.3572, trainAccuracy: 0.8821, validationLoss: 0.6580, validationAccuracy: 0.7851:  18%|#8        | 37/200 [07:46<51:30, 18.96s/it]
+lr: 0.012500, trainLoss: 0.3635, trainAccuracy: 0.8805, validationLoss: 0.5332, validationAccuracy: 0.8277:  18%|#8        | 37/200 [07:26<51:30, 18.96s/it]
+lr: 0.012500, trainLoss: 0.4446, trainAccuracy: 0.8512, validationLoss: 0.6793, validationAccuracy: 0.7690:  14%|#4        | 28/200 [04:35<32:32, 11.35s/it]
+27306 lr: 0.012500, trainLoss: 0.4278, trainAccuracy: 0.8582, validationLoss: 0.6607, validationAccuracy: 0.7829:  14%|#4        | 28/200 [04:47<32:32, 11.35s/it]
+99394 lr: 0.050000, trainLoss: 0.8477, trainAccuracy: 0.7139, validationLoss: 0.9010, validationAccuracy: 0.6926:   6%|5         | 11/200 [01:46<27:40,  8.79s/it]
+lr: 0.050000, trainLoss: 0.8561, trainAccuracy: 0.7110, validationLoss: 1.0164, validationAccuracy: 0.6583:   6%|5         | 11/200 [01:37<27:40,  8.79s/it]
+99394 lr: 0.050000, trainLoss: 0.8432, trainAccuracy: 0.7144, validationLoss: 1.1248, validationAccuracy: 0.6165:   6%|6         | 12/200 [01:54<27:29,  8.78s/it]
+lr: 0.050000, trainLoss: 0.8477, trainAccuracy: 0.7139, validationLoss: 0.9010, validationAccuracy: 0.6926:   6%|6         | 12/200 [01:46<27:29,  8.78s/it]
+27306 lr: 0.012500, trainLoss: 0.4378, trainAccuracy: 0.8534, validationLoss: 0.6890, validationAccuracy: 0.7731:  14%|#4        | 29/200 [04:58<32:21, 11.35s/it]
+lr: 0.012500, trainLoss: 0.4278, trainAccuracy: 0.8582, validationLoss: 0.6607, validationAccuracy: 0.7829:  14%|#4        | 29/200 [04:47<32:21, 11.35s/it]
+92691 lr: 0.012500, trainLoss: 0.3532, trainAccuracy: 0.8825, validationLoss: 0.6347, validationAccuracy: 0.7935:  19%|#9        | 38/200 [08:07<52:25, 19.41s/it]
+lr: 0.012500, trainLoss: 0.3572, trainAccuracy: 0.8821, validationLoss: 0.6580, validationAccuracy: 0.7851:  19%|#9        | 38/200 [07:46<52:25, 19.41s/it]
+99394 lr: 0.050000, trainLoss: 0.8316, trainAccuracy: 0.7183, validationLoss: 1.0767, validationAccuracy: 0.6433:   6%|6         | 13/200 [02:03<27:28,  8.81s/it]
+lr: 0.050000, trainLoss: 0.8432, trainAccuracy: 0.7144, validationLoss: 1.1248, validationAccuracy: 0.6165:   6%|6         | 13/200 [01:54<27:28,  8.81s/it]
+27306 lr: 0.012500, trainLoss: 0.4223, trainAccuracy: 0.8587, validationLoss: 0.6894, validationAccuracy: 0.7745:  15%|#5        | 30/200 [05:09<32:19, 11.41s/it]
+lr: 0.012500, trainLoss: 0.4378, trainAccuracy: 0.8534, validationLoss: 0.6890, validationAccuracy: 0.7731:  15%|#5        | 30/200 [04:58<32:19, 11.41s/it]
+99394 lr: 0.050000, trainLoss: 0.8265, trainAccuracy: 0.7226, validationLoss: 0.9891, validationAccuracy: 0.6655:   7%|7         | 14/200 [02:12<27:14,  8.79s/it]
+lr: 0.050000, trainLoss: 0.8316, trainAccuracy: 0.7183, validationLoss: 1.0767, validationAccuracy: 0.6433:   7%|7         | 14/200 [02:03<27:14,  8.79s/it]
+27306 lr: 0.012500, trainLoss: 0.4208, trainAccuracy: 0.8597, validationLoss: 0.7139, validationAccuracy: 0.7738:  16%|#5        | 31/200 [05:21<32:04, 11.39s/it]
+lr: 0.012500, trainLoss: 0.4223, trainAccuracy: 0.8587, validationLoss: 0.6894, validationAccuracy: 0.7745:  16%|#5        | 31/200 [05:09<32:04, 11.39s/it]
+99394 lr: 0.050000, trainLoss: 0.8168, trainAccuracy: 0.7235, validationLoss: 1.0385, validationAccuracy: 0.6513:   8%|7         | 15/200 [02:21<27:12,  8.82s/it]
+lr: 0.050000, trainLoss: 0.8265, trainAccuracy: 0.7226, validationLoss: 0.9891, validationAccuracy: 0.6655:   8%|7         | 15/200 [02:12<27:12,  8.82s/it]
+92691 lr: 0.012500, trainLoss: 0.3427, trainAccuracy: 0.8880, validationLoss: 0.6589, validationAccuracy: 0.7950:  20%|#9        | 39/200 [08:27<52:52, 19.71s/it]
+lr: 0.012500, trainLoss: 0.3532, trainAccuracy: 0.8825, validationLoss: 0.6347, validationAccuracy: 0.7935:  20%|#9        | 39/200 [08:07<52:52, 19.71s/it]
+99394 lr: 0.025000, trainLoss: 0.6582, trainAccuracy: 0.7783, validationLoss: 1.0151, validationAccuracy: 0.6702:   8%|8         | 16/200 [02:30<27:00,  8.81s/it]
+lr: 0.050000, trainLoss: 0.8168, trainAccuracy: 0.7235, validationLoss: 1.0385, validationAccuracy: 0.6513:   8%|8         | 16/200 [02:21<27:00,  8.81s/it]
+27306 lr: 0.012500, trainLoss: 0.4143, trainAccuracy: 0.8618, validationLoss: 0.7251, validationAccuracy: 0.7611:  16%|#6        | 32/200 [05:32<31:51, 11.38s/it]
+lr: 0.012500, trainLoss: 0.4208, trainAccuracy: 0.8597, validationLoss: 0.7139, validationAccuracy: 0.7738:  16%|#6        | 32/200 [05:21<31:51, 11.38s/it]
+99394 lr: 0.025000, trainLoss: 0.6572, trainAccuracy: 0.7803, validationLoss: 0.8347, validationAccuracy: 0.7215:   8%|8         | 17/200 [02:38<26:47,  8.78s/it]
+lr: 0.025000, trainLoss: 0.6582, trainAccuracy: 0.7783, validationLoss: 1.0151, validationAccuracy: 0.6702:   8%|8         | 17/200 [02:30<26:47,  8.78s/it]
+27306 lr: 0.006250, trainLoss: 0.2782, trainAccuracy: 0.9104, validationLoss: 0.5415, validationAccuracy: 0.8281:  16%|#6        | 33/200 [05:44<31:39, 11.37s/it]
+lr: 0.012500, trainLoss: 0.4143, trainAccuracy: 0.8618, validationLoss: 0.7251, validationAccuracy: 0.7611:  16%|#6        | 33/200 [05:32<31:39, 11.37s/it]
+92691 lr: 0.012500, trainLoss: 0.3406, trainAccuracy: 0.8881, validationLoss: 0.6382, validationAccuracy: 0.7918:  20%|##        | 40/200 [08:48<53:14, 19.97s/it]
+lr: 0.012500, trainLoss: 0.3427, trainAccuracy: 0.8880, validationLoss: 0.6589, validationAccuracy: 0.7950:  20%|##        | 40/200 [08:27<53:14, 19.97s/it]
+99394 lr: 0.025000, trainLoss: 0.6437, trainAccuracy: 0.7858, validationLoss: 0.7943, validationAccuracy: 0.7341:   9%|9         | 18/200 [02:47<26:44,  8.82s/it]
+lr: 0.025000, trainLoss: 0.6572, trainAccuracy: 0.7803, validationLoss: 0.8347, validationAccuracy: 0.7215:   9%|9         | 18/200 [02:38<26:44,  8.82s/it]
+27306 lr: 0.006250, trainLoss: 0.2371, trainAccuracy: 0.9243, validationLoss: 0.5977, validationAccuracy: 0.8151:  17%|#7        | 34/200 [05:55<31:32, 11.40s/it]
+lr: 0.006250, trainLoss: 0.2782, trainAccuracy: 0.9104, validationLoss: 0.5415, validationAccuracy: 0.8281:  17%|#7        | 34/200 [05:44<31:32, 11.40s/it]
+99394 lr: 0.025000, trainLoss: 0.6357, trainAccuracy: 0.7875, validationLoss: 0.7745, validationAccuracy: 0.7439:  10%|9         | 19/200 [02:56<26:34,  8.81s/it]
+lr: 0.025000, trainLoss: 0.6437, trainAccuracy: 0.7858, validationLoss: 0.7943, validationAccuracy: 0.7341:  10%|9         | 19/200 [02:47<26:34,  8.81s/it]
+92691 lr: 0.006250, trainLoss: 0.2090, trainAccuracy: 0.9343, validationLoss: 0.5296, validationAccuracy: 0.8368:  20%|##        | 41/200 [09:08<53:15, 20.10s/it]
+lr: 0.012500, trainLoss: 0.3406, trainAccuracy: 0.8881, validationLoss: 0.6382, validationAccuracy: 0.7918:  20%|##        | 41/200 [08:48<53:15, 20.10s/it]
+27306 lr: 0.006250, trainLoss: 0.2406, trainAccuracy: 0.9219, validationLoss: 0.5883, validationAccuracy: 0.8168:  18%|#7        | 35/200 [06:06<31:19, 11.39s/it]
+lr: 0.006250, trainLoss: 0.2371, trainAccuracy: 0.9243, validationLoss: 0.5977, validationAccuracy: 0.8151:  18%|#7        | 35/200 [05:55<31:19, 11.39s/it]
+99394 lr: 0.025000, trainLoss: 0.6322, trainAccuracy: 0.7883, validationLoss: 0.8319, validationAccuracy: 0.7219:  10%|#         | 20/200 [03:05<26:28,  8.82s/it]
+lr: 0.025000, trainLoss: 0.6357, trainAccuracy: 0.7875, validationLoss: 0.7745, validationAccuracy: 0.7439:  10%|#         | 20/200 [02:56<26:28,  8.82s/it]
+99394 lr: 0.025000, trainLoss: 0.6267, trainAccuracy: 0.7917, validationLoss: 0.7955, validationAccuracy: 0.7377:  10%|#         | 21/200 [03:14<26:12,  8.79s/it]
+lr: 0.025000, trainLoss: 0.6322, trainAccuracy: 0.7883, validationLoss: 0.8319, validationAccuracy: 0.7219:  10%|#         | 21/200 [03:05<26:12,  8.79s/it]
+27306 lr: 0.006250, trainLoss: 0.2461, trainAccuracy: 0.9187, validationLoss: 0.6298, validationAccuracy: 0.8094:  18%|#8        | 36/200 [06:18<31:04, 11.37s/it]
+lr: 0.006250, trainLoss: 0.2406, trainAccuracy: 0.9219, validationLoss: 0.5883, validationAccuracy: 0.8168:  18%|#8        | 36/200 [06:06<31:04, 11.37s/it]
+99394 lr: 0.025000, trainLoss: 0.6281, trainAccuracy: 0.7893, validationLoss: 0.8963, validationAccuracy: 0.7067:  11%|#1        | 22/200 [03:22<26:01,  8.77s/it]
+lr: 0.025000, trainLoss: 0.6267, trainAccuracy: 0.7917, validationLoss: 0.7955, validationAccuracy: 0.7377:  11%|#1        | 22/200 [03:14<26:01,  8.77s/it]
+92691 lr: 0.006250, trainLoss: 0.1739, trainAccuracy: 0.9455, validationLoss: 0.5222, validationAccuracy: 0.8437:  21%|##1       | 42/200 [09:29<53:16, 20.23s/it]
+lr: 0.006250, trainLoss: 0.2090, trainAccuracy: 0.9343, validationLoss: 0.5296, validationAccuracy: 0.8368:  21%|##1       | 42/200 [09:08<53:16, 20.23s/it]
+27306 lr: 0.006250, trainLoss: 0.2432, trainAccuracy: 0.9212, validationLoss: 0.6381, validationAccuracy: 0.8058:  18%|#8        | 37/200 [06:29<31:00, 11.42s/it]
+lr: 0.006250, trainLoss: 0.2461, trainAccuracy: 0.9187, validationLoss: 0.6298, validationAccuracy: 0.8094:  18%|#8        | 37/200 [06:18<31:00, 11.42s/it]
+99394 lr: 0.025000, trainLoss: 0.6123, trainAccuracy: 0.7963, validationLoss: 0.7459, validationAccuracy: 0.7552:  12%|#1        | 23/200 [03:31<25:58,  8.80s/it]
+lr: 0.025000, trainLoss: 0.6281, trainAccuracy: 0.7893, validationLoss: 0.8963, validationAccuracy: 0.7067:  12%|#1        | 23/200 [03:22<25:58,  8.80s/it]
+27306 lr: 0.006250, trainLoss: 0.2422, trainAccuracy: 0.9201, validationLoss: 0.6518, validationAccuracy: 0.8017:  19%|#9        | 38/200 [06:41<30:47, 11.40s/it]
+lr: 0.006250, trainLoss: 0.2432, trainAccuracy: 0.9212, validationLoss: 0.6381, validationAccuracy: 0.8058:  19%|#9        | 38/200 [06:29<30:47, 11.40s/it]
+99394 lr: 0.025000, trainLoss: 0.6099, trainAccuracy: 0.7990, validationLoss: 0.8911, validationAccuracy: 0.7051:  12%|#2        | 24/200 [03:40<25:48,  8.80s/it]
+lr: 0.025000, trainLoss: 0.6123, trainAccuracy: 0.7963, validationLoss: 0.7459, validationAccuracy: 0.7552:  12%|#2        | 24/200 [03:31<25:48,  8.80s/it]
+92691 lr: 0.006250, trainLoss: 0.1752, trainAccuracy: 0.9451, validationLoss: 0.5953, validationAccuracy: 0.8222:  22%|##1       | 43/200 [09:49<53:05, 20.29s/it]
+lr: 0.006250, trainLoss: 0.1739, trainAccuracy: 0.9455, validationLoss: 0.5222, validationAccuracy: 0.8437:  22%|##1       | 43/200 [09:29<53:05, 20.29s/it]
+99394 lr: 0.025000, trainLoss: 0.6144, trainAccuracy: 0.7924, validationLoss: 0.7463, validationAccuracy: 0.7534:  12%|#2        | 25/200 [03:49<25:38,  8.79s/it]
+lr: 0.025000, trainLoss: 0.6099, trainAccuracy: 0.7990, validationLoss: 0.8911, validationAccuracy: 0.7051:  12%|#2        | 25/200 [03:40<25:38,  8.79s/it]
+27306 lr: 0.003125, trainLoss: 0.1278, trainAccuracy: 0.9623, validationLoss: 0.5611, validationAccuracy: 0.8404:  20%|#9        | 39/200 [06:52<30:30, 11.37s/it]
+lr: 0.006250, trainLoss: 0.2422, trainAccuracy: 0.9201, validationLoss: 0.6518, validationAccuracy: 0.8017:  20%|#9        | 39/200 [06:41<30:30, 11.37s/it]
+99394 lr: 0.025000, trainLoss: 0.6122, trainAccuracy: 0.7960, validationLoss: 0.9049, validationAccuracy: 0.6964:  13%|#3        | 26/200 [03:57<25:28,  8.78s/it]
+lr: 0.025000, trainLoss: 0.6144, trainAccuracy: 0.7924, validationLoss: 0.7463, validationAccuracy: 0.7534:  13%|#3        | 26/200 [03:49<25:28,  8.78s/it]
+27306 lr: 0.003125, trainLoss: 0.0873, trainAccuracy: 0.9768, validationLoss: 0.5667, validationAccuracy: 0.8390:  20%|##        | 40/200 [07:03<30:19, 11.37s/it]
+lr: 0.003125, trainLoss: 0.1278, trainAccuracy: 0.9623, validationLoss: 0.5611, validationAccuracy: 0.8404:  20%|##        | 40/200 [06:52<30:19, 11.37s/it]
+92691 lr: 0.006250, trainLoss: 0.1811, trainAccuracy: 0.9437, validationLoss: 0.5270, validationAccuracy: 0.8366:  22%|##2       | 44/200 [10:10<52:58, 20.38s/it]
+lr: 0.006250, trainLoss: 0.1752, trainAccuracy: 0.9451, validationLoss: 0.5953, validationAccuracy: 0.8222:  22%|##2       | 44/200 [09:49<52:58, 20.38s/it]
+99394 lr: 0.025000, trainLoss: 0.6093, trainAccuracy: 0.7958, validationLoss: 0.7377, validationAccuracy: 0.7517:  14%|#3        | 27/200 [04:06<25:15,  8.76s/it]
+lr: 0.025000, trainLoss: 0.6122, trainAccuracy: 0.7960, validationLoss: 0.9049, validationAccuracy: 0.6964:  14%|#3        | 27/200 [03:57<25:15,  8.76s/it]
+27306 lr: 0.003125, trainLoss: 0.0711, trainAccuracy: 0.9823, validationLoss: 0.5663, validationAccuracy: 0.8390:  20%|##        | 41/200 [07:15<30:12, 11.40s/it]
+lr: 0.003125, trainLoss: 0.0873, trainAccuracy: 0.9768, validationLoss: 0.5667, validationAccuracy: 0.8390:  20%|##        | 41/200 [07:03<30:12, 11.40s/it]
+99394 lr: 0.025000, trainLoss: 0.6035, trainAccuracy: 0.7964, validationLoss: 0.7372, validationAccuracy: 0.7564:  14%|#4        | 28/200 [04:15<25:11,  8.79s/it]
+lr: 0.025000, trainLoss: 0.6093, trainAccuracy: 0.7958, validationLoss: 0.7377, validationAccuracy: 0.7517:  14%|#4        | 28/200 [04:06<25:11,  8.79s/it]
+99394 lr: 0.025000, trainLoss: 0.6042, trainAccuracy: 0.7986, validationLoss: 0.7512, validationAccuracy: 0.7569:  14%|#4        | 29/200 [04:24<25:09,  8.82s/it]
+lr: 0.025000, trainLoss: 0.6035, trainAccuracy: 0.7964, validationLoss: 0.7372, validationAccuracy: 0.7564:  14%|#4        | 29/200 [04:15<25:09,  8.82s/it]
+27306 lr: 0.003125, trainLoss: 0.0896, trainAccuracy: 0.9742, validationLoss: 0.6175, validationAccuracy: 0.8251:  21%|##1       | 42/200 [07:26<29:56, 11.37s/it]
+lr: 0.003125, trainLoss: 0.0711, trainAccuracy: 0.9823, validationLoss: 0.5663, validationAccuracy: 0.8390:  21%|##1       | 42/200 [07:15<29:56, 11.37s/it]
+92691 lr: 0.006250, trainLoss: 0.1907, trainAccuracy: 0.9387, validationLoss: 0.5441, validationAccuracy: 0.8362:  22%|##2       | 45/200 [10:30<52:44, 20.42s/it]
+lr: 0.006250, trainLoss: 0.1811, trainAccuracy: 0.9437, validationLoss: 0.5270, validationAccuracy: 0.8366:  22%|##2       | 45/200 [10:10<52:44, 20.42s/it]
+99394 lr: 0.025000, trainLoss: 0.6030, trainAccuracy: 0.7985, validationLoss: 0.9701, validationAccuracy: 0.6931:  15%|#5        | 30/200 [04:33<25:00,  8.83s/it]
+lr: 0.025000, trainLoss: 0.6042, trainAccuracy: 0.7986, validationLoss: 0.7512, validationAccuracy: 0.7569:  15%|#5        | 30/200 [04:24<25:00,  8.83s/it]
+27306 lr: 0.003125, trainLoss: 0.1088, trainAccuracy: 0.9674, validationLoss: 0.6229, validationAccuracy: 0.8240:  22%|##1       | 43/200 [07:37<29:44, 11.36s/it]
+lr: 0.003125, trainLoss: 0.0896, trainAccuracy: 0.9742, validationLoss: 0.6175, validationAccuracy: 0.8251:  22%|##1       | 43/200 [07:26<29:44, 11.36s/it]
+99394 lr: 0.025000, trainLoss: 0.6006, trainAccuracy: 0.8012, validationLoss: 0.8273, validationAccuracy: 0.7273:  16%|#5        | 31/200 [04:42<24:47,  8.80s/it]
+lr: 0.025000, trainLoss: 0.6030, trainAccuracy: 0.7985, validationLoss: 0.9701, validationAccuracy: 0.6931:  16%|#5        | 31/200 [04:33<24:47,  8.80s/it]
+27306 lr: 0.003125, trainLoss: 0.0928, trainAccuracy: 0.9737, validationLoss: 0.6664, validationAccuracy: 0.8132:  22%|##2       | 44/200 [07:49<29:27, 11.33s/it]
+lr: 0.003125, trainLoss: 0.1088, trainAccuracy: 0.9674, validationLoss: 0.6229, validationAccuracy: 0.8240:  22%|##2       | 44/200 [07:37<29:27, 11.33s/it]
+92691 lr: 0.006250, trainLoss: 0.1944, trainAccuracy: 0.9373, validationLoss: 0.5609, validationAccuracy: 0.8275:  23%|##3       | 46/200 [10:51<52:27, 20.44s/it]
+lr: 0.006250, trainLoss: 0.1907, trainAccuracy: 0.9387, validationLoss: 0.5441, validationAccuracy: 0.8362:  23%|##3       | 46/200 [10:30<52:27, 20.44s/it]
+99394 lr: 0.012500, trainLoss: 0.4514, trainAccuracy: 0.8519, validationLoss: 0.7422, validationAccuracy: 0.7717:  16%|#6        | 32/200 [04:50<24:35,  8.78s/it]
+lr: 0.025000, trainLoss: 0.6006, trainAccuracy: 0.8012, validationLoss: 0.8273, validationAccuracy: 0.7273:  16%|#6        | 32/200 [04:42<24:35,  8.78s/it]
+27306 lr: 0.001563, trainLoss: 0.0496, trainAccuracy: 0.9892, validationLoss: 0.5679, validationAccuracy: 0.8480:  22%|##2       | 45/200 [08:00<29:13, 11.32s/it]
+lr: 0.003125, trainLoss: 0.0928, trainAccuracy: 0.9737, validationLoss: 0.6664, validationAccuracy: 0.8132:  22%|##2       | 45/200 [07:49<29:13, 11.32s/it]
+99394 lr: 0.012500, trainLoss: 0.4354, trainAccuracy: 0.8560, validationLoss: 0.6867, validationAccuracy: 0.7677:  16%|#6        | 33/200 [04:59<24:20,  8.75s/it]
+lr: 0.012500, trainLoss: 0.4514, trainAccuracy: 0.8519, validationLoss: 0.7422, validationAccuracy: 0.7717:  16%|#6        | 33/200 [04:50<24:20,  8.75s/it]
+92691 lr: 0.003125, trainLoss: 0.0886, trainAccuracy: 0.9751, validationLoss: 0.4828, validationAccuracy: 0.8683:  24%|##3       | 47/200 [11:11<52:19, 20.52s/it]
+lr: 0.006250, trainLoss: 0.1944, trainAccuracy: 0.9373, validationLoss: 0.5609, validationAccuracy: 0.8275:  24%|##3       | 47/200 [10:51<52:19, 20.52s/it]
+99394 lr: 0.012500, trainLoss: 0.4335, trainAccuracy: 0.8553, validationLoss: 0.7203, validationAccuracy: 0.7682:  17%|#7        | 34/200 [05:08<24:15,  8.77s/it]
+lr: 0.012500, trainLoss: 0.4354, trainAccuracy: 0.8560, validationLoss: 0.6867, validationAccuracy: 0.7677:  17%|#7        | 34/200 [04:59<24:15,  8.77s/it]
+27306 lr: 0.001563, trainLoss: 0.0258, trainAccuracy: 0.9970, validationLoss: 0.5804, validationAccuracy: 0.8441:  23%|##3       | 46/200 [08:11<29:10, 11.37s/it]
+lr: 0.001563, trainLoss: 0.0496, trainAccuracy: 0.9892, validationLoss: 0.5679, validationAccuracy: 0.8480:  23%|##3       | 46/200 [08:00<29:10, 11.37s/it]
+99394 lr: 0.012500, trainLoss: 0.4394, trainAccuracy: 0.8539, validationLoss: 0.6951, validationAccuracy: 0.7739:  18%|#7        | 35/200 [05:17<24:04,  8.75s/it]
+lr: 0.012500, trainLoss: 0.4335, trainAccuracy: 0.8553, validationLoss: 0.7203, validationAccuracy: 0.7682:  18%|#7        | 35/200 [05:08<24:04,  8.75s/it]
+27306 lr: 0.001563, trainLoss: 0.0211, trainAccuracy: 0.9981, validationLoss: 0.5685, validationAccuracy: 0.8508:  24%|##3       | 47/200 [08:23<28:51, 11.32s/it]
+lr: 0.001563, trainLoss: 0.0258, trainAccuracy: 0.9970, validationLoss: 0.5804, validationAccuracy: 0.8441:  24%|##3       | 47/200 [08:11<28:51, 11.32s/it]
+99394 lr: 0.012500, trainLoss: 0.4201, trainAccuracy: 0.8607, validationLoss: 0.7227, validationAccuracy: 0.7708:  18%|#8        | 36/200 [05:25<24:00,  8.78s/it]
+lr: 0.012500, trainLoss: 0.4394, trainAccuracy: 0.8539, validationLoss: 0.6951, validationAccuracy: 0.7739:  18%|#8        | 36/200 [05:17<24:00,  8.78s/it]
+92691 lr: 0.003125, trainLoss: 0.0486, trainAccuracy: 0.9891, validationLoss: 0.5354, validationAccuracy: 0.8523:  24%|##4       | 48/200 [11:32<52:02, 20.55s/it]
+lr: 0.003125, trainLoss: 0.0886, trainAccuracy: 0.9751, validationLoss: 0.4828, validationAccuracy: 0.8683:  24%|##4       | 48/200 [11:11<52:02, 20.55s/it]
+27306 lr: 0.001563, trainLoss: 0.0171, trainAccuracy: 0.9991, validationLoss: 0.5747, validationAccuracy: 0.8501:  24%|##4       | 48/200 [08:34<28:42, 11.33s/it]
+lr: 0.001563, trainLoss: 0.0211, trainAccuracy: 0.9981, validationLoss: 0.5685, validationAccuracy: 0.8508:  24%|##4       | 48/200 [08:23<28:42, 11.33s/it]
+99394 lr: 0.012500, trainLoss: 0.4230, trainAccuracy: 0.8610, validationLoss: 0.6974, validationAccuracy: 0.7817:  18%|#8        | 37/200 [05:34<23:56,  8.81s/it]
+lr: 0.012500, trainLoss: 0.4201, trainAccuracy: 0.8607, validationLoss: 0.7227, validationAccuracy: 0.7708:  18%|#8        | 37/200 [05:25<23:56,  8.81s/it]
+99394 lr: 0.006250, trainLoss: 0.2805, trainAccuracy: 0.9102, validationLoss: 0.5747, validationAccuracy: 0.8180:  19%|#9        | 38/200 [05:43<23:44,  8.79s/it]
+lr: 0.012500, trainLoss: 0.4230, trainAccuracy: 0.8610, validationLoss: 0.6974, validationAccuracy: 0.7817:  19%|#9        | 38/200 [05:34<23:44,  8.79s/it]
+27306 lr: 0.001563, trainLoss: 0.0155, trainAccuracy: 0.9992, validationLoss: 0.5672, validationAccuracy: 0.8509:  24%|##4       | 49/200 [08:45<28:30, 11.33s/it]
+lr: 0.001563, trainLoss: 0.0171, trainAccuracy: 0.9991, validationLoss: 0.5747, validationAccuracy: 0.8501:  24%|##4       | 49/200 [08:34<28:30, 11.33s/it]
+92691 lr: 0.003125, trainLoss: 0.0461, trainAccuracy: 0.9893, validationLoss: 0.5555, validationAccuracy: 0.8542:  24%|##4       | 49/200 [11:53<51:40, 20.54s/it]
+lr: 0.003125, trainLoss: 0.0486, trainAccuracy: 0.9891, validationLoss: 0.5354, validationAccuracy: 0.8523:  24%|##4       | 49/200 [11:32<51:40, 20.54s/it]
+99394 lr: 0.006250, trainLoss: 0.2511, trainAccuracy: 0.9202, validationLoss: 0.5983, validationAccuracy: 0.8087:  20%|#9        | 39/200 [05:52<23:34,  8.79s/it]
+lr: 0.006250, trainLoss: 0.2805, trainAccuracy: 0.9102, validationLoss: 0.5747, validationAccuracy: 0.8180:  20%|#9        | 39/200 [05:43<23:34,  8.79s/it]
+27306 lr: 0.001563, trainLoss: 0.0153, trainAccuracy: 0.9993, validationLoss: 0.5698, validationAccuracy: 0.8505:  25%|##5       | 50/200 [08:57<28:22, 11.35s/it]
+lr: 0.001563, trainLoss: 0.0155, trainAccuracy: 0.9992, validationLoss: 0.5672, validationAccuracy: 0.8509:  25%|##5       | 50/200 [08:45<28:22, 11.35s/it]
+99394 lr: 0.006250, trainLoss: 0.2492, trainAccuracy: 0.9202, validationLoss: 0.6173, validationAccuracy: 0.8124:  20%|##        | 40/200 [06:01<23:28,  8.81s/it]
+lr: 0.006250, trainLoss: 0.2511, trainAccuracy: 0.9202, validationLoss: 0.5983, validationAccuracy: 0.8087:  20%|##        | 40/200 [05:52<23:28,  8.81s/it]
+27306 lr: 0.000781, trainLoss: 0.0147, trainAccuracy: 0.9993, validationLoss: 0.5677, validationAccuracy: 0.8501:  26%|##5       | 51/200 [09:08<28:13, 11.37s/it]
+lr: 0.001563, trainLoss: 0.0153, trainAccuracy: 0.9993, validationLoss: 0.5698, validationAccuracy: 0.8505:  26%|##5       | 51/200 [08:57<28:13, 11.37s/it]
+99394 lr: 0.006250, trainLoss: 0.2558, trainAccuracy: 0.9165, validationLoss: 0.6077, validationAccuracy: 0.8085:  20%|##        | 41/200 [06:09<23:12,  8.76s/it]
+lr: 0.006250, trainLoss: 0.2492, trainAccuracy: 0.9202, validationLoss: 0.6173, validationAccuracy: 0.8124:  20%|##        | 41/200 [06:01<23:12,  8.76s/it]
+92691 lr: 0.003125, trainLoss: 0.0644, trainAccuracy: 0.9822, validationLoss: 0.5622, validationAccuracy: 0.8485:  25%|##5       | 50/200 [12:13<51:19, 20.53s/it]
+lr: 0.003125, trainLoss: 0.0461, trainAccuracy: 0.9893, validationLoss: 0.5555, validationAccuracy: 0.8542:  25%|##5       | 50/200 [11:53<51:19, 20.53s/it]
+27306 lr: 0.000781, trainLoss: 0.0144, trainAccuracy: 0.9994, validationLoss: 0.5683, validationAccuracy: 0.8534:  26%|##6       | 52/200 [09:20<28:06, 11.40s/it]
+lr: 0.000781, trainLoss: 0.0147, trainAccuracy: 0.9993, validationLoss: 0.5677, validationAccuracy: 0.8501:  26%|##6       | 52/200 [09:08<28:06, 11.40s/it]
+99394 lr: 0.006250, trainLoss: 0.2518, trainAccuracy: 0.9186, validationLoss: 0.7551, validationAccuracy: 0.7696:  21%|##1       | 42/200 [06:18<22:55,  8.71s/it]
+lr: 0.006250, trainLoss: 0.2558, trainAccuracy: 0.9165, validationLoss: 0.6077, validationAccuracy: 0.8085:  21%|##1       | 42/200 [06:09<22:55,  8.71s/it]
+99394 lr: 0.006250, trainLoss: 0.2511, trainAccuracy: 0.9176, validationLoss: 0.6266, validationAccuracy: 0.8061:  22%|##1       | 43/200 [06:27<22:53,  8.75s/it]
+lr: 0.006250, trainLoss: 0.2518, trainAccuracy: 0.9186, validationLoss: 0.7551, validationAccuracy: 0.7696:  22%|##1       | 43/200 [06:18<22:53,  8.75s/it]
+27306 lr: 0.000781, trainLoss: 0.0144, trainAccuracy: 0.9994, validationLoss: 0.5723, validationAccuracy: 0.8507:  26%|##6       | 53/200 [09:31<27:51, 11.37s/it]
+lr: 0.000781, trainLoss: 0.0144, trainAccuracy: 0.9994, validationLoss: 0.5683, validationAccuracy: 0.8534:  26%|##6       | 53/200 [09:20<27:51, 11.37s/it]
+92691 lr: 0.003125, trainLoss: 0.0850, trainAccuracy: 0.9757, validationLoss: 0.5598, validationAccuracy: 0.8437:  26%|##5       | 51/200 [12:34<51:05, 20.58s/it]
+lr: 0.003125, trainLoss: 0.0644, trainAccuracy: 0.9822, validationLoss: 0.5622, validationAccuracy: 0.8485:  26%|##5       | 51/200 [12:13<51:05, 20.58s/it]
+99394 lr: 0.003125, trainLoss: 0.1278, trainAccuracy: 0.9630, validationLoss: 0.5830, validationAccuracy: 0.8358:  22%|##2       | 44/200 [06:36<22:48,  8.77s/it]
+lr: 0.006250, trainLoss: 0.2511, trainAccuracy: 0.9176, validationLoss: 0.6266, validationAccuracy: 0.8061:  22%|##2       | 44/200 [06:27<22:48,  8.77s/it]

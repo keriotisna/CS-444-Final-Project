@@ -130,6 +130,7 @@ def canInsertModel(memoryParameterList:list) -> bool:
         vramAvailable = availableMemory >= neededMemoryMBArray
         
         if modelsInTraining >= MAX_CONCURRENT_MODELS:
+            printq(f'Possible model memory requirements: {neededMemoryMBArray}')
             printq(f'There are currently {modelsInTraining} training which is equal to or more than the allowed {MAX_CONCURRENT_MODELS}, sleeping...')
             return False
         
@@ -139,6 +140,7 @@ def canInsertModel(memoryParameterList:list) -> bool:
             return False
         else:
             printq(f'Found model to train!')
+            printq(f'Available memory: {availableMemory} MB')
             return True
         
     except Exception as e:
@@ -222,13 +224,13 @@ TOTAL_VRAM = getTotalVRAM()
 modelsInTraining = 0
 
 # 0 for False, 1 for True
-SAVE_RESULTS = 0
+SAVE_RESULTS = 1
 
 # How much to multiply model memory estimates by, larger values will guarantee that all model training happens in dedicated VRAM
 # while low values may allow for models to use memory in shared memory.
 MODEL_MEMORY_MULTIPLIER = 2
 # Sets how many models can be trained at once to prevent CPU bottlenecking, 5 seems to approach 100% CPU utilization, but this needs to change depending on model size
-MAX_CONCURRENT_MODELS = 3
+MAX_CONCURRENT_MODELS = 4
 
 
 def main():
@@ -264,11 +266,17 @@ def main():
         # JESSE_NET_BATCH_4_EASYAUGMENT,
         # BASELINE_BATCH_2
         # BASELINE_BATCH_4,
-        # BASELINE_BATCH_5,
         # WILSON_NET_BATCH_1_HARDAUGMENT3,
         # JESSE_NET_BATCH_4_HARDAUGMENT3
+        # BASELINE_BATCH_5,
+        # BASELINE_BATCH_5_HARDAUGMENT_2_5,
         # BASELINE_BOTTLENECK_BATCH_1_HARDAUGMENTATION2_5,
-        BASELINE_RESIDUALS_BATCH_1_HARDAUGMENTATION2_5
+        # BASELINE_RESIDUALS_BATCH_1_HARDAUGMENTATION2_5,
+        # BASELINE_BATCH_3
+        # BASELINE_BATCH_5_HARDAUGMENT_2_6
+        FULL_BASELINE_BATCH_NONE,
+        FULL_BASELINE_BATCH_EASYAUGMENT,
+        FULL_BASELINE_BATCH_HARD2
         ]
     
     # Get the log file path once at the start
@@ -302,7 +310,7 @@ def main():
         
         # Check if enough VRAM is available before starting training
         while not canInsertModel(memoryParameterList):
-            time.sleep(300)  # Wait for N seconds before checking again
+            time.sleep(3)  # Wait for N seconds before checking again
     
         memoryReq, arguments = getNextModelParameters(memoryParameterList)
         printq(f'Found model:\n{arguments}\n Required memory: {memoryReq} MB')
@@ -324,7 +332,7 @@ def main():
 
         modelsInTraining += 1
         printq(f'Currently, there are {modelsInTraining} models in training')
-        time.sleep(5) # Wait for memory values to update
+        time.sleep(1.8) # Wait for normalization and training initalization so we don't run out of memory
         
     # Wait for all processes to complete before getting totalRuntime
     for p in processes:

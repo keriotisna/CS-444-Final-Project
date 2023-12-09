@@ -1,0 +1,33 @@
+Found model to train!
+Current allocation for VRAM is 1586.278 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_6', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'baseline108MN_hardAugmentation2-6'}
+ Required memory: 1586.278 MB
+Currently, there are 1 models in training
+75338 Namespace(modelName='baseline108MN_hardAugmentation2-6', trainTransformID='hardAugmentation2_6', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=0, customNormalization=None)
+Got model: baseline108MN
+@@@@@@@@@@@@@@@ WARNING!!!!! SAVE_RESULTS IS FALSE! NO MODEL STATISTICS WILL BE SAVED!!!!
+Using device: cuda
+Test passed!
+75338 Normalizing...
+tensor([0.4603, 0.4526, 0.4358])
+tensor([0.2023, 0.1991, 0.1943])
+75338 Done normalizing!
+75338 normalizedTrainTransform: Compose(
+      RandomPerspective(p=0.5, distortion_scale=0.4, interpolation=InterpolationMode.BILINEAR, fill=0)
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.3)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.6, 1.4), contrast=(0.5, 1.5), saturation=(0.6, 1.4))
+      Normalize(mean=[tensor(0.4603), tensor(0.4526), tensor(0.4358)], std=[tensor(0.2023), tensor(0.1991), tensor(0.1943)], inplace=False)
+)
+75338 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4603), tensor(0.4526), tensor(0.4358)], std=[tensor(0.2023), tensor(0.1991), tensor(0.1943)], inplace=False)
+)
+75338 Starting training...
+
+75338 lr: 0.000000, trainLoss: 2.4023, trainAccuracy: 0.0978, validationLoss: 2.4177, validationAccuracy: 0.0903:   0%|          | 0/200 [01:23<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
