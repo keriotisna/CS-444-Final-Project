@@ -1,0 +1,204 @@
+Found model to train!
+Current allocation for VRAM is 2484.84 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 2484.84 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 4655.427 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'branchResidualv2_hardAugmentation2-5'}
+ Required memory: 2170.587 MB
+Currently, there are 2 models in training
+19035 Namespace(modelName='doubleBottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Using device: cuda
+Got model: doubleBottleneckResidualv1
+Test passed!
+19035 Normalizing...
+Found model to train!
+Current allocation for VRAM is 6434.207 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 1778.7795 MB
+Currently, there are 3 models in training
+There are currently 3 training which is equal to or more than the allowed 3, sleeping...
+24901 Namespace(modelName='branchResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+44660 Namespace(modelName='bottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Using device: cuda
+Test passed!
+24901 Normalizing...
+Got model: branchResidualv2
+Got model: bottleneckResidualv1
+Using device: cuda
+Test passed!
+44660 Normalizing...
+tensor([0.1812, 0.1797, 0.1785])
+19035 Done normalizing!
+tensor([0.4880, 0.4799, 0.4580])
+19035 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4880), tensor(0.4799), tensor(0.4580)], std=[tensor(0.1812), tensor(0.1797), tensor(0.1785)], inplace=False)
+)
+19035 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4880), tensor(0.4799), tensor(0.4580)], std=[tensor(0.1812), tensor(0.1797), tensor(0.1785)], inplace=False)
+      Identity()
+)
+19035 Starting training...
+
+tensor([0.1831, 0.1801, 0.1795])
+44660 Done normalizing!
+tensor([0.4802, 0.4775, 0.4626])
+tensor([0.4859, 0.4818, 0.4628])
+tensor([0.1794, 0.1761, 0.1769])
+24901 Done normalizing!
+      RandomGrayscale(p=0.1)
+24901 normalizedTrainTransform: Compose(
+      RandomHorizontalFlip(p=0.5)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+)
+      Normalize(mean=[tensor(0.4802), tensor(0.4775), tensor(0.4626)], std=[tensor(0.1794), tensor(0.1761), tensor(0.1769)], inplace=False)
+24901 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4802), tensor(0.4775), tensor(0.4626)], std=[tensor(0.1794), tensor(0.1761), tensor(0.1769)], inplace=False)
+)
+24901 Starting training...
+44660 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4859), tensor(0.4818), tensor(0.4628)], std=[tensor(0.1831), tensor(0.1801), tensor(0.1795)], inplace=False)
+)
+      Identity()
+lTestTransform: Compose(
+      Normalize(mean=[tensor(0.4859), tensor(0.4818), tensor(0.4628)], std=[tensor(0.1831), tensor(0.1801), tensor(0.1795)], inplace=False)
+)
+44660 Starting training...
+
+
+  0%|          | 0/200 [00:00<?, ?it/s]
+  0%|          | 0/200 [01:46<?, ?it/s]
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 160, in <module>
+Traceback (most recent call last):
+    main()
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 215, in train
+    validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 141, in trainEpoch
+    for features, labels in dataloader:
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 630, in __next__
+    data = self._next_data()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1345, in _next_data
+    return self._process_data(data)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\dataloader.py", line 1371, in _process_data
+    data.reraise()
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\_utils.py", line 694, in reraise
+    raise exception
+RuntimeError: Caught RuntimeError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\fetch.py", line 54, in fetch
+    return self.collate_fn(data)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\collate.py", line 265, in default_collate
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in collate
+    return collate(batch, collate_fn_map=default_collate_fn_map)
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\collate.py", line 142, in <listcomp>
+    return [collate(samples, collate_fn_map=collate_fn_map) for samples in transposed]  # Backwards compatibility.
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\collate.py", line 123, in collate
+    return collate_fn_map[collate_type](batch, collate_fn_map=collate_fn_map)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\utils\data\_utils\collate.py", line 160, in collate_tensor_fn
+    storage = elem._typed_storage()._new_shared(numel, device=elem.device)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\storage.py", line 866, in _new_shared
+    untyped_storage = torch.UntypedStorage._new_shared(size * self._element_size(), device=device)
+    return cls._new_using_filename_cpu(size)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\storage.py", line 260, in _new_shared
+RuntimeError: Couldn't open shared file mapping: <000001DF434F3D22>, error code: <1455>
+
+  0%|          | 0/200 [00:00<?, ?it/s]
+  0%|          | 0/200 [02:20<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+sers\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 215, in train
+    validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 147, in trainEpoch
+    forwardPass = model.forward(x)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\blocks.py", line 569, in forward
+    encoded2 = self.encode2(encoded1)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\activation.py", line 101, in forward
+    return F.relu(input, inplace=self.inplace)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\functional.py", line 1471, in relu
+    result = torch.relu(input)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 MiB. GPU 0 has a total capacty of 8.00 GiB of which 693.00 MiB is free. Of the allocated memory 1.48 GiB is allocated by PyTorch, and 674.79 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+  0%|          | 0/200 [01:49<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 160, in <module>
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 153, in main
+    main()
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 215, in train
+    validationLoss, validationAccuracy = self.trainEpoch(dataloader=validationLoader, optimizer=optimizer, freezeModel=True)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 147, in trainEpoch
+    forwardPass = model.forward(x)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\blocks.py", line 611, in forward
+    outputs = [branch(normInput) + x for branch in self.branches]
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\blocks.py", line 611, in <listcomp>
+    outputs = [branch(normInput) + x for branch in self.branches]
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\blocks.py", line 569, in forward
+    encoded2 = self.encode2(encoded1)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\batchnorm.py", line 171, in forward
+    return F.batch_norm(
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\functional.py", line 2478, in batch_norm
+    return torch.batch_norm(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.00 MiB. GPU 0 has a total capacty of 8.00 GiB of which 1015.00 MiB is free. Of the allocated memory 1.71 GiB is allocated by PyTorch, and 122.91 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

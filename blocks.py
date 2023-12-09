@@ -1,7 +1,6 @@
 from torch import nn
 import torch
 
-
 class CNN(nn.Module):
     """
     A simple CNN for classifying images in the AnimalDataset.
@@ -89,11 +88,11 @@ class HighwayBlock(nn.Module):
         """
         
         firstPass = True
-        output = None
+        output = torch.empty_like(x)
         
         for layer in self.highwaySequence:
                         
-            y = None
+            y = torch.empty_like(x)
             
             if firstPass:
                 y = layer(x)

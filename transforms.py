@@ -52,7 +52,7 @@ hardAugmentation3 = v2.Compose([
 ])
 
 
-hardAugmentation4 = v2.Compose([
+hardAugmentation2_5 = v2.Compose([
     # v2.RandomPerspective(distortion_scale=0.3, p=0.5),
     v2.RandomGrayscale(p=0.1),
     v2.RandomHorizontalFlip(p=0.5),

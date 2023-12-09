@@ -1,1 +1,1 @@
-neededMemory
+memoryParameterList

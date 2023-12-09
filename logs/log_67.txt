@@ -1,0 +1,150 @@
+Found model to train!
+Current allocation for VRAM is 2484.84 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 2484.84 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 4655.427 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'branchResidualv2_hardAugmentation2-5'}
+ Required memory: 2170.587 MB
+Currently, there are 2 models in training
+71409 Namespace(modelName='doubleBottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+Using device: cuda
+Test passed!
+71409 Normalizing...
+Found model to train!
+Current allocation for VRAM is 6434.207 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 1778.7795 MB
+Currently, there are 3 models in training
+09536 Namespace(modelName='branchResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Found model to train!
+Current allocation for VRAM is 7975.34 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'bottleneckResidualv2_hardAugmentation2-5'}
+ Required memory: 1541.133 MB
+Currently, there are 4 models in training
+Got model: branchResidualv2
+Test passed!
+09536 Normalizing...
+Using device: cuda
+Possible model memory requirements: [828.9795]
+Not enough room in queue with 212.66 MB available, sleeping...
+75722 Namespace(modelName='bottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+75722 Normalizing...
+esidualv1
+66068 Namespace(modelName='bottleneckResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: bottleneckResidualv2
+Using device: cuda
+Test passed!
+66068 Normalizing...
+tensor([0.4913, 0.4894, 0.4728])
+tensor([0.1828, 0.1818, 0.1824])
+71409 Done normalizing!
+71409 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4913), tensor(0.4894), tensor(0.4728)], std=[tensor(0.1828), tensor(0.1818), tensor(0.1824)], inplace=False)
+)
+      Identity()
+71409 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4913), tensor(0.4894), tensor(0.4728)], std=[tensor(0.1828), tensor(0.1818), tensor(0.1824)], inplace=False)
+)
+71409 Starting training...
+
+tensor([0.1862, 0.1825, 0.1813])
+09536 Done normalizing!
+tensor([0.4846, 0.4806, 0.4613])
+09536 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+      RandomVerticalFlip(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4846), tensor(0.4806), tensor(0.4613)], std=[tensor(0.1862), tensor(0.1825), tensor(0.1813)], inplace=False)
+)
+09536 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4846), tensor(0.4806), tensor(0.4613)], std=[tensor(0.1862), tensor(0.1825), tensor(0.1813)], inplace=False)
+      Identity()
+09536 Starting training...
+)
+
+tensor([0.4879, 0.4824, 0.4594])
+tensor([0.1837, 0.1826, 0.1809])
+75722 Done normalizing!
+75722 normalizedTrainTransform: Compose(
+      RandomHorizontalFlip(p=0.5)
+      RandomGrayscale(p=0.1)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4879), tensor(0.4824), tensor(0.4594)], std=[tensor(0.1837), tensor(0.1826), tensor(0.1809)], inplace=False)
+      Identity()
+75722 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4879), tensor(0.4824), tensor(0.4594)], std=[tensor(0.1837), tensor(0.1826), tensor(0.1809)], inplace=False)
+)
+)
+75722 Starting training...
+
+66068 Done normalizing!
+tensor([0.1847, 0.1823, 0.1832])
+tensor([0.4947, 0.4877, 0.4673])
+66068 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+)
+   Normalize(mean=[tensor(0.4947), tensor(0.4877), tensor(0.4673)], std=[tensor(0.1847), tensor(0.1823), tensor(0.1832)], inplace=False)
+66068 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4947), tensor(0.4877), tensor(0.4673)], std=[tensor(0.1847), tensor(0.1823), tensor(0.1832)], inplace=False)
+)
+66068 Starting training...
+
+  0%|          | 0/200 [00:00<?, ?it/s]
+  0%|          | 0/200 [00:30<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 160, in <module>
+    main()
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainModel.py", line 153, in main
+    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 214, in train
+    trainLoss, trainAccuracy = self.trainEpoch(dataloader=trainLoader, optimizer=optimizer)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\trainableModel.py", line 147, in trainEpoch
+    forwardPass = model.forward(x)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\Documents\GRADUATE OFFLINE\CS 444\CS-444-Final-Project\blocks.py", line 573, in forward
+    decoded2 = self.decode2(convolved)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\container.py", line 215, in forward
+    input = module(input)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\modules\activation.py", line 101, in forward
+    return F.relu(input, inplace=self.inplace)
+  File "C:\Users\Nicholas\anaconda3\envs\CS444Env\lib\site-packages\torch\nn\functional.py", line 1471, in relu
+    result = torch.relu(input)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacty of 8.00 GiB of which 5.98 GiB is free. Of the allocated memory 900.35 MiB is allocated by PyTorch, and 11.65 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

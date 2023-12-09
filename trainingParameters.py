@@ -706,6 +706,38 @@ JESSE_NET_BATCH_4_EASYAUGMENT = _getBatchParameterList(modelNames=['jesseNetv7_2
         'plateuFactor': 0.5
     })
 
+BASELINE_BOTTLENECK_BATCH_1_HARDAUGMENTATION2_5 = _getBatchParameterList(modelNames=['bottleneckResidualv1', 'bottleneckResidualv2', 'doubleBottleneckResidualv1'],
+    nameSuffix='hardAugmentation2-5',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2_5',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 128,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
+BASELINE_RESIDUALS_BATCH_1_HARDAUGMENTATION2_5 = _getBatchParameterList(modelNames=['branchResidualv1', 'branchResidualv2'],
+    nameSuffix='hardAugmentation2-5',
+    parametersDict={
+        'trainTransformID': 'hardAugmentation2_5',
+        'valTestTransformID': 'NONE',
+        'epochs': 200,
+        'warmupEpochs': 5,
+        'batch_size': 128,
+        'lr': 5e-2,
+        'momentum': 0.90,
+        'weight_decay': 0.01,
+        'nesterov': True,
+        'plateuPatience': 3,
+        'plateuFactor': 0.5
+    })
+
 ####################################################################################
 # HARDAUGMENT
 ####################################################################################

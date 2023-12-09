@@ -1,0 +1,433 @@
+Found model to train!
+Current allocation for VRAM is 3313.12 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_hardAugmentation2-5'}
+ Required memory: 3313.12 MB
+Currently, there are 1 models in training
+Found model to train!
+Current allocation for VRAM is 6207.236 MB
+Found model:
+{'trainTransformID': 'hardAugmentation2_5', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 128, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'branchResidualv2_hardAugmentation2-5'}
+ Required memory: 2894.116 MB
+Currently, there are 2 models in training
+73537 Namespace(modelName='doubleBottleneckResidualv1_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+Using device: cuda
+Test passed!
+73537 Normalizing...
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 Namespace(modelName='branchResidualv2_hardAugmentation2-5', trainTransformID='hardAugmentation2_5', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=128, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: branchResidualv2
+Using device: cuda
+Test passed!
+19691 Normalizing...
+tensor([0.4912, 0.4799, 0.4572])
+tensor([0.1827, 0.1812, 0.1802])
+73537 Done normalizing!
+73537 normalizedTrainTransform: Compose(
+      RandomGrayscale(p=0.1)
+      RandomHorizontalFlip(p=0.5)
+      RandomInvert(p=0.2)
+      RandomVerticalFlip(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.4912), tensor(0.4799), tensor(0.4572)], std=[tensor(0.1827), tensor(0.1812), tensor(0.1802)], inplace=False)
+)
+73537 normalizedValTestTransform: Compose(
+      Normalize(mean=[tensor(0.4912), tensor(0.4799), tensor(0.4572)], std=[tensor(0.1827), tensor(0.1812), tensor(0.1802)], inplace=False)
+      Identity()
+73537 Starting training...
+)
+
+tensor([0.5007, 0.4903, 0.4619])
+tensor([0.1822, 0.1798, 0.1777])
+19691 Done normalizing!
+      RandomGrayscale(p=0.1)
+19691 normalizedTrainTransform: Compose(
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.2)
+      RandomInvert(p=0.2)
+      RandomResizedCrop(size=(32, 32), scale=(0.3, 1), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      ColorJitter(brightness=(0.7, 1.3), contrast=(0.5, 1.5), saturation=(0.7, 1.3))
+      Normalize(mean=[tensor(0.5007), tensor(0.4903), tensor(0.4619)], std=[tensor(0.1822), tensor(0.1798), tensor(0.1777)], inplace=False)
+)
+19691 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.5007), tensor(0.4903), tensor(0.4619)], std=[tensor(0.1822), tensor(0.1798), tensor(0.1777)], inplace=False)
+)
+19691 Starting training...
+
+73537 lr: 0.000000, trainLoss: 2.4057, trainAccuracy: 0.0998, validationLoss: 2.3931, validationAccuracy: 0.1010:   0%|          | 0/200 [01:05<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+19691 lr: 0.000000, trainLoss: 2.3742, trainAccuracy: 0.0923, validationLoss: 2.3904, validationAccuracy: 0.0953:   0%|          | 0/200 [01:00<?, ?it/s]
+  0%|          | 0/200 [00:00<?, ?it/s]
+19691 lr: 0.010000, trainLoss: 1.9411, trainAccuracy: 0.2807, validationLoss: 1.5727, validationAccuracy: 0.4354:   0%|          | 1/200 [02:04<3:20:33, 60.47s/it]
+73537 lr: 0.010000, trainLoss: 2.2970, trainAccuracy: 0.1152, validationLoss: 2.2086, validationAccuracy: 0.1484:   0%|          | 1/200 [02:12<3:36:20, 65.23s/it]
+lr: 0.000000, trainLoss: 2.4057, trainAccuracy: 0.0998, validationLoss: 2.3931, validationAccuracy: 0.1010:   0%|          | 1/200 [01:05<3:36:20, 65.23s/it]
+lr: 0.000000, trainLoss: 2.3742, trainAccuracy: 0.0923, validationLoss: 2.3904, validationAccuracy: 0.0953:   0%|          | 1/200 [01:00<3:20:33, 60.47s/it]
+19691 lr: 0.020000, trainLoss: 1.7125, trainAccuracy: 0.3791, validationLoss: 1.3688, validationAccuracy: 0.5131:   1%|1         | 2/200 [03:10<3:26:57, 62.71s/it]
+73537 lr: 0.020000, trainLoss: 2.1586, trainAccuracy: 0.1577, validationLoss: 2.0203, validationAccuracy: 0.1756:   1%|1         | 2/200 [03:18<3:40:08, 66.71s/it]
+lr: 0.010000, trainLoss: 2.2970, trainAccuracy: 0.1152, validationLoss: 2.2086, validationAccuracy: 0.1484:   1%|1         | 2/200 [02:12<3:40:08, 66.71s/it]
+lr: 0.010000, trainLoss: 1.9411, trainAccuracy: 0.2807, validationLoss: 1.5727, validationAccuracy: 0.4354:   1%|1         | 2/200 [02:04<3:26:57, 62.71s/it]
+73537 lr: 0.030000, trainLoss: 2.1002, trainAccuracy: 0.1704, validationLoss: 2.0202, validationAccuracy: 0.1977:   2%|1         | 3/200 [04:24<3:37:55, 66.37s/it]
+lr: 0.020000, trainLoss: 2.1586, trainAccuracy: 0.1577, validationLoss: 2.0203, validationAccuracy: 0.1756:   2%|1         | 3/200 [03:18<3:37:55, 66.37s/it]
+19691 lr: 0.030000, trainLoss: 1.6134, trainAccuracy: 0.4206, validationLoss: 1.3655, validationAccuracy: 0.5096:   2%|1         | 3/200 [04:16<3:30:48, 64.20s/it]
+lr: 0.020000, trainLoss: 1.7125, trainAccuracy: 0.3791, validationLoss: 1.3688, validationAccuracy: 0.5131:   2%|1         | 3/200 [03:10<3:30:48, 64.20s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.040000, trainLoss: 1.5824, trainAccuracy: 0.4373, validationLoss: 1.3473, validationAccuracy: 0.5367:   2%|2         | 4/200 [05:20<3:32:13, 64.96s/it]
+lr: 0.030000, trainLoss: 1.6134, trainAccuracy: 0.4206, validationLoss: 1.3655, validationAccuracy: 0.5096:   2%|2         | 4/200 [04:16<3:32:13, 64.96s/it]
+73537 lr: 0.040000, trainLoss: 2.0682, trainAccuracy: 0.2014, validationLoss: 1.9430, validationAccuracy: 0.2414:   2%|2         | 4/200 [05:29<3:35:39, 66.02s/it]
+lr: 0.030000, trainLoss: 2.1002, trainAccuracy: 0.1704, validationLoss: 2.0202, validationAccuracy: 0.1977:   2%|2         | 4/200 [04:24<3:35:39, 66.02s/it]
+19691 lr: 0.050000, trainLoss: 1.6215, trainAccuracy: 0.4228, validationLoss: 1.4449, validationAccuracy: 0.4861:   2%|2         | 5/200 [06:25<3:29:52, 64.58s/it]
+lr: 0.040000, trainLoss: 1.5824, trainAccuracy: 0.4373, validationLoss: 1.3473, validationAccuracy: 0.5367:   2%|2         | 5/200 [05:20<3:29:52, 64.58s/it]
+73537 lr: 0.050000, trainLoss: 2.0001, trainAccuracy: 0.2482, validationLoss: 1.7706, validationAccuracy: 0.3482:   2%|2         | 5/200 [06:34<3:33:55, 65.82s/it]
+lr: 0.040000, trainLoss: 2.0682, trainAccuracy: 0.2014, validationLoss: 1.9430, validationAccuracy: 0.2414:   2%|2         | 5/200 [05:29<3:33:55, 65.82s/it]
+19691 lr: 0.050000, trainLoss: 1.6164, trainAccuracy: 0.4276, validationLoss: 1.4585, validationAccuracy: 0.4984:   3%|3         | 6/200 [07:29<3:29:09, 64.69s/it]
+lr: 0.050000, trainLoss: 1.6215, trainAccuracy: 0.4228, validationLoss: 1.4449, validationAccuracy: 0.4861:   3%|3         | 6/200 [06:25<3:29:09, 64.69s/it]
+73537 lr: 0.050000, trainLoss: 1.9119, trainAccuracy: 0.2928, validationLoss: 1.6826, validationAccuracy: 0.3963:   3%|3         | 6/200 [07:38<3:31:56, 65.55s/it]
+lr: 0.050000, trainLoss: 2.0001, trainAccuracy: 0.2482, validationLoss: 1.7706, validationAccuracy: 0.3482:   3%|3         | 6/200 [06:34<3:31:56, 65.55s/it]
+73537 lr: 0.050000, trainLoss: 1.8270, trainAccuracy: 0.3275, validationLoss: 1.6786, validationAccuracy: 0.3773:   4%|3         | 7/200 [08:48<3:28:41, 64.88s/it]
+lr: 0.050000, trainLoss: 1.9119, trainAccuracy: 0.2928, validationLoss: 1.6826, validationAccuracy: 0.3963:   4%|3         | 7/200 [07:38<3:28:41, 64.88s/it]
+19691 lr: 0.050000, trainLoss: 1.6564, trainAccuracy: 0.4085, validationLoss: 1.4583, validationAccuracy: 0.4676:   4%|3         | 7/200 [08:40<3:27:42, 64.57s/it]
+lr: 0.050000, trainLoss: 1.6164, trainAccuracy: 0.4276, validationLoss: 1.4585, validationAccuracy: 0.4984:   4%|3         | 7/200 [07:29<3:27:42, 64.57s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.050000, trainLoss: 1.6578, trainAccuracy: 0.4088, validationLoss: 1.4367, validationAccuracy: 0.4637:   4%|4         | 8/200 [09:46<3:32:38, 66.45s/it]
+lr: 0.050000, trainLoss: 1.6564, trainAccuracy: 0.4085, validationLoss: 1.4583, validationAccuracy: 0.4676:   4%|4         | 8/200 [08:40<3:32:38, 66.45s/it]
+73537 lr: 0.050000, trainLoss: 1.7952, trainAccuracy: 0.3410, validationLoss: 1.6122, validationAccuracy: 0.4207:   4%|4         | 8/200 [09:55<3:33:02, 66.58s/it]
+lr: 0.050000, trainLoss: 1.8270, trainAccuracy: 0.3275, validationLoss: 1.6786, validationAccuracy: 0.3773:   4%|4         | 8/200 [08:48<3:33:02, 66.58s/it]
+73537 lr: 0.050000, trainLoss: 1.7954, trainAccuracy: 0.3369, validationLoss: 1.5785, validationAccuracy: 0.4189:   4%|4         | 9/200 [10:59<3:31:54, 66.57s/it]
+lr: 0.050000, trainLoss: 1.7952, trainAccuracy: 0.3410, validationLoss: 1.6122, validationAccuracy: 0.4207:   4%|4         | 9/200 [09:55<3:31:54, 66.57s/it]
+19691 lr: 0.050000, trainLoss: 1.6670, trainAccuracy: 0.4038, validationLoss: 1.5974, validationAccuracy: 0.4496:   4%|4         | 9/200 [10:51<3:31:25, 66.42s/it]
+lr: 0.050000, trainLoss: 1.6578, trainAccuracy: 0.4088, validationLoss: 1.4367, validationAccuracy: 0.4637:   4%|4         | 9/200 [09:46<3:31:25, 66.42s/it]
+73537 lr: 0.050000, trainLoss: 1.7791, trainAccuracy: 0.3463, validationLoss: 1.6851, validationAccuracy: 0.3516:   5%|5         | 10/200 [12:02<3:28:30, 65.85s/it]
+lr: 0.050000, trainLoss: 1.7954, trainAccuracy: 0.3369, validationLoss: 1.5785, validationAccuracy: 0.4189:   5%|5         | 10/200 [10:59<3:28:30, 65.85s/it]
+19691 lr: 0.050000, trainLoss: 1.6445, trainAccuracy: 0.4125, validationLoss: 1.4862, validationAccuracy: 0.4605:   5%|5         | 10/200 [11:54<3:29:08, 66.04s/it]
+lr: 0.050000, trainLoss: 1.6670, trainAccuracy: 0.4038, validationLoss: 1.5974, validationAccuracy: 0.4496:   5%|5         | 10/200 [10:52<3:29:08, 66.04s/it]
+73537 lr: 0.050000, trainLoss: 1.7815, trainAccuracy: 0.3456, validationLoss: 1.6968, validationAccuracy: 0.3807:   6%|5         | 11/200 [13:33<3:24:36, 64.96s/it]
+lr: 0.050000, trainLoss: 1.7791, trainAccuracy: 0.3463, validationLoss: 1.6851, validationAccuracy: 0.3516:   6%|5         | 11/200 [12:02<3:24:36, 64.96s/it]
+19691 lr: 0.050000, trainLoss: 1.6926, trainAccuracy: 0.3928, validationLoss: 1.5554, validationAccuracy: 0.4471:   6%|5         | 11/200 [13:25<3:24:26, 64.90s/it]
+lr: 0.050000, trainLoss: 1.6445, trainAccuracy: 0.4125, validationLoss: 1.4862, validationAccuracy: 0.4605:   6%|5         | 11/200 [11:54<3:24:26, 64.90s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.050000, trainLoss: 1.6989, trainAccuracy: 0.3904, validationLoss: 1.4986, validationAccuracy: 0.4725:   6%|6         | 12/200 [14:54<3:48:43, 73.00s/it]
+lr: 0.050000, trainLoss: 1.6926, trainAccuracy: 0.3928, validationLoss: 1.5554, validationAccuracy: 0.4471:   6%|6         | 12/200 [13:25<3:48:43, 73.00s/it]
+73537 lr: 0.050000, trainLoss: 1.7746, trainAccuracy: 0.3468, validationLoss: 1.6458, validationAccuracy: 0.4016:   6%|6         | 12/200 [15:03<3:48:35, 72.96s/it]
+lr: 0.050000, trainLoss: 1.7815, trainAccuracy: 0.3456, validationLoss: 1.6968, validationAccuracy: 0.3807:   6%|6         | 12/200 [13:33<3:48:35, 72.96s/it]
+73537 lr: 0.050000, trainLoss: 1.7742, trainAccuracy: 0.3485, validationLoss: 1.7434, validationAccuracy: 0.3486:   6%|6         | 13/200 [16:25<4:03:42, 78.20s/it]
+lr: 0.050000, trainLoss: 1.7746, trainAccuracy: 0.3468, validationLoss: 1.6458, validationAccuracy: 0.4016:   6%|6         | 13/200 [15:03<4:03:42, 78.20s/it]
+19691 lr: 0.025000, trainLoss: 1.5740, trainAccuracy: 0.4376, validationLoss: 1.3726, validationAccuracy: 0.5283:   6%|6         | 13/200 [16:17<4:02:18, 77.75s/it]
+lr: 0.050000, trainLoss: 1.6989, trainAccuracy: 0.3904, validationLoss: 1.4986, validationAccuracy: 0.4725:   6%|6         | 13/200 [14:54<4:02:18, 77.75s/it]
+73537 lr: 0.025000, trainLoss: 1.6878, trainAccuracy: 0.3832, validationLoss: 1.5375, validationAccuracy: 0.4303:   7%|7         | 14/200 [17:52<4:05:17, 79.12s/it]
+lr: 0.050000, trainLoss: 1.7742, trainAccuracy: 0.3485, validationLoss: 1.7434, validationAccuracy: 0.3486:   7%|7         | 14/200 [16:25<4:05:17, 79.12s/it]
+19691 lr: 0.025000, trainLoss: 1.5534, trainAccuracy: 0.4478, validationLoss: 1.3321, validationAccuracy: 0.5234:   7%|7         | 14/200 [17:44<4:06:05, 79.38s/it]
+lr: 0.025000, trainLoss: 1.5740, trainAccuracy: 0.4376, validationLoss: 1.3726, validationAccuracy: 0.5283:   7%|7         | 14/200 [16:17<4:06:05, 79.38s/it]
+19691 lr: 0.025000, trainLoss: 1.5447, trainAccuracy: 0.4531, validationLoss: 1.3384, validationAccuracy: 0.5262:   8%|7         | 15/200 [19:13<4:12:06, 81.76s/it]
+lr: 0.025000, trainLoss: 1.5534, trainAccuracy: 0.4478, validationLoss: 1.3321, validationAccuracy: 0.5234:   8%|7         | 15/200 [17:44<4:12:06, 81.76s/it]
+73537 lr: 0.025000, trainLoss: 1.6672, trainAccuracy: 0.3892, validationLoss: 1.4620, validationAccuracy: 0.4656:   8%|7         | 15/200 [19:22<4:11:30, 81.57s/it]
+lr: 0.025000, trainLoss: 1.6878, trainAccuracy: 0.3832, validationLoss: 1.5375, validationAccuracy: 0.4303:   8%|7         | 15/200 [17:52<4:11:30, 81.57s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.025000, trainLoss: 1.5537, trainAccuracy: 0.4478, validationLoss: 1.3190, validationAccuracy: 0.5408:   8%|8         | 16/200 [20:41<4:17:15, 83.89s/it]
+lr: 0.025000, trainLoss: 1.5447, trainAccuracy: 0.4531, validationLoss: 1.3384, validationAccuracy: 0.5262:   8%|8         | 16/200 [19:13<4:17:15, 83.89s/it]
+73537 lr: 0.025000, trainLoss: 1.6734, trainAccuracy: 0.3894, validationLoss: 1.4951, validationAccuracy: 0.4529:   8%|8         | 16/200 [20:50<4:18:20, 84.24s/it]
+lr: 0.025000, trainLoss: 1.6672, trainAccuracy: 0.3892, validationLoss: 1.4620, validationAccuracy: 0.4656:   8%|8         | 16/200 [19:22<4:18:20, 84.24s/it]
+73537 lr: 0.025000, trainLoss: 1.6684, trainAccuracy: 0.3889, validationLoss: 1.4938, validationAccuracy: 0.4500:   8%|8         | 17/200 [22:14<4:19:56, 85.23s/it]
+lr: 0.025000, trainLoss: 1.6734, trainAccuracy: 0.3894, validationLoss: 1.4951, validationAccuracy: 0.4529:   8%|8         | 17/200 [20:50<4:19:56, 85.23s/it]
+19691 lr: 0.025000, trainLoss: 1.5435, trainAccuracy: 0.4508, validationLoss: 1.3095, validationAccuracy: 0.5424:   8%|8         | 17/200 [22:06<4:19:40, 85.14s/it]
+lr: 0.025000, trainLoss: 1.5537, trainAccuracy: 0.4478, validationLoss: 1.3190, validationAccuracy: 0.5408:   8%|8         | 17/200 [20:41<4:19:40, 85.14s/it]
+19691 lr: 0.025000, trainLoss: 1.5390, trainAccuracy: 0.4535, validationLoss: 1.3052, validationAccuracy: 0.5389:   9%|9         | 18/200 [23:29<4:17:45, 84.97s/it]
+lr: 0.025000, trainLoss: 1.5435, trainAccuracy: 0.4508, validationLoss: 1.3095, validationAccuracy: 0.5424:   9%|9         | 18/200 [22:06<4:17:45, 84.97s/it]
+73537 lr: 0.025000, trainLoss: 1.6561, trainAccuracy: 0.3957, validationLoss: 1.4526, validationAccuracy: 0.4646:   9%|9         | 18/200 [23:37<4:17:28, 84.88s/it]
+lr: 0.025000, trainLoss: 1.6684, trainAccuracy: 0.3889, validationLoss: 1.4938, validationAccuracy: 0.4500:   9%|9         | 18/200 [22:14<4:17:28, 84.88s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.025000, trainLoss: 1.5406, trainAccuracy: 0.4511, validationLoss: 1.4367, validationAccuracy: 0.4906:  10%|9         | 19/200 [24:57<4:14:31, 84.37s/it]
+lr: 0.025000, trainLoss: 1.5390, trainAccuracy: 0.4535, validationLoss: 1.3052, validationAccuracy: 0.5389:  10%|9         | 19/200 [23:29<4:14:31, 84.37s/it]
+73537 lr: 0.025000, trainLoss: 1.6661, trainAccuracy: 0.3929, validationLoss: 1.5432, validationAccuracy: 0.4223:  10%|9         | 19/200 [25:07<4:14:44, 84.45s/it]
+lr: 0.025000, trainLoss: 1.6561, trainAccuracy: 0.3957, validationLoss: 1.4526, validationAccuracy: 0.4646:  10%|9         | 19/200 [23:37<4:14:44, 84.45s/it]
+19691 lr: 0.025000, trainLoss: 1.5289, trainAccuracy: 0.4558, validationLoss: 1.3269, validationAccuracy: 0.5318:  10%|#         | 20/200 [26:28<4:16:53, 85.63s/it]
+lr: 0.025000, trainLoss: 1.5406, trainAccuracy: 0.4511, validationLoss: 1.4367, validationAccuracy: 0.4906:  10%|#         | 20/200 [24:57<4:16:53, 85.63s/it]
+73537 lr: 0.025000, trainLoss: 1.6488, trainAccuracy: 0.3940, validationLoss: 1.5887, validationAccuracy: 0.4303:  10%|#         | 20/200 [26:36<4:18:09, 86.05s/it]
+lr: 0.025000, trainLoss: 1.6661, trainAccuracy: 0.3929, validationLoss: 1.5432, validationAccuracy: 0.4223:  10%|#         | 20/200 [25:07<4:18:09, 86.05s/it]
+73537 lr: 0.025000, trainLoss: 1.6528, trainAccuracy: 0.3983, validationLoss: 1.4633, validationAccuracy: 0.4572:  10%|#         | 21/200 [28:06<4:19:32, 86.99s/it]
+lr: 0.025000, trainLoss: 1.6488, trainAccuracy: 0.3940, validationLoss: 1.5887, validationAccuracy: 0.4303:  10%|#         | 21/200 [26:36<4:19:32, 86.99s/it]
+19691 lr: 0.025000, trainLoss: 1.5344, trainAccuracy: 0.4549, validationLoss: 1.2719, validationAccuracy: 0.5484:  10%|#         | 21/200 [27:58<4:19:32, 86.99s/it]
+lr: 0.025000, trainLoss: 1.5289, trainAccuracy: 0.4558, validationLoss: 1.3269, validationAccuracy: 0.5318:  10%|#         | 21/200 [26:28<4:19:32, 86.99s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.025000, trainLoss: 1.6554, trainAccuracy: 0.4002, validationLoss: 1.5131, validationAccuracy: 0.4623:  11%|#1        | 22/200 [29:34<4:20:32, 87.82s/it]
+lr: 0.025000, trainLoss: 1.6528, trainAccuracy: 0.3983, validationLoss: 1.4633, validationAccuracy: 0.4572:  11%|#1        | 22/200 [28:06<4:20:32, 87.82s/it]
+19691 lr: 0.025000, trainLoss: 1.5463, trainAccuracy: 0.4510, validationLoss: 1.2929, validationAccuracy: 0.5486:  11%|#1        | 22/200 [29:27<4:21:06, 88.01s/it]
+lr: 0.025000, trainLoss: 1.5344, trainAccuracy: 0.4549, validationLoss: 1.2719, validationAccuracy: 0.5484:  11%|#1        | 22/200 [27:58<4:21:06, 88.01s/it]
+73537 lr: 0.012500, trainLoss: 1.5700, trainAccuracy: 0.4274, validationLoss: 1.3658, validationAccuracy: 0.5014:  12%|#1        | 23/200 [31:02<4:19:11, 87.86s/it]
+lr: 0.025000, trainLoss: 1.6554, trainAccuracy: 0.4002, validationLoss: 1.5131, validationAccuracy: 0.4623:  12%|#1        | 23/200 [29:34<4:19:11, 87.86s/it]
+19691 lr: 0.025000, trainLoss: 1.5158, trainAccuracy: 0.4594, validationLoss: 1.2780, validationAccuracy: 0.5430:  12%|#1        | 23/200 [30:55<4:20:41, 88.37s/it]
+lr: 0.025000, trainLoss: 1.5463, trainAccuracy: 0.4510, validationLoss: 1.2929, validationAccuracy: 0.5486:  12%|#1        | 23/200 [29:27<4:20:41, 88.37s/it]
+73537 lr: 0.012500, trainLoss: 1.5549, trainAccuracy: 0.4337, validationLoss: 1.4880, validationAccuracy: 0.4766:  12%|#2        | 24/200 [32:31<4:18:12, 88.03s/it]
+lr: 0.012500, trainLoss: 1.5700, trainAccuracy: 0.4274, validationLoss: 1.3658, validationAccuracy: 0.5014:  12%|#2        | 24/200 [31:02<4:18:12, 88.03s/it]
+19691 lr: 0.025000, trainLoss: 1.5305, trainAccuracy: 0.4571, validationLoss: 1.2762, validationAccuracy: 0.5479:  12%|#2        | 24/200 [32:24<4:18:17, 88.06s/it]
+lr: 0.025000, trainLoss: 1.5158, trainAccuracy: 0.4594, validationLoss: 1.2780, validationAccuracy: 0.5430:  12%|#2        | 24/200 [30:55<4:18:17, 88.06s/it]
+73537 lr: 0.012500, trainLoss: 1.5622, trainAccuracy: 0.4303, validationLoss: 1.3542, validationAccuracy: 0.5033:  12%|#2        | 25/200 [34:06<4:17:26, 88.26s/it]
+19691 lr: 0.025000, trainLoss: 1.5222, trainAccuracy: 0.4583, validationLoss: 1.3265, validationAccuracy: 0.5299:  12%|#2        | 25/200 [33:58<4:17:56, 88.44s/it]
+lr: 0.012500, trainLoss: 1.5549, trainAccuracy: 0.4337, validationLoss: 1.4880, validationAccuracy: 0.4766:  12%|#2        | 25/200 [32:31<4:17:26, 88.26s/it]
+lr: 0.025000, trainLoss: 1.5305, trainAccuracy: 0.4571, validationLoss: 1.2762, validationAccuracy: 0.5479:  12%|#2        | 25/200 [32:24<4:17:56, 88.44s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.012500, trainLoss: 1.4320, trainAccuracy: 0.4923, validationLoss: 1.1906, validationAccuracy: 0.5865:  13%|#3        | 26/200 [35:34<4:21:37, 90.22s/it]
+lr: 0.025000, trainLoss: 1.5222, trainAccuracy: 0.4583, validationLoss: 1.3265, validationAccuracy: 0.5299:  13%|#3        | 26/200 [33:58<4:21:37, 90.22s/it]
+73537 lr: 0.012500, trainLoss: 1.5613, trainAccuracy: 0.4319, validationLoss: 1.3473, validationAccuracy: 0.5107:  13%|#3        | 26/200 [35:43<4:21:57, 90.33s/it]
+lr: 0.012500, trainLoss: 1.5622, trainAccuracy: 0.4303, validationLoss: 1.3542, validationAccuracy: 0.5033:  13%|#3        | 26/200 [34:06<4:21:57, 90.33s/it]
+73537 lr: 0.012500, trainLoss: 1.5527, trainAccuracy: 0.4383, validationLoss: 1.3929, validationAccuracy: 0.4918:  14%|#3        | 27/200 [37:17<4:25:38, 92.13s/it]
+lr: 0.012500, trainLoss: 1.5613, trainAccuracy: 0.4319, validationLoss: 1.3473, validationAccuracy: 0.5107:  14%|#3        | 27/200 [35:43<4:25:38, 92.13s/it]
+19691 lr: 0.012500, trainLoss: 1.4270, trainAccuracy: 0.4941, validationLoss: 1.1844, validationAccuracy: 0.5959:  14%|#3        | 27/200 [37:09<4:25:02, 91.92s/it]
+lr: 0.012500, trainLoss: 1.4320, trainAccuracy: 0.4923, validationLoss: 1.1906, validationAccuracy: 0.5865:  14%|#3        | 27/200 [35:34<4:25:02, 91.92s/it]
+73537 lr: 0.012500, trainLoss: 1.5500, trainAccuracy: 0.4361, validationLoss: 1.3855, validationAccuracy: 0.4879:  14%|#4        | 28/200 [38:54<4:25:39, 92.67s/it]
+lr: 0.012500, trainLoss: 1.5527, trainAccuracy: 0.4383, validationLoss: 1.3929, validationAccuracy: 0.4918:  14%|#4        | 28/200 [37:17<4:25:39, 92.67s/it]
+19691 lr: 0.012500, trainLoss: 1.4141, trainAccuracy: 0.4986, validationLoss: 1.2422, validationAccuracy: 0.5590:  14%|#4        | 28/200 [38:46<4:26:01, 92.80s/it]
+lr: 0.012500, trainLoss: 1.4270, trainAccuracy: 0.4941, validationLoss: 1.1844, validationAccuracy: 0.5959:  14%|#4        | 28/200 [37:09<4:26:01, 92.80s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.012500, trainLoss: 1.5454, trainAccuracy: 0.4388, validationLoss: 1.3702, validationAccuracy: 0.4932:  14%|#4        | 29/200 [40:26<4:27:42, 93.93s/it]
+lr: 0.012500, trainLoss: 1.5500, trainAccuracy: 0.4361, validationLoss: 1.3855, validationAccuracy: 0.4879:  14%|#4        | 29/200 [38:54<4:27:42, 93.93s/it]
+19691 lr: 0.012500, trainLoss: 1.4180, trainAccuracy: 0.4980, validationLoss: 1.2196, validationAccuracy: 0.5727:  14%|#4        | 29/200 [40:21<4:28:17, 94.14s/it]
+lr: 0.012500, trainLoss: 1.4141, trainAccuracy: 0.4986, validationLoss: 1.2422, validationAccuracy: 0.5590:  14%|#4        | 29/200 [38:46<4:28:17, 94.14s/it]
+73537 lr: 0.012500, trainLoss: 1.5371, trainAccuracy: 0.4415, validationLoss: 1.3448, validationAccuracy: 0.5047:  15%|#5        | 30/200 [42:05<4:25:15, 93.62s/it]
+lr: 0.012500, trainLoss: 1.5454, trainAccuracy: 0.4388, validationLoss: 1.3702, validationAccuracy: 0.4932:  15%|#5        | 30/200 [40:26<4:25:15, 93.62s/it]
+19691 lr: 0.012500, trainLoss: 1.4240, trainAccuracy: 0.4944, validationLoss: 1.2393, validationAccuracy: 0.5805:  15%|#5        | 30/200 [41:58<4:27:20, 94.36s/it]
+lr: 0.012500, trainLoss: 1.4180, trainAccuracy: 0.4980, validationLoss: 1.2196, validationAccuracy: 0.5727:  15%|#5        | 30/200 [40:21<4:27:20, 94.36s/it]
+73537 lr: 0.012500, trainLoss: 1.5327, trainAccuracy: 0.4420, validationLoss: 1.3799, validationAccuracy: 0.4891:  16%|#5        | 31/200 [43:48<4:28:16, 95.25s/it]
+lr: 0.012500, trainLoss: 1.5371, trainAccuracy: 0.4415, validationLoss: 1.3448, validationAccuracy: 0.5047:  16%|#5        | 31/200 [42:05<4:28:16, 95.25s/it]
+19691 lr: 0.012500, trainLoss: 1.4038, trainAccuracy: 0.5063, validationLoss: 1.1749, validationAccuracy: 0.5924:  16%|#5        | 31/200 [43:40<4:27:49, 95.09s/it]
+lr: 0.012500, trainLoss: 1.4240, trainAccuracy: 0.4944, validationLoss: 1.2393, validationAccuracy: 0.5805:  16%|#5        | 31/200 [41:58<4:27:49, 95.09s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.012500, trainLoss: 1.5444, trainAccuracy: 0.4377, validationLoss: 1.3809, validationAccuracy: 0.4988:  16%|#6        | 32/200 [45:24<4:32:59, 97.50s/it]
+lr: 0.012500, trainLoss: 1.5327, trainAccuracy: 0.4420, validationLoss: 1.3799, validationAccuracy: 0.4891:  16%|#6        | 32/200 [43:48<4:32:59, 97.50s/it]
+19691 lr: 0.012500, trainLoss: 1.4037, trainAccuracy: 0.5030, validationLoss: 1.1880, validationAccuracy: 0.5977:  16%|#6        | 32/200 [45:17<4:32:19, 97.26s/it]
+lr: 0.012500, trainLoss: 1.4038, trainAccuracy: 0.5063, validationLoss: 1.1749, validationAccuracy: 0.5924:  16%|#6        | 32/200 [43:40<4:32:19, 97.26s/it]
+73537 lr: 0.012500, trainLoss: 1.5263, trainAccuracy: 0.4453, validationLoss: 1.3462, validationAccuracy: 0.5127:  16%|#6        | 33/200 [46:58<4:30:14, 97.09s/it]
+lr: 0.012500, trainLoss: 1.5444, trainAccuracy: 0.4377, validationLoss: 1.3809, validationAccuracy: 0.4988:  16%|#6        | 33/200 [45:24<4:30:14, 97.09s/it]
+19691 lr: 0.012500, trainLoss: 1.4045, trainAccuracy: 0.5025, validationLoss: 1.1846, validationAccuracy: 0.5900:  16%|#6        | 33/200 [46:51<4:29:57, 96.99s/it]
+lr: 0.012500, trainLoss: 1.4037, trainAccuracy: 0.5030, validationLoss: 1.1880, validationAccuracy: 0.5977:  16%|#6        | 33/200 [45:17<4:29:57, 96.99s/it]
+73537 lr: 0.012500, trainLoss: 1.5316, trainAccuracy: 0.4428, validationLoss: 1.3632, validationAccuracy: 0.4941:  17%|#7        | 34/200 [48:42<4:25:46, 96.06s/it]
+lr: 0.012500, trainLoss: 1.5263, trainAccuracy: 0.4453, validationLoss: 1.3462, validationAccuracy: 0.5127:  17%|#7        | 34/200 [46:58<4:25:46, 96.06s/it]
+19691 lr: 0.012500, trainLoss: 1.3963, trainAccuracy: 0.5065, validationLoss: 1.1701, validationAccuracy: 0.5914:  17%|#7        | 34/200 [48:34<4:25:54, 96.11s/it]
+lr: 0.012500, trainLoss: 1.4045, trainAccuracy: 0.5025, validationLoss: 1.1846, validationAccuracy: 0.5900:  17%|#7        | 34/200 [46:51<4:25:54, 96.11s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.012500, trainLoss: 1.3995, trainAccuracy: 0.5055, validationLoss: 1.1829, validationAccuracy: 0.5855:  18%|#7        | 35/200 [50:13<4:30:26, 98.34s/it]
+lr: 0.012500, trainLoss: 1.3963, trainAccuracy: 0.5065, validationLoss: 1.1701, validationAccuracy: 0.5914:  18%|#7        | 35/200 [48:34<4:30:26, 98.34s/it]
+73537 lr: 0.006250, trainLoss: 1.4556, trainAccuracy: 0.4715, validationLoss: 1.2841, validationAccuracy: 0.5211:  18%|#7        | 35/200 [50:22<4:30:18, 98.29s/it]
+lr: 0.012500, trainLoss: 1.5316, trainAccuracy: 0.4428, validationLoss: 1.3632, validationAccuracy: 0.4941:  18%|#7        | 35/200 [48:42<4:30:18, 98.29s/it]
+19691 lr: 0.012500, trainLoss: 1.3964, trainAccuracy: 0.5078, validationLoss: 1.2148, validationAccuracy: 0.5721:  18%|#8        | 36/200 [51:49<4:28:56, 98.39s/it]
+lr: 0.012500, trainLoss: 1.3995, trainAccuracy: 0.5055, validationLoss: 1.1829, validationAccuracy: 0.5855:  18%|#8        | 36/200 [50:13<4:28:56, 98.39s/it]
+73537 lr: 0.006250, trainLoss: 1.4525, trainAccuracy: 0.4731, validationLoss: 1.2713, validationAccuracy: 0.5328:  18%|#8        | 36/200 [51:58<4:30:29, 98.96s/it]
+lr: 0.006250, trainLoss: 1.4556, trainAccuracy: 0.4715, validationLoss: 1.2841, validationAccuracy: 0.5211:  18%|#8        | 36/200 [50:22<4:30:29, 98.96s/it]
+19691 lr: 0.012500, trainLoss: 1.4181, trainAccuracy: 0.4978, validationLoss: 1.2325, validationAccuracy: 0.5654:  18%|#8        | 37/200 [53:34<4:25:50, 97.86s/it]
+73537 lr: 0.006250, trainLoss: 1.4426, trainAccuracy: 0.4776, validationLoss: 1.3791, validationAccuracy: 0.5002:  18%|#8        | 37/200 [53:42<4:26:35, 98.13s/it]
+lr: 0.006250, trainLoss: 1.4525, trainAccuracy: 0.4731, validationLoss: 1.2713, validationAccuracy: 0.5328:  18%|#8        | 37/200 [51:58<4:26:35, 98.13s/it]
+lr: 0.012500, trainLoss: 1.3964, trainAccuracy: 0.5078, validationLoss: 1.2148, validationAccuracy: 0.5721:  18%|#8        | 37/200 [51:49<4:25:50, 97.86s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.006250, trainLoss: 1.4478, trainAccuracy: 0.4760, validationLoss: 1.2614, validationAccuracy: 0.5559:  19%|#9        | 38/200 [55:17<4:29:34, 99.84s/it]
+lr: 0.006250, trainLoss: 1.4426, trainAccuracy: 0.4776, validationLoss: 1.3791, validationAccuracy: 0.5002:  19%|#9        | 38/200 [53:42<4:29:34, 99.84s/it]
+19691 lr: 0.012500, trainLoss: 1.4015, trainAccuracy: 0.5023, validationLoss: 1.1593, validationAccuracy: 0.6002:  19%|#9        | 38/200 [55:10<4:29:38, 99.87s/it]
+lr: 0.012500, trainLoss: 1.4181, trainAccuracy: 0.4978, validationLoss: 1.2325, validationAccuracy: 0.5654:  19%|#9        | 38/200 [53:34<4:29:38, 99.87s/it]
+73537 lr: 0.006250, trainLoss: 1.4329, trainAccuracy: 0.4828, validationLoss: 1.3227, validationAccuracy: 0.5105:  20%|#9        | 39/200 [56:51<4:24:01, 98.39s/it]
+lr: 0.006250, trainLoss: 1.4478, trainAccuracy: 0.4760, validationLoss: 1.2614, validationAccuracy: 0.5559:  20%|#9        | 39/200 [55:17<4:24:01, 98.39s/it]
+19691 lr: 0.012500, trainLoss: 1.3984, trainAccuracy: 0.5039, validationLoss: 1.1919, validationAccuracy: 0.5865:  20%|#9        | 39/200 [56:44<4:24:47, 98.68s/it]
+lr: 0.012500, trainLoss: 1.4015, trainAccuracy: 0.5023, validationLoss: 1.1593, validationAccuracy: 0.6002:  20%|#9        | 39/200 [55:10<4:24:47, 98.68s/it]
+19691 lr: 0.012500, trainLoss: 1.3895, trainAccuracy: 0.5078, validationLoss: 1.1738, validationAccuracy: 0.5855:  20%|##        | 40/200 [58:29<4:19:20, 97.25s/it]
+73537 lr: 0.006250, trainLoss: 1.4406, trainAccuracy: 0.4817, validationLoss: 1.2976, validationAccuracy: 0.5354:  20%|##        | 40/200 [58:37<4:19:16, 97.23s/it]
+lr: 0.006250, trainLoss: 1.4329, trainAccuracy: 0.4828, validationLoss: 1.3227, validationAccuracy: 0.5105:  20%|##        | 40/200 [56:52<4:19:16, 97.23s/it]
+lr: 0.012500, trainLoss: 1.3984, trainAccuracy: 0.5039, validationLoss: 1.1919, validationAccuracy: 0.5865:  20%|##        | 40/200 [56:44<4:19:20, 97.25s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.012500, trainLoss: 1.4102, trainAccuracy: 0.5010, validationLoss: 1.1679, validationAccuracy: 0.5967:  20%|##        | 41/200 [1:00:03<4:23:59, 99.62s/it]
+73537 lr: 0.006250, trainLoss: 1.4322, trainAccuracy: 0.4841, validationLoss: 1.2574, validationAccuracy: 0.5494:  20%|##        | 41/200 [1:00:11<4:24:11, 99.70s/it]
+lr: 0.012500, trainLoss: 1.3895, trainAccuracy: 0.5078, validationLoss: 1.1738, validationAccuracy: 0.5855:  20%|##        | 41/200 [58:29<4:23:59, 99.62s/it]
+lr: 0.006250, trainLoss: 1.4406, trainAccuracy: 0.4817, validationLoss: 1.2976, validationAccuracy: 0.5354:  20%|##        | 41/200 [58:37<4:24:11, 99.70s/it]
+19691 lr: 0.012500, trainLoss: 1.3917, trainAccuracy: 0.5095, validationLoss: 1.2214, validationAccuracy: 0.5738:  21%|##1       | 42/200 [1:01:39<4:18:13, 98.06s/it]
+73537 lr: 0.006250, trainLoss: 1.4361, trainAccuracy: 0.4845, validationLoss: 1.2999, validationAccuracy: 0.5375:  21%|##1       | 42/200 [1:01:47<4:18:22, 98.12s/it]
+lr: 0.006250, trainLoss: 1.4322, trainAccuracy: 0.4841, validationLoss: 1.2574, validationAccuracy: 0.5494:  21%|##1       | 42/200 [1:00:11<4:18:22, 98.12s/it]
+lr: 0.012500, trainLoss: 1.4102, trainAccuracy: 0.5010, validationLoss: 1.1679, validationAccuracy: 0.5967:  21%|##1       | 42/200 [1:00:03<4:18:13, 98.06s/it]
+19691 lr: 0.006250, trainLoss: 1.3107, trainAccuracy: 0.5382, validationLoss: 1.0757, validationAccuracy: 0.6307:  22%|##1       | 43/200 [1:03:14<4:14:25, 97.23s/it]
+lr: 0.012500, trainLoss: 1.3917, trainAccuracy: 0.5095, validationLoss: 1.2214, validationAccuracy: 0.5738:  22%|##1       | 43/200 [1:01:39<4:14:25, 97.23s/it]
+73537 lr: 0.006250, trainLoss: 1.4264, trainAccuracy: 0.4889, validationLoss: 1.2323, validationAccuracy: 0.5594:  22%|##1       | 43/200 [1:03:22<4:14:31, 97.27s/it]
+lr: 0.006250, trainLoss: 1.4361, trainAccuracy: 0.4845, validationLoss: 1.2999, validationAccuracy: 0.5375:  22%|##1       | 43/200 [1:01:47<4:14:31, 97.27s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.006250, trainLoss: 1.3020, trainAccuracy: 0.5426, validationLoss: 1.1044, validationAccuracy: 0.6125:  22%|##2       | 44/200 [1:04:38<4:11:09, 96.60s/it]
+lr: 0.006250, trainLoss: 1.3107, trainAccuracy: 0.5382, validationLoss: 1.0757, validationAccuracy: 0.6307:  22%|##2       | 44/200 [1:03:14<4:11:09, 96.60s/it]
+73537 lr: 0.006250, trainLoss: 1.4235, trainAccuracy: 0.4888, validationLoss: 1.2156, validationAccuracy: 0.5604:  22%|##2       | 44/200 [1:04:47<4:11:33, 96.76s/it]
+lr: 0.006250, trainLoss: 1.4264, trainAccuracy: 0.4889, validationLoss: 1.2323, validationAccuracy: 0.5594:  22%|##2       | 44/200 [1:03:22<4:11:33, 96.76s/it]
+19691 lr: 0.006250, trainLoss: 1.3063, trainAccuracy: 0.5409, validationLoss: 1.0653, validationAccuracy: 0.6357:  22%|##2       | 45/200 [1:06:16<4:00:25, 93.07s/it]
+lr: 0.006250, trainLoss: 1.3020, trainAccuracy: 0.5426, validationLoss: 1.1044, validationAccuracy: 0.6125:  22%|##2       | 45/200 [1:04:39<4:00:25, 93.07s/it]
+73537 lr: 0.006250, trainLoss: 1.4272, trainAccuracy: 0.4842, validationLoss: 1.2150, validationAccuracy: 0.5695:  22%|##2       | 45/200 [1:06:25<4:00:27, 93.08s/it]
+lr: 0.006250, trainLoss: 1.4235, trainAccuracy: 0.4888, validationLoss: 1.2156, validationAccuracy: 0.5604:  22%|##2       | 45/200 [1:04:47<4:00:27, 93.08s/it]
+19691 lr: 0.006250, trainLoss: 1.3023, trainAccuracy: 0.5419, validationLoss: 1.0758, validationAccuracy: 0.6258:  23%|##3       | 46/200 [1:07:58<4:02:21, 94.43s/it]
+lr: 0.006250, trainLoss: 1.3063, trainAccuracy: 0.5409, validationLoss: 1.0653, validationAccuracy: 0.6357:  23%|##3       | 46/200 [1:06:16<4:02:21, 94.43s/it]
+73537 lr: 0.006250, trainLoss: 1.4216, trainAccuracy: 0.4870, validationLoss: 1.2004, validationAccuracy: 0.5770:  23%|##3       | 46/200 [1:08:07<4:02:37, 94.53s/it]
+lr: 0.006250, trainLoss: 1.4272, trainAccuracy: 0.4842, validationLoss: 1.2150, validationAccuracy: 0.5695:  23%|##3       | 46/200 [1:06:25<4:02:37, 94.53s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.006250, trainLoss: 1.4128, trainAccuracy: 0.4895, validationLoss: 1.2074, validationAccuracy: 0.5615:  24%|##3       | 47/200 [1:09:43<4:07:16, 96.97s/it]
+lr: 0.006250, trainLoss: 1.4216, trainAccuracy: 0.4870, validationLoss: 1.2004, validationAccuracy: 0.5770:  24%|##3       | 47/200 [1:08:07<4:07:16, 96.97s/it]
+19691 lr: 0.006250, trainLoss: 1.3025, trainAccuracy: 0.5429, validationLoss: 1.0350, validationAccuracy: 0.6451:  24%|##3       | 47/200 [1:09:35<4:06:10, 96.54s/it]
+lr: 0.006250, trainLoss: 1.3023, trainAccuracy: 0.5419, validationLoss: 1.0758, validationAccuracy: 0.6258:  24%|##3       | 47/200 [1:07:58<4:06:10, 96.54s/it]
+73537 lr: 0.006250, trainLoss: 1.4138, trainAccuracy: 0.4883, validationLoss: 1.2123, validationAccuracy: 0.5732:  24%|##4       | 48/200 [1:11:20<4:04:38, 96.57s/it]
+lr: 0.006250, trainLoss: 1.4128, trainAccuracy: 0.4895, validationLoss: 1.2074, validationAccuracy: 0.5615:  24%|##4       | 48/200 [1:09:43<4:04:38, 96.57s/it]
+19691 lr: 0.006250, trainLoss: 1.3084, trainAccuracy: 0.5431, validationLoss: 1.0938, validationAccuracy: 0.6256:  24%|##4       | 48/200 [1:11:11<4:05:21, 96.85s/it]
+lr: 0.006250, trainLoss: 1.3025, trainAccuracy: 0.5429, validationLoss: 1.0350, validationAccuracy: 0.6451:  24%|##4       | 48/200 [1:09:35<4:05:21, 96.85s/it]
+19691 lr: 0.006250, trainLoss: 1.3076, trainAccuracy: 0.5406, validationLoss: 1.0881, validationAccuracy: 0.6223:  24%|##4       | 49/200 [1:12:48<4:03:20, 96.69s/it]
+lr: 0.006250, trainLoss: 1.3084, trainAccuracy: 0.5431, validationLoss: 1.0938, validationAccuracy: 0.6256:  24%|##4       | 49/200 [1:11:11<4:03:20, 96.69s/it]
+73537 lr: 0.006250, trainLoss: 1.4055, trainAccuracy: 0.4982, validationLoss: 1.2471, validationAccuracy: 0.5557:  24%|##4       | 49/200 [1:12:57<4:02:59, 96.56s/it]
+lr: 0.006250, trainLoss: 1.4138, trainAccuracy: 0.4883, validationLoss: 1.2123, validationAccuracy: 0.5732:  24%|##4       | 49/200 [1:11:20<4:02:59, 96.56s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.006250, trainLoss: 1.4072, trainAccuracy: 0.4969, validationLoss: 1.2228, validationAccuracy: 0.5691:  25%|##5       | 50/200 [1:14:38<4:01:46, 96.71s/it]
+lr: 0.006250, trainLoss: 1.4055, trainAccuracy: 0.4982, validationLoss: 1.2471, validationAccuracy: 0.5557:  25%|##5       | 50/200 [1:12:57<4:01:46, 96.71s/it]
+19691 lr: 0.006250, trainLoss: 1.3026, trainAccuracy: 0.5441, validationLoss: 1.0465, validationAccuracy: 0.6457:  25%|##5       | 50/200 [1:14:31<4:01:44, 96.70s/it]
+lr: 0.006250, trainLoss: 1.3076, trainAccuracy: 0.5406, validationLoss: 1.0881, validationAccuracy: 0.6223:  25%|##5       | 50/200 [1:12:48<4:01:44, 96.70s/it]
+19691 lr: 0.006250, trainLoss: 1.2941, trainAccuracy: 0.5460, validationLoss: 1.0684, validationAccuracy: 0.6338:  26%|##5       | 51/200 [1:16:06<4:04:56, 98.63s/it]
+lr: 0.006250, trainLoss: 1.3026, trainAccuracy: 0.5441, validationLoss: 1.0465, validationAccuracy: 0.6457:  26%|##5       | 51/200 [1:14:31<4:04:56, 98.63s/it]
+73537 lr: 0.003125, trainLoss: 1.3410, trainAccuracy: 0.5204, validationLoss: 1.1533, validationAccuracy: 0.5879:  26%|##5       | 51/200 [1:16:16<4:03:44, 98.15s/it]
+lr: 0.006250, trainLoss: 1.4072, trainAccuracy: 0.4969, validationLoss: 1.2228, validationAccuracy: 0.5691:  26%|##5       | 51/200 [1:14:38<4:03:44, 98.15s/it]
+73537 lr: 0.003125, trainLoss: 1.3263, trainAccuracy: 0.5261, validationLoss: 1.1741, validationAccuracy: 0.5900:  26%|##6       | 52/200 [1:17:54<4:01:32, 97.93s/it]
+lr: 0.003125, trainLoss: 1.3410, trainAccuracy: 0.5204, validationLoss: 1.1533, validationAccuracy: 0.5879:  26%|##6       | 52/200 [1:16:16<4:01:32, 97.93s/it]
+19691 lr: 0.003125, trainLoss: 1.2293, trainAccuracy: 0.5709, validationLoss: 0.9878, validationAccuracy: 0.6559:  26%|##6       | 52/200 [1:17:50<4:00:06, 97.34s/it]
+lr: 0.006250, trainLoss: 1.2941, trainAccuracy: 0.5460, validationLoss: 1.0684, validationAccuracy: 0.6338:  26%|##6       | 52/200 [1:16:06<4:00:06, 97.34s/it]
+19691 lr: 0.003125, trainLoss: 1.2252, trainAccuracy: 0.5720, validationLoss: 0.9875, validationAccuracy: 0.6586:  26%|##6       | 53/200 [1:19:19<4:03:54, 99.56s/it]
+lr: 0.003125, trainLoss: 1.2293, trainAccuracy: 0.5709, validationLoss: 0.9878, validationAccuracy: 0.6559:  26%|##6       | 53/200 [1:17:50<4:03:54, 99.56s/it]
+73537 lr: 0.003125, trainLoss: 1.3176, trainAccuracy: 0.5271, validationLoss: 1.1519, validationAccuracy: 0.5811:  26%|##6       | 53/200 [1:19:31<4:00:32, 98.18s/it]
+lr: 0.003125, trainLoss: 1.3263, trainAccuracy: 0.5261, validationLoss: 1.1741, validationAccuracy: 0.5900:  26%|##6       | 53/200 [1:17:54<4:00:32, 98.18s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.003125, trainLoss: 1.3170, trainAccuracy: 0.5300, validationLoss: 1.1896, validationAccuracy: 0.5654:  27%|##7       | 54/200 [1:21:02<3:57:49, 97.74s/it]
+lr: 0.003125, trainLoss: 1.3176, trainAccuracy: 0.5271, validationLoss: 1.1519, validationAccuracy: 0.5811:  27%|##7       | 54/200 [1:19:31<3:57:49, 97.74s/it]
+19691 lr: 0.003125, trainLoss: 1.2189, trainAccuracy: 0.5732, validationLoss: 0.9820, validationAccuracy: 0.6625:  27%|##7       | 54/200 [1:20:55<3:54:09, 96.23s/it]
+lr: 0.003125, trainLoss: 1.2252, trainAccuracy: 0.5720, validationLoss: 0.9875, validationAccuracy: 0.6586:  27%|##7       | 54/200 [1:19:19<3:54:09, 96.23s/it]
+19691 lr: 0.003125, trainLoss: 1.2247, trainAccuracy: 0.5745, validationLoss: 0.9949, validationAccuracy: 0.6520:  28%|##7       | 55/200 [1:22:30<3:52:09, 96.06s/it]
+lr: 0.003125, trainLoss: 1.2189, trainAccuracy: 0.5732, validationLoss: 0.9820, validationAccuracy: 0.6625:  28%|##7       | 55/200 [1:20:55<3:52:09, 96.06s/it]
+73537 lr: 0.003125, trainLoss: 1.3178, trainAccuracy: 0.5306, validationLoss: 1.1145, validationAccuracy: 0.5963:  28%|##7       | 55/200 [1:22:38<3:51:37, 95.85s/it]
+lr: 0.003125, trainLoss: 1.3170, trainAccuracy: 0.5300, validationLoss: 1.1896, validationAccuracy: 0.5654:  28%|##7       | 55/200 [1:21:02<3:51:37, 95.85s/it]
+73537 lr: 0.003125, trainLoss: 1.3256, trainAccuracy: 0.5240, validationLoss: 1.1388, validationAccuracy: 0.5947:  28%|##8       | 56/200 [1:24:16<3:50:07, 95.89s/it]
+lr: 0.003125, trainLoss: 1.3178, trainAccuracy: 0.5306, validationLoss: 1.1145, validationAccuracy: 0.5963:  28%|##8       | 56/200 [1:22:38<3:50:07, 95.89s/it]
+19691 lr: 0.003125, trainLoss: 1.2161, trainAccuracy: 0.5771, validationLoss: 0.9646, validationAccuracy: 0.6713:  28%|##8       | 56/200 [1:24:08<3:49:54, 95.80s/it]
+lr: 0.003125, trainLoss: 1.2247, trainAccuracy: 0.5745, validationLoss: 0.9949, validationAccuracy: 0.6520:  28%|##8       | 56/200 [1:22:30<3:49:54, 95.80s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.003125, trainLoss: 1.3150, trainAccuracy: 0.5295, validationLoss: 1.1578, validationAccuracy: 0.6010:  28%|##8       | 57/200 [1:26:04<3:50:01, 96.51s/it]
+lr: 0.003125, trainLoss: 1.3256, trainAccuracy: 0.5240, validationLoss: 1.1388, validationAccuracy: 0.5947:  28%|##8       | 57/200 [1:24:16<3:50:01, 96.51s/it]
+19691 lr: 0.003125, trainLoss: 1.2299, trainAccuracy: 0.5685, validationLoss: 1.0109, validationAccuracy: 0.6527:  28%|##8       | 57/200 [1:25:56<3:50:20, 96.64s/it]
+lr: 0.003125, trainLoss: 1.2161, trainAccuracy: 0.5771, validationLoss: 0.9646, validationAccuracy: 0.6713:  28%|##8       | 57/200 [1:24:08<3:50:20, 96.64s/it]
+19691 lr: 0.003125, trainLoss: 1.2173, trainAccuracy: 0.5734, validationLoss: 1.0221, validationAccuracy: 0.6482:  29%|##9       | 58/200 [1:27:38<3:56:33, 99.96s/it]
+73537 lr: 0.003125, trainLoss: 1.3162, trainAccuracy: 0.5292, validationLoss: 1.1556, validationAccuracy: 0.5879:  29%|##9       | 58/200 [1:27:47<3:55:57, 99.70s/it]
+lr: 0.003125, trainLoss: 1.2299, trainAccuracy: 0.5685, validationLoss: 1.0109, validationAccuracy: 0.6527:  29%|##9       | 58/200 [1:25:56<3:56:33, 99.96s/it]
+lr: 0.003125, trainLoss: 1.3150, trainAccuracy: 0.5295, validationLoss: 1.1578, validationAccuracy: 0.6010:  29%|##9       | 58/200 [1:26:04<3:55:57, 99.70s/it]
+73537 lr: 0.003125, trainLoss: 1.3110, trainAccuracy: 0.5304, validationLoss: 1.1491, validationAccuracy: 0.5934:  30%|##9       | 59/200 [1:29:23<3:56:44, 100.74s/it]
+lr: 0.003125, trainLoss: 1.3162, trainAccuracy: 0.5292, validationLoss: 1.1556, validationAccuracy: 0.5879:  30%|##9       | 59/200 [1:27:47<3:56:44, 100.74s/it]
+19691 lr: 0.003125, trainLoss: 1.2217, trainAccuracy: 0.5752, validationLoss: 0.9793, validationAccuracy: 0.6582:  30%|##9       | 59/200 [1:29:15<3:56:40, 100.71s/it]
+lr: 0.003125, trainLoss: 1.2173, trainAccuracy: 0.5734, validationLoss: 1.0221, validationAccuracy: 0.6482:  30%|##9       | 59/200 [1:27:38<3:56:40, 100.71s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.003125, trainLoss: 1.2157, trainAccuracy: 0.5755, validationLoss: 0.9824, validationAccuracy: 0.6486:  30%|###       | 60/200 [1:30:47<3:52:20, 99.58s/it]
+lr: 0.003125, trainLoss: 1.2217, trainAccuracy: 0.5752, validationLoss: 0.9793, validationAccuracy: 0.6582:  30%|###       | 60/200 [1:29:15<3:52:20, 99.58s/it] 
+73537 lr: 0.001563, trainLoss: 1.2517, trainAccuracy: 0.5555, validationLoss: 1.0603, validationAccuracy: 0.6240:  30%|###       | 60/200 [1:30:56<3:52:05, 99.47s/it]
+lr: 0.003125, trainLoss: 1.3110, trainAccuracy: 0.5304, validationLoss: 1.1491, validationAccuracy: 0.5934:  30%|###       | 60/200 [1:29:23<3:52:05, 99.47s/it] 
+73537 lr: 0.001563, trainLoss: 1.2370, trainAccuracy: 0.5591, validationLoss: 1.0321, validationAccuracy: 0.6316:  30%|###       | 61/200 [1:32:28<3:45:34, 97.37s/it]
+lr: 0.001563, trainLoss: 1.2517, trainAccuracy: 0.5555, validationLoss: 1.0603, validationAccuracy: 0.6240:  30%|###       | 61/200 [1:30:56<3:45:34, 97.37s/it]
+19691 lr: 0.001563, trainLoss: 1.1548, trainAccuracy: 0.5968, validationLoss: 0.9132, validationAccuracy: 0.6830:  30%|###       | 61/200 [1:32:20<3:45:20, 97.27s/it]
+lr: 0.003125, trainLoss: 1.2157, trainAccuracy: 0.5755, validationLoss: 0.9824, validationAccuracy: 0.6486:  30%|###       | 61/200 [1:30:47<3:45:20, 97.27s/it]
+73537 lr: 0.001563, trainLoss: 1.2336, trainAccuracy: 0.5595, validationLoss: 1.0653, validationAccuracy: 0.6217:  31%|###1      | 62/200 [1:34:00<3:40:42, 95.96s/it]
+lr: 0.001563, trainLoss: 1.2370, trainAccuracy: 0.5591, validationLoss: 1.0321, validationAccuracy: 0.6316:  31%|###1      | 62/200 [1:32:28<3:40:42, 95.96s/it]
+19691 lr: 0.001563, trainLoss: 1.1464, trainAccuracy: 0.5999, validationLoss: 0.9071, validationAccuracy: 0.6895:  31%|###1      | 62/200 [1:33:53<3:40:40, 95.95s/it]
+lr: 0.001563, trainLoss: 1.1548, trainAccuracy: 0.5968, validationLoss: 0.9132, validationAccuracy: 0.6830:  31%|###1      | 62/200 [1:32:20<3:40:40, 95.95s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.001563, trainLoss: 1.1501, trainAccuracy: 0.6010, validationLoss: 0.9141, validationAccuracy: 0.6873:  32%|###1      | 63/200 [1:35:25<3:37:04, 95.07s/it]
+lr: 0.001563, trainLoss: 1.1464, trainAccuracy: 0.5999, validationLoss: 0.9071, validationAccuracy: 0.6895:  32%|###1      | 63/200 [1:33:53<3:37:04, 95.07s/it]
+73537 lr: 0.001563, trainLoss: 1.2348, trainAccuracy: 0.5589, validationLoss: 1.0290, validationAccuracy: 0.6373:  32%|###1      | 63/200 [1:35:34<3:36:24, 94.78s/it]
+lr: 0.001563, trainLoss: 1.2336, trainAccuracy: 0.5595, validationLoss: 1.0653, validationAccuracy: 0.6217:  32%|###1      | 63/200 [1:34:00<3:36:24, 94.78s/it]
+19691 lr: 0.001563, trainLoss: 1.1456, trainAccuracy: 0.6004, validationLoss: 0.9047, validationAccuracy: 0.6895:  32%|###2      | 64/200 [1:36:57<3:33:31, 94.20s/it]
+lr: 0.001563, trainLoss: 1.1501, trainAccuracy: 0.6010, validationLoss: 0.9141, validationAccuracy: 0.6873:  32%|###2      | 64/200 [1:35:25<3:33:31, 94.20s/it]
+73537 lr: 0.001563, trainLoss: 1.2396, trainAccuracy: 0.5585, validationLoss: 1.0393, validationAccuracy: 0.6348:  32%|###2      | 64/200 [1:37:05<3:34:15, 94.53s/it]
+lr: 0.001563, trainLoss: 1.2348, trainAccuracy: 0.5589, validationLoss: 1.0290, validationAccuracy: 0.6373:  32%|###2      | 64/200 [1:35:34<3:34:15, 94.53s/it]
+19691 lr: 0.001563, trainLoss: 1.1414, trainAccuracy: 0.6006, validationLoss: 0.9285, validationAccuracy: 0.6734:  32%|###2      | 65/200 [1:38:26<3:29:58, 93.32s/it]
+lr: 0.001563, trainLoss: 1.1456, trainAccuracy: 0.6004, validationLoss: 0.9047, validationAccuracy: 0.6895:  32%|###2      | 65/200 [1:36:57<3:29:58, 93.32s/it]
+73537 lr: 0.001563, trainLoss: 1.2371, trainAccuracy: 0.5557, validationLoss: 1.0421, validationAccuracy: 0.6160:  32%|###2      | 65/200 [1:38:37<3:30:02, 93.35s/it]
+lr: 0.001563, trainLoss: 1.2396, trainAccuracy: 0.5585, validationLoss: 1.0393, validationAccuracy: 0.6348:  32%|###2      | 65/200 [1:37:05<3:30:02, 93.35s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.001563, trainLoss: 1.2544, trainAccuracy: 0.5572, validationLoss: 1.0763, validationAccuracy: 0.6168:  33%|###3      | 66/200 [1:40:04<3:27:20, 92.84s/it]
+lr: 0.001563, trainLoss: 1.2371, trainAccuracy: 0.5557, validationLoss: 1.0421, validationAccuracy: 0.6160:  33%|###3      | 66/200 [1:38:37<3:27:20, 92.84s/it]
+19691 lr: 0.001563, trainLoss: 1.1467, trainAccuracy: 0.5974, validationLoss: 0.9400, validationAccuracy: 0.6750:  33%|###3      | 66/200 [1:39:56<3:25:45, 92.13s/it]
+lr: 0.001563, trainLoss: 1.1414, trainAccuracy: 0.6006, validationLoss: 0.9285, validationAccuracy: 0.6734:  33%|###3      | 66/200 [1:38:26<3:25:45, 92.13s/it]
+73537 lr: 0.001563, trainLoss: 1.2397, trainAccuracy: 0.5581, validationLoss: 1.0193, validationAccuracy: 0.6355:  34%|###3      | 67/200 [1:41:37<3:22:08, 91.19s/it]
+19691 lr: 0.001563, trainLoss: 1.1476, trainAccuracy: 0.5997, validationLoss: 0.9285, validationAccuracy: 0.6842:  34%|###3      | 67/200 [1:41:29<3:22:40, 91.44s/it]
+lr: 0.001563, trainLoss: 1.2544, trainAccuracy: 0.5572, validationLoss: 1.0763, validationAccuracy: 0.6168:  34%|###3      | 67/200 [1:40:04<3:22:08, 91.19s/it]
+lr: 0.001563, trainLoss: 1.1467, trainAccuracy: 0.5974, validationLoss: 0.9400, validationAccuracy: 0.6750:  34%|###3      | 67/200 [1:39:56<3:22:40, 91.44s/it]
+73537 lr: 0.001563, trainLoss: 1.2322, trainAccuracy: 0.5589, validationLoss: 1.0359, validationAccuracy: 0.6400:  34%|###4      | 68/200 [1:43:16<3:21:57, 91.80s/it]
+lr: 0.001563, trainLoss: 1.2397, trainAccuracy: 0.5581, validationLoss: 1.0193, validationAccuracy: 0.6355:  34%|###4      | 68/200 [1:41:37<3:21:57, 91.80s/it]
+19691 lr: 0.001563, trainLoss: 1.1450, trainAccuracy: 0.6028, validationLoss: 0.8985, validationAccuracy: 0.6918:  34%|###4      | 68/200 [1:43:08<3:22:16, 91.94s/it]
+lr: 0.001563, trainLoss: 1.1476, trainAccuracy: 0.5997, validationLoss: 0.9285, validationAccuracy: 0.6842:  34%|###4      | 68/200 [1:41:29<3:22:16, 91.94s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.001563, trainLoss: 1.2292, trainAccuracy: 0.5635, validationLoss: 1.0919, validationAccuracy: 0.6068:  34%|###4      | 69/200 [1:44:57<3:25:14, 94.00s/it]
+lr: 0.001563, trainLoss: 1.2322, trainAccuracy: 0.5589, validationLoss: 1.0359, validationAccuracy: 0.6400:  34%|###4      | 69/200 [1:43:16<3:25:14, 94.00s/it]
+19691 lr: 0.001563, trainLoss: 1.1600, trainAccuracy: 0.5952, validationLoss: 0.9118, validationAccuracy: 0.6910:  34%|###4      | 69/200 [1:44:49<3:25:29, 94.12s/it]
+lr: 0.001563, trainLoss: 1.1450, trainAccuracy: 0.6028, validationLoss: 0.8985, validationAccuracy: 0.6918:  34%|###4      | 69/200 [1:43:08<3:25:29, 94.12s/it]
+73537 lr: 0.001563, trainLoss: 1.2268, trainAccuracy: 0.5618, validationLoss: 1.0553, validationAccuracy: 0.6361:  35%|###5      | 70/200 [1:46:33<3:27:55, 95.97s/it]
+lr: 0.001563, trainLoss: 1.2292, trainAccuracy: 0.5635, validationLoss: 1.0919, validationAccuracy: 0.6068:  35%|###5      | 70/200 [1:44:57<3:27:55, 95.97s/it]
+19691 lr: 0.001563, trainLoss: 1.1493, trainAccuracy: 0.5981, validationLoss: 0.8817, validationAccuracy: 0.6973:  35%|###5      | 70/200 [1:46:25<3:28:15, 96.12s/it]
+lr: 0.001563, trainLoss: 1.1600, trainAccuracy: 0.5952, validationLoss: 0.9118, validationAccuracy: 0.6910:  35%|###5      | 70/200 [1:44:49<3:28:15, 96.12s/it]
+19691 lr: 0.001563, trainLoss: 1.1493, trainAccuracy: 0.5996, validationLoss: 0.8962, validationAccuracy: 0.6918:  36%|###5      | 71/200 [1:48:00<3:26:34, 96.08s/it]
+lr: 0.001563, trainLoss: 1.1493, trainAccuracy: 0.5981, validationLoss: 0.8817, validationAccuracy: 0.6973:  36%|###5      | 71/200 [1:46:25<3:26:34, 96.08s/it]
+73537 lr: 0.001563, trainLoss: 1.2216, trainAccuracy: 0.5658, validationLoss: 1.0170, validationAccuracy: 0.6443:  36%|###5      | 71/200 [1:48:09<3:26:25, 96.01s/it]
+lr: 0.001563, trainLoss: 1.2268, trainAccuracy: 0.5618, validationLoss: 1.0553, validationAccuracy: 0.6361:  36%|###5      | 71/200 [1:46:33<3:26:25, 96.01s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.001563, trainLoss: 1.2213, trainAccuracy: 0.5660, validationLoss: 1.0130, validationAccuracy: 0.6389:  36%|###6      | 72/200 [1:49:41<3:24:57, 96.08s/it]
+lr: 0.001563, trainLoss: 1.2216, trainAccuracy: 0.5658, validationLoss: 1.0170, validationAccuracy: 0.6443:  36%|###6      | 72/200 [1:48:09<3:24:57, 96.08s/it]
+19691 lr: 0.001563, trainLoss: 1.1425, trainAccuracy: 0.6003, validationLoss: 0.9059, validationAccuracy: 0.6891:  36%|###6      | 72/200 [1:49:33<3:24:28, 95.85s/it]
+lr: 0.001563, trainLoss: 1.1493, trainAccuracy: 0.5996, validationLoss: 0.8962, validationAccuracy: 0.6918:  36%|###6      | 72/200 [1:48:00<3:24:28, 95.85s/it]
+73537 lr: 0.001563, trainLoss: 1.2252, trainAccuracy: 0.5646, validationLoss: 1.0081, validationAccuracy: 0.6541:  36%|###6      | 73/200 [1:51:12<3:20:23, 94.68s/it]
+lr: 0.001563, trainLoss: 1.2213, trainAccuracy: 0.5660, validationLoss: 1.0130, validationAccuracy: 0.6389:  36%|###6      | 73/200 [1:49:41<3:20:23, 94.68s/it]
+19691 lr: 0.001563, trainLoss: 1.1484, trainAccuracy: 0.6014, validationLoss: 0.9062, validationAccuracy: 0.6873:  36%|###6      | 73/200 [1:51:04<3:21:06, 95.01s/it]
+lr: 0.001563, trainLoss: 1.1425, trainAccuracy: 0.6003, validationLoss: 0.9059, validationAccuracy: 0.6891:  36%|###6      | 73/200 [1:49:33<3:21:06, 95.01s/it]
+19691 lr: 0.001563, trainLoss: 1.1394, trainAccuracy: 0.6027, validationLoss: 0.9111, validationAccuracy: 0.6881:  37%|###7      | 74/200 [1:52:36<3:16:50, 93.73s/it]
+73537 lr: 0.001563, trainLoss: 1.2223, trainAccuracy: 0.5669, validationLoss: 1.0381, validationAccuracy: 0.6316:  37%|###7      | 74/200 [1:52:44<3:16:48, 93.72s/it]
+lr: 0.001563, trainLoss: 1.1484, trainAccuracy: 0.6014, validationLoss: 0.9062, validationAccuracy: 0.6873:  37%|###7      | 74/200 [1:51:04<3:16:50, 93.73s/it]
+lr: 0.001563, trainLoss: 1.2252, trainAccuracy: 0.5646, validationLoss: 1.0081, validationAccuracy: 0.6541:  37%|###7      | 74/200 [1:51:12<3:16:48, 93.72s/it]
+73537 lr: 0.001563, trainLoss: 1.2196, trainAccuracy: 0.5684, validationLoss: 0.9969, validationAccuracy: 0.6518:  38%|###7      | 75/200 [1:54:21<3:14:12, 93.22s/it]
+lr: 0.001563, trainLoss: 1.2223, trainAccuracy: 0.5669, validationLoss: 1.0381, validationAccuracy: 0.6316:  38%|###7      | 75/200 [1:52:44<3:14:12, 93.22s/it]
+19691 lr: 0.000781, trainLoss: 1.0983, trainAccuracy: 0.6186, validationLoss: 0.8540, validationAccuracy: 0.7086:  38%|###7      | 75/200 [1:54:14<3:14:07, 93.18s/it]
+lr: 0.001563, trainLoss: 1.1394, trainAccuracy: 0.6027, validationLoss: 0.9111, validationAccuracy: 0.6881:  38%|###7      | 75/200 [1:52:36<3:14:07, 93.18s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.001563, trainLoss: 1.2210, trainAccuracy: 0.5643, validationLoss: 1.1123, validationAccuracy: 0.6137:  38%|###8      | 76/200 [1:55:50<3:14:58, 94.35s/it]
+lr: 0.001563, trainLoss: 1.2196, trainAccuracy: 0.5684, validationLoss: 0.9969, validationAccuracy: 0.6518:  38%|###8      | 76/200 [1:54:21<3:14:58, 94.35s/it]
+19691 lr: 0.000781, trainLoss: 1.0907, trainAccuracy: 0.6195, validationLoss: 0.8445, validationAccuracy: 0.7152:  38%|###8      | 76/200 [1:55:42<3:15:25, 94.56s/it]
+lr: 0.000781, trainLoss: 1.0983, trainAccuracy: 0.6186, validationLoss: 0.8540, validationAccuracy: 0.7086:  38%|###8      | 76/200 [1:54:14<3:15:25, 94.56s/it]
+73537 lr: 0.001563, trainLoss: 1.2173, trainAccuracy: 0.5682, validationLoss: 1.0620, validationAccuracy: 0.6246:  38%|###8      | 77/200 [1:57:23<3:10:11, 92.78s/it]
+19691 lr: 0.000781, trainLoss: 1.0826, trainAccuracy: 0.6239, validationLoss: 0.8532, validationAccuracy: 0.7074:  38%|###8      | 77/200 [1:57:14<3:10:15, 92.81s/it]
+lr: 0.001563, trainLoss: 1.2210, trainAccuracy: 0.5643, validationLoss: 1.1123, validationAccuracy: 0.6137:  38%|###8      | 77/200 [1:55:50<3:10:11, 92.78s/it]
+lr: 0.000781, trainLoss: 1.0907, trainAccuracy: 0.6195, validationLoss: 0.8445, validationAccuracy: 0.7152:  38%|###8      | 77/200 [1:55:42<3:10:15, 92.81s/it]
+19691 lr: 0.000781, trainLoss: 1.0802, trainAccuracy: 0.6217, validationLoss: 0.8482, validationAccuracy: 0.7129:  39%|###9      | 78/200 [1:58:45<3:08:10, 92.54s/it]
+lr: 0.000781, trainLoss: 1.0826, trainAccuracy: 0.6239, validationLoss: 0.8532, validationAccuracy: 0.7074:  39%|###9      | 78/200 [1:57:14<3:08:10, 92.54s/it]
+73537 lr: 0.001563, trainLoss: 1.2200, trainAccuracy: 0.5670, validationLoss: 1.0366, validationAccuracy: 0.6492:  39%|###9      | 78/200 [1:58:54<3:08:21, 92.63s/it]
+lr: 0.001563, trainLoss: 1.2173, trainAccuracy: 0.5682, validationLoss: 1.0620, validationAccuracy: 0.6246:  39%|###9      | 78/200 [1:57:23<3:08:21, 92.63s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.000781, trainLoss: 1.0819, trainAccuracy: 0.6259, validationLoss: 0.8506, validationAccuracy: 0.7115:  40%|###9      | 79/200 [2:00:16<3:05:32, 92.01s/it]
+lr: 0.000781, trainLoss: 1.0802, trainAccuracy: 0.6217, validationLoss: 0.8482, validationAccuracy: 0.7129:  40%|###9      | 79/200 [1:58:45<3:05:32, 92.01s/it]
+73537 lr: 0.001563, trainLoss: 1.2135, trainAccuracy: 0.5663, validationLoss: 1.0016, validationAccuracy: 0.6496:  40%|###9      | 79/200 [2:00:25<3:06:07, 92.30s/it]
+lr: 0.001563, trainLoss: 1.2200, trainAccuracy: 0.5670, validationLoss: 1.0366, validationAccuracy: 0.6492:  40%|###9      | 79/200 [1:58:54<3:06:07, 92.30s/it]
+19691 lr: 0.000781, trainLoss: 1.0772, trainAccuracy: 0.6264, validationLoss: 0.8664, validationAccuracy: 0.6994:  40%|####      | 80/200 [2:01:53<3:03:16, 91.64s/it]
+lr: 0.000781, trainLoss: 1.0819, trainAccuracy: 0.6259, validationLoss: 0.8506, validationAccuracy: 0.7115:  40%|####      | 80/200 [2:00:16<3:03:16, 91.64s/it]
+73537 lr: 0.000781, trainLoss: 1.1617, trainAccuracy: 0.5904, validationLoss: 0.9647, validationAccuracy: 0.6582:  40%|####      | 80/200 [2:02:01<3:03:40, 91.84s/it]
+lr: 0.001563, trainLoss: 1.2135, trainAccuracy: 0.5663, validationLoss: 1.0016, validationAccuracy: 0.6496:  40%|####      | 80/200 [2:00:25<3:03:40, 91.84s/it]
+19691 lr: 0.000391, trainLoss: 1.0540, trainAccuracy: 0.6349, validationLoss: 0.8092, validationAccuracy: 0.7295:  40%|####      | 81/200 [2:03:32<3:04:53, 93.23s/it]
+lr: 0.000781, trainLoss: 1.0772, trainAccuracy: 0.6264, validationLoss: 0.8664, validationAccuracy: 0.6994:  40%|####      | 81/200 [2:01:53<3:04:53, 93.23s/it]
+73537 lr: 0.000781, trainLoss: 1.1443, trainAccuracy: 0.5955, validationLoss: 0.9419, validationAccuracy: 0.6652:  40%|####      | 81/200 [2:03:40<3:04:48, 93.18s/it]
+lr: 0.000781, trainLoss: 1.1617, trainAccuracy: 0.5904, validationLoss: 0.9647, validationAccuracy: 0.6582:  40%|####      | 81/200 [2:02:01<3:04:48, 93.18s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+19691 lr: 0.000391, trainLoss: 1.0541, trainAccuracy: 0.6350, validationLoss: 0.7967, validationAccuracy: 0.7320:  41%|####1     | 82/200 [2:05:04<3:06:39, 94.92s/it]
+lr: 0.000391, trainLoss: 1.0540, trainAccuracy: 0.6349, validationLoss: 0.8092, validationAccuracy: 0.7295:  41%|####1     | 82/200 [2:03:32<3:06:39, 94.92s/it]
+73537 lr: 0.000781, trainLoss: 1.1390, trainAccuracy: 0.5993, validationLoss: 0.9721, validationAccuracy: 0.6615:  41%|####1     | 82/200 [2:05:12<3:06:46, 94.97s/it]
+lr: 0.000781, trainLoss: 1.1443, trainAccuracy: 0.5955, validationLoss: 0.9419, validationAccuracy: 0.6652:  41%|####1     | 82/200 [2:03:40<3:06:46, 94.97s/it]
+19691 lr: 0.000391, trainLoss: 1.0418, trainAccuracy: 0.6387, validationLoss: 0.8200, validationAccuracy: 0.7211:  42%|####1     | 83/200 [2:06:36<3:03:24, 94.06s/it]
+lr: 0.000391, trainLoss: 1.0541, trainAccuracy: 0.6350, validationLoss: 0.7967, validationAccuracy: 0.7320:  42%|####1     | 83/200 [2:05:04<3:03:24, 94.06s/it]
+73537 lr: 0.000781, trainLoss: 1.1425, trainAccuracy: 0.5954, validationLoss: 0.9554, validationAccuracy: 0.6637:  42%|####1     | 83/200 [2:06:45<3:03:35, 94.15s/it]
+lr: 0.000781, trainLoss: 1.1390, trainAccuracy: 0.5993, validationLoss: 0.9721, validationAccuracy: 0.6615:  42%|####1     | 83/200 [2:05:13<3:03:35, 94.15s/it]
+19691 lr: 0.000391, trainLoss: 1.0404, trainAccuracy: 0.6396, validationLoss: 0.8045, validationAccuracy: 0.7283:  42%|####2     | 84/200 [2:08:08<3:01:02, 93.64s/it]
+lr: 0.000391, trainLoss: 1.0418, trainAccuracy: 0.6387, validationLoss: 0.8200, validationAccuracy: 0.7211:  42%|####2     | 84/200 [2:06:36<3:01:02, 93.64s/it]
+73537 lr: 0.000781, trainLoss: 1.1451, trainAccuracy: 0.5942, validationLoss: 0.9157, validationAccuracy: 0.6826:  42%|####2     | 84/200 [2:08:18<3:00:59, 93.62s/it]
+lr: 0.000781, trainLoss: 1.1425, trainAccuracy: 0.5954, validationLoss: 0.9554, validationAccuracy: 0.6637:  42%|####2     | 84/200 [2:06:45<3:00:59, 93.62s/it]
+There are currently 2 training which is equal to or more than the allowed 2, sleeping...
+73537 lr: 0.000781, trainLoss: 1.1443, trainAccuracy: 0.5959, validationLoss: 0.9636, validationAccuracy: 0.6652:  42%|####2     | 85/200 [2:09:47<2:59:20, 93.57s/it]
+19691 lr: 0.000391, trainLoss: 1.0354, trainAccuracy: 0.6397, validationLoss: 0.8079, validationAccuracy: 0.7203:  42%|####2     | 85/200 [2:09:39<2:58:20, 93.05s/it]
+lr: 0.000781, trainLoss: 1.1451, trainAccuracy: 0.5942, validationLoss: 0.9157, validationAccuracy: 0.6826:  42%|####2     | 85/200 [2:08:18<2:59:20, 93.57s/it]
+lr: 0.000391, trainLoss: 1.0404, trainAccuracy: 0.6396, validationLoss: 0.8045, validationAccuracy: 0.7283:  42%|####2     | 85/200 [2:08:08<2:58:20, 93.05s/it]
+73537 lr: 0.000781, trainLoss: 1.1412, trainAccuracy: 0.5956, validationLoss: 0.9518, validationAccuracy: 0.6730:  43%|####3     | 86/200 [2:11:19<2:54:57, 92.08s/it]
+lr: 0.000781, trainLoss: 1.1443, trainAccuracy: 0.5959, validationLoss: 0.9636, validationAccuracy: 0.6652:  43%|####3     | 86/200 [2:09:47<2:54:57, 92.08s/it]
+19691 lr: 0.000391, trainLoss: 1.0379, trainAccuracy: 0.6392, validationLoss: 0.8209, validationAccuracy: 0.7227:  43%|####3     | 86/200 [2:11:12<2:55:27, 92.34s/it]
+lr: 0.000391, trainLoss: 1.0354, trainAccuracy: 0.6397, validationLoss: 0.8079, validationAccuracy: 0.7203:  43%|####3     | 86/200 [2:09:39<2:55:27, 92.34s/it]

@@ -547,6 +547,52 @@ highwayResidualv1 = nn.Sequential(
     nn.Linear(in_features=64, out_features=10)
 )
 
+highwayResidualv2 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    HighwayBlock(in_channels=32, highwaySequence=nn.Sequential(
+        *[ResidualBlock(channelCount=32, activation=nn.ReLU()) for _ in range(3)]
+    )),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=5, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    HighwayBlock(in_channels=64, highwaySequence=nn.Sequential(
+        *[ResidualBlock(channelCount=64, activation=nn.ReLU()) for _ in range(3)]
+    )),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    HighwayBlock(in_channels=128, highwaySequence=nn.Sequential(
+        *[ResidualBlock(channelCount=128, activation=nn.ReLU()) for _ in range(6)]
+    )),
+    
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    
+    HighwayBlock(in_channels=256, highwaySequence=nn.Sequential(
+        *[ResidualBlock(channelCount=256, activation=nn.ReLU()) for _ in range(6)]
+    )),
+    
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=256, out_features=64),
+    nn.LayerNorm(normalized_shape=64),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=64, out_features=10)
+)
+
 branchResidualv1 = nn.Sequential(
     nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
     nn.BatchNorm2d(num_features=32),
@@ -601,6 +647,52 @@ branchResidualv1 = nn.Sequential(
     nn.ReLU(),
     
     nn.Linear(in_features=64, out_features=10)
+)
+
+branchResidualv2 = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=32, kernel_size=5, stride=1, padding=2),
+    nn.BatchNorm2d(num_features=32),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=32, branches=[
+        *[DoubleEncodeBottleneckBlock2(in_channels=32, encode_factor1=2, encode_factor2=2, activation=nn.ReLU()) for _ in range(3)],
+    ], averageChannels=True),
+
+    nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=64),
+    nn.ReLU(),
+
+    BranchBlock(in_channels=64, branches=[
+        *[DoubleEncodeBottleneckBlock2(in_channels=64, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(3)],
+    ], averageChannels=True),
+    
+    nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=128),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    
+    BranchBlock(in_channels=128, branches=[
+        *[DoubleEncodeBottleneckBlock2(in_channels=128, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(6)],
+    ], averageChannels=True),
+    
+    nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, stride=1, padding=1),
+    nn.BatchNorm2d(num_features=256),
+    nn.ReLU(),
+    
+    BranchBlock(in_channels=256, branches=[
+        *[DoubleEncodeBottleneckBlock2(in_channels=256, encode_factor1=2, encode_factor2=4, activation=nn.ReLU()) for _ in range(6)],
+    ], averageChannels=True),
+    
+    nn.AvgPool2d(kernel_size=4, stride=4, padding=0),
+    
+    nn.Flatten(),
+    
+    nn.Linear(in_features=1024, out_features=256),
+    nn.LayerNorm(normalized_shape=256),
+    nn.ReLU(),
+    
+    nn.Linear(in_features=256, out_features=10)
 )
 
 fc0 = nn.Sequential(

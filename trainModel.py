@@ -19,6 +19,9 @@ import numpy as np
 
 import multiprocessing
 
+import cProfile
+import pstats
+import io
 
 def getTrainTransform(trainTransformID:str) -> v2.Compose:
     
@@ -74,7 +77,8 @@ def main():
     parser.add_argument('--saveResults', type=int, help='Whether or not to write Tensorboard events or save models')
     parser.add_argument('--customNormalization', type=str, help='The name of the custom normalization to use instead of normalizing by the current dataset.')
 
-    USE_CUSTOM_PARAMETERS = False
+    USE_CUSTOM_PARAMETERS = True
+    PROFILE_TRAINING = True
 
     # Initialize a process ID to identify which subprocesses correspond to which output
     # Yes, PIDs may not be unique. No, I don't care
@@ -105,9 +109,9 @@ def main():
         modelName = 'jesseNetv5_easyaugment'
         trainTransformID = 'default'
         valTestTransformID = 'NONE'
-        epochs = 2
+        epochs = 5
         warmupEpochs = 5
-        batch_size = 256
+        batch_size = 128
         lr = 1e-2
         momentum = 0.9
         weight_decay = 0.01
@@ -148,11 +152,28 @@ def main():
                                     trainValTestSplit=[0.8, 0.1, 0.1], epochs=epochs, warmupEpochs=warmupEpochs, batch_size=batch_size,
                                     lr=lr, momentum=momentum, weight_decay=weight_decay, nesterov=nesterov, plateuPatience=plateuPatience, plateuFactor=plateuFactor)
 
-    print(f'{PID} Starting training...', flush=True)
-    trainableModel = TrainableModel(modelName=modelName, model=model, trainingParameters=modelParams)
-    trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
-    print(f'{PID} Training complete!', flush=True)
+    def trainCompleteModel():
 
+        print(f'{PID} Starting training...', flush=True)
+        trainableModel = TrainableModel(modelName=modelName, model=model, trainingParameters=modelParams)
+        trainableModel.train(PID=PID, SAVE_RESULTS=SAVE_RESULTS)
+        print(f'{PID} Training complete!', flush=True)
+
+
+    if PROFILE_TRAINING:
+        pr = cProfile.Profile()
+        
+        pr.enable()
+        trainCompleteModel()
+        pr.disable()
+
+        s = io.StringIO()
+        ps = pstats.Stats(pr, stream=s).sort_stats('cumulative')
+        ps.print_stats()
+
+        print(s.getvalue())
+    else:
+        trainCompleteModel()
 
 
 if __name__ == '__main__':

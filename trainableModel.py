@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torch.utils.data import DataLoader, Dataset, random_split, Subset
+from torch.utils.data import DataLoader, Dataset, random_split, Subset, TensorDataset
 from blocks import *
 import torchvision
 import numpy as np
@@ -110,6 +110,32 @@ class TrainableModel():
         return filename
     
     
+    def loadDataToMemory(self, dataloader:DataLoader) -> TensorDataset:
+        
+        """
+        Loads the entire dataset into GPU memory for faster training
+        
+        Arguments:
+            dataloader: The original dataloader
+            
+        Returns:
+            tensorDataset: A TensorDataset which holds all the labels and training data from the dataset in a single tensor. 
+        """
+        
+        images = []
+        labels = []
+
+        for imageBatch, labelBatch in dataloader:
+            images.append(imageBatch)
+            labels.append(labelBatch)
+
+        # Concatenate all data and labels
+        allImages = torch.cat(images, dim=0).to(self.device)
+        allLabels = torch.cat(labels, dim=0).to(self.device)
+
+        return TensorDataset(allImages, allLabels)
+    
+    
     def trainEpoch(self, dataloader:DataLoader, optimizer:torch.optim.Optimizer, freezeModel=False) -> tuple[float, float]:
     
         """
@@ -139,7 +165,7 @@ class TrainableModel():
         device = self.device
         
         for features, labels in dataloader:
-            x, y = features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
+            x, y = features, labels #features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
 
             if not freezeModel:
                 optimizer.zero_grad()
@@ -160,7 +186,7 @@ class TrainableModel():
                 optimizer.step()
             
             N += 1
-        
+                    
         return totalLoss / N, correct / N
     
     
@@ -189,6 +215,13 @@ class TrainableModel():
 
         trainLoader = self.trainLoader
         validationLoader = self.validationLoader
+
+        # Load datasets into memory and use the in-memory loaders during training
+        trainMemoryDataset = self.loadDataToMemory(trainLoader)
+        trainLoader = DataLoader(trainMemoryDataset, batch_size=trainLoader.batch_size, shuffle=True)
+
+        validationMemoryDataset = self.loadDataToMemory(trainLoader)
+        validationLoader = DataLoader(validationMemoryDataset, batch_size=validationLoader.batch_size, shuffle=False)
 
         MODEL_PARAM_COUNT = sum(p.numel() for p in model.parameters() if p.requires_grad)
 
