@@ -1,0 +1,24 @@
+Found model to train!
+Available memory: 24564 MB
+Current allocation for VRAM is 6619.64 MB
+Found model:
+{'trainTransformID': 'NONE', 'valTestTransformID': 'NONE', 'epochs': 200, 'warmupEpochs': 5, 'batch_size': 256, 'lr': 0.05, 'momentum': 0.9, 'weight_decay': 0.01, 'nesterov': True, 'plateuPatience': 3, 'plateuFactor': 0.5, 'modelName': 'doubleBottleneckResidualv1_vanilla-FULL'}
+ Required memory: 6619.64 MB
+Currently, there are 1 models in training
+20480 Namespace(modelName='doubleBottleneckResidualv1_vanilla-FULL', trainTransformID='NONE', valTestTransformID='NONE', epochs=200, warmupEpochs=5, batch_size=256, lr=0.05, momentum=0.9, weight_decay=0.01, nesterov=True, plateuPatience=3, plateuFactor=0.5, saveResults=1, customNormalization=None)
+Got model: doubleBottleneckResidualv1
+Using device: cuda
+Test passed!
+20480 Normalizing...
+tensor([0.4948, 0.4846, 0.4456])
+tensor([0.2038, 0.2003, 0.2030])
+20480 Done normalizing!
+20480 normalizedTrainTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4948), tensor(0.4846), tensor(0.4456)], std=[tensor(0.2038), tensor(0.2003), tensor(0.2030)], inplace=False)
+)
+20480 normalizedValTestTransform: Compose(
+      Identity()
+      Normalize(mean=[tensor(0.4948), tensor(0.4846), tensor(0.4456)], std=[tensor(0.2038), tensor(0.2003), tensor(0.2030)], inplace=False)
+)
+20480 Starting training...

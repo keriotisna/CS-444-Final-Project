@@ -55,9 +55,13 @@ class TrainingParameters():
         # self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=valTestTransform)
         # self.testDataset = TransformableSubset(testDataset, fullDataset, transform=valTestTransform)
 
-        self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=None)
-        self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=None)
-        self.testDataset = TransformableSubset(testDataset, fullDataset, transform=None)
+        # Do this instead since we are applying transforms at runtime instead of in the dataloader, may save memory
+        self.trainDataset = trainDataset
+        self.validationDataset = validationDataset
+        self.testDataset = testDataset
+        # self.trainDataset = TransformableSubset(trainDataset, fullDataset, transform=None)
+        # self.validationDataset = TransformableSubset(validationDataset, fullDataset, transform=None)
+        # self.testDataset = TransformableSubset(testDataset, fullDataset, transform=None)
 
         self.epochs = epochs
         self.warmupEpochs = warmupEpochs
@@ -137,8 +141,8 @@ class TrainableModel():
             labels.append(labelBatch)
 
         # Concatenate all data and labels
-        allImages = torch.cat(images, dim=0).to(self.device)
-        allLabels = torch.cat(labels, dim=0).to(self.device)
+        allImages = torch.cat(images, dim=0).to(self.device).detach()
+        allLabels = torch.cat(labels, dim=0).to(self.device).detach()
 
         # return DynamicTransformDataset(TensorDataset(allImages, allLabels), transform)
         return TensorDataset(allImages, allLabels)
@@ -174,10 +178,10 @@ class TrainableModel():
         
         for features, labels in dataloader:
             if transform is not None:
-                x, y = transform(features), labels
+                x, y = transform(features).detach(), labels.detach()
 
-            else:
-                x, y = features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
+            # else:
+                # x, y = features.to(device, non_blocking=True), labels.to(device, non_blocking=True)
 
 
             if not freezeModel:
@@ -228,7 +232,7 @@ class TrainableModel():
         optimizer = torch.optim.SGD(params=model.parameters(), lr=lr, momentum=momentum, weight_decay=weight_decay, nesterov=nesterov)
 
         warmup = torch.optim.lr_scheduler.LinearLR(optimizer, start_factor=1e-9, end_factor=1, total_iters=warmupEpochs)
-        plateuScheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=factor, patience=patience, threshold=1e-3, cooldown=2)
+        plateuScheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=factor, patience=patience, threshold=1e-3, cooldown=4)
 
         trainLoaderOG = self.trainLoader
         validationLoaderOG = self.validationLoader

@@ -230,7 +230,7 @@ SAVE_RESULTS = 1
 # while low values may allow for models to use memory in shared memory.
 MODEL_MEMORY_MULTIPLIER = 2
 # Sets how many models can be trained at once to prevent CPU bottlenecking, 5 seems to approach 100% CPU utilization, but this needs to change depending on model size
-MAX_CONCURRENT_MODELS = 4
+MAX_CONCURRENT_MODELS = 3
 
 
 def main():
@@ -274,9 +274,25 @@ def main():
         # BASELINE_RESIDUALS_BATCH_1_HARDAUGMENTATION2_5,
         # BASELINE_BATCH_3
         # BASELINE_BATCH_5_HARDAUGMENT_2_6
-        FULL_BASELINE_BATCH_NONE,
-        FULL_BASELINE_BATCH_EASYAUGMENT,
-        FULL_BASELINE_BATCH_HARD2
+
+        # DONE        
+        # FULL_BASELINE_BATCH_NONE,
+        # FULL_BASELINE_BATCH_EASYAUGMENT,
+        # FULL_BASELINE_BATCH_HARD2,
+        # FULL_BASELINE_BATCH_HARD2_5,
+        # FULL_BASELINE_BATCH_HARD3,
+        
+        # FULL_BASELINE_BATCH_2_NONE,
+        # FULL_BASELINE_BATCH_2_EASYAUGMENT,
+        # FULL_BASELINE_BATCH_2_HARD2,
+        # FULL_BASELINE_BATCH_2_HARD2_5,
+        # FULL_BASELINE_BATCH_2_HARD3
+        
+        FULL_BASELINE_BATCH_3_NONE,
+        FULL_BASELINE_BATCH_3_EASYAUGMENT,
+        FULL_BASELINE_BATCH_3_HARD2,
+        FULL_BASELINE_BATCH_3_HARD2_5,
+        FULL_BASELINE_BATCH_3_HARD3
         ]
     
     # Get the log file path once at the start
@@ -310,7 +326,7 @@ def main():
         
         # Check if enough VRAM is available before starting training
         while not canInsertModel(memoryParameterList):
-            time.sleep(3)  # Wait for N seconds before checking again
+            time.sleep(300)  # Wait for N seconds before checking again
     
         memoryReq, arguments = getNextModelParameters(memoryParameterList)
         printq(f'Found model:\n{arguments}\n Required memory: {memoryReq} MB')
@@ -332,7 +348,7 @@ def main():
 
         modelsInTraining += 1
         printq(f'Currently, there are {modelsInTraining} models in training')
-        time.sleep(1.8) # Wait for normalization and training initalization so we don't run out of memory
+        time.sleep(120) # Wait for normalization and training initalization so we don't run out of memory
         
     # Wait for all processes to complete before getting totalRuntime
     for p in processes:

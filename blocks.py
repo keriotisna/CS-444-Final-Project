@@ -615,7 +615,44 @@ class BranchBlock(nn.Module):
                 
         return y
 
-
+class BranchBlockNorm(nn.Module):
+    
+    """
+    The BranchBlockNorm splits one feature map into several parallel classifiers before concatenating their outputs together again.
+    This also creates a residual connection between the inputs and the concatenated branches. 
+    The Norm version also normalizes activations via a batch normalization following all the branches
+    """
+        
+    def __init__(self, in_channels:int, branches:list, activation=nn.ReLU(), averageChannels=False) -> None:
+        
+        super().__init__()
+        
+        self.activation = activation
+        
+        self.inputNorm = nn.Sequential(
+            nn.BatchNorm2d(num_features=in_channels),
+            self.activation
+        )
+        
+        self.out_channels = in_channels * len(branches)
+        # We need to use a ModuleList to ensure that the .to(device) operation registers these as submodules
+        self.branches = nn.ModuleList(branches)
+        
+        self.averageChannels = averageChannels
+    
+    
+    def forward(self, x:torch.Tensor):
+        
+        normInput = self.inputNorm(x)
+                
+        rawOutputs = [branch(normInput) for branch in self.branches]
+        normOutputs = [self.inputNorm(raw) + x for raw in rawOutputs]
+        if self.averageChannels:
+            y = torch.mean(torch.stack(normOutputs), dim=0)
+        else:
+            y = torch.cat(normOutputs, dim=1)
+                
+        return y
 
 
 # This is the main class used to run a network. It's pretty simple, and the only real difference is in setting values for debugging
