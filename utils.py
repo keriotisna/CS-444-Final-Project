@@ -516,7 +516,6 @@ def profileModel(model:nn.Sequential, input_size:tuple, printOriginalTable=False
         })
         
     # Creates a 2D list in the same shape as a table
-    # table = [[val for _, val in attrs.items() if val != 'key'] for attrs in attributesList]
     table = [[val for _, val in attrs.items()] for attrs in attributesList]
     
     nRows = len(table)
